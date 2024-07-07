@@ -20,7 +20,7 @@ sudo apt install ffmpeg -y
 sudo bash -c 'cat << "EOF" > /opt/jellyfin/jellyfin.sh
 #!/bin/bash
 JELLYFINDIR="/opt/jellyfin"
-FFMPEGDIR="/usr/bin/ffmpeg"
+FFMPEGDIR="/usr/share/jellyfin-ffmpeg"
 
 $JELLYFINDIR/jellyfin/jellyfin \
  -d $JELLYFINDIR/data \
