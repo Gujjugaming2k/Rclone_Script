@@ -1,5 +1,9 @@
 #!/bin/bash
 sudo su - root
+id
+id
+id
+id
 # Create rclone configuration file
 echo "Creating rclone configuration file..."
 echo "Creating rclone configuration file..."
@@ -9,7 +13,7 @@ echo "Creating rclone configuration file..."
 echo "Creating rclone configuration file..."
 echo "Creating rclone configuration file..."
 sudo touch /root/.config/rclone/rclone.conf
-cat <<EOF > ~/.config/rclone/rclone.conf
+sudo cat <<EOF > /root/.config/rclone/rclone.conf
 [w1928440]
 type = drive
 scope = drive
@@ -28,7 +32,7 @@ echo "Creating folder ..."
 echo "Creating folder ..."
 echo "Creating folder ..."
 # Create a folder for mounting
-mkdir -p /opt/drive_bkp
+sudo mkdir -p /opt/drive_bkp
 
 # Mount the remote drive using rclone
 echo "Mounting remote drive..."
@@ -37,7 +41,7 @@ echo "Mounting remote drive..."
 echo "Mounting remote drive..."
 echo "Mounting remote drive..."
 echo "Mounting remote drive..."
-rclone mount w1928440: /opt/drive_bkp --vfs-cache-mode writes &
+sudo rclone mount w1928440: /opt/drive_bkp --vfs-cache-mode writes &
 
 # Add any additional options or flags as needed for your use case.
 
