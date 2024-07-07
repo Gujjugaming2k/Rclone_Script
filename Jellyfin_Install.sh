@@ -43,5 +43,25 @@ sudo dpkg -i cloudflared.deb &&
 
 sudo cloudflared service install eyJhIjoiNWIzNDA1ZDEzZmJiNWE1M2I2ZjM5ZjU4M2YwZmYwNjEiLCJ0IjoiOGQ4NWZjODYtMGQwZC00MTFhLWE1Y2EtZjc1NDliZWZiNTQ4IiwicyI6Ik9UZ3hOV1EwTWprdE9HRTVaQzAwTVRFeUxXSmhZelF0WkdNMU9EVTRaR0V6WWpVMyJ9
 
+
+
+sudo apt install curl gnupg -y
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/jellyfin.gpg
+
+export VERSION_OS="$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release )"
+export VERSION_CODENAME="$( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release )"
+export DPKG_ARCHITECTURE="$( dpkg --print-architecture )"
+cat <<EOF | sudo tee /etc/apt/sources.list.d/jellyfin.sources
+Types: deb
+URIs: https://repo.jellyfin.org/${VERSION_OS}
+Suites: ${VERSION_CODENAME}
+Components: main
+Architectures: ${DPKG_ARCHITECTURE}
+Signed-By: /etc/apt/keyrings/jellyfin.gpg
+EOF
+
+sudo apt update -y
+sudo apt install jellyfin -y
 sudo ./jellyfin.sh
 
