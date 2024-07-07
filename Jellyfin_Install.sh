@@ -20,7 +20,7 @@ sudo apt install ffmpeg -y
 sudo bash -c 'cat << "EOF" > /opt/jellyfin/jellyfin.sh
 #!/bin/bash
 JELLYFINDIR="/opt/jellyfin"
-FFMPEGDIR="/usr/share/jellyfin-ffmpeg"
+FFMPEGDIR="/usr/bin/ffmpeg"
 
 $JELLYFINDIR/jellyfin/jellyfin \
  -d $JELLYFINDIR/data \
@@ -44,3 +44,4 @@ sudo dpkg -i cloudflared.deb &&
 sudo cloudflared service install eyJhIjoiNWIzNDA1ZDEzZmJiNWE1M2I2ZjM5ZjU4M2YwZmYwNjEiLCJ0IjoiOGQ4NWZjODYtMGQwZC00MTFhLWE1Y2EtZjc1NDliZWZiNTQ4IiwicyI6Ik9UZ3hOV1EwTWprdE9HRTVaQzAwTVRFeUxXSmhZelF0WkdNMU9EVTRaR0V6WWpVMyJ9
 
 sudo ./jellyfin.sh
+
