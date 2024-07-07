@@ -12,7 +12,8 @@ sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 if ! command -v rclone &> /dev/null; then
     echo "Installing rclone..."
     curl https://rclone.org/install.sh | sudo bash
-	sudo apt install fuse
+	sudo apt install fuse -y
+	sudo apt install fuse3 -y
 else
     echo "rclone is already installed."
 fi
