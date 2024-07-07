@@ -1,6 +1,9 @@
 #!/bin/bash
 sudo apt update
 sudo su - root
+id
+id
+id
 sudo rm /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
@@ -16,6 +19,12 @@ fi
 
 # Create rclone configuration file
 echo "Creating rclone configuration file..."
+echo "Creating rclone configuration file..."
+echo "Creating rclone configuration file..."
+echo "Creating rclone configuration file..."
+echo "Creating rclone configuration file..."
+echo "Creating rclone configuration file..."
+echo "Creating rclone configuration file..."
 
 cat <<EOF > ~/.config/rclone/rclone.conf
 [w1928440]
@@ -27,13 +36,25 @@ EOF
 
 # Replace remote with your w1928440 name, and fill in the appropriate client_id, client_secret, access_token, refresh_token, and expiry.
 
+
+echo "Creating folder ..."
+echo "Creating folder ..."
+echo "Creating folder ..."
+echo "Creating folder ..."
+echo "Creating folder ..."
+echo "Creating folder ..."
+echo "Creating folder ..."
 # Create a folder for mounting
 mkdir -p /opt/drive_bkp
 
 # Mount the remote drive using rclone
 echo "Mounting remote drive..."
+echo "Mounting remote drive..."
+echo "Mounting remote drive..."
+echo "Mounting remote drive..."
+echo "Mounting remote drive..."
+echo "Mounting remote drive..."
 rclone mount w1928440: /opt/drive_bkp --vfs-cache-mode writes &
 
 # Add any additional options or flags as needed for your use case.
-
 
