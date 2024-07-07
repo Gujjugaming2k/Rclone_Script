@@ -8,7 +8,7 @@ echo "Creating rclone configuration file..."
 echo "Creating rclone configuration file..."
 echo "Creating rclone configuration file..."
 echo "Creating rclone configuration file..."
-
+sudo touch /root/.config/rclone/rclone.conf
 cat <<EOF > ~/.config/rclone/rclone.conf
 [w1928440]
 type = drive
