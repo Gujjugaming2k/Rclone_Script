@@ -25,12 +25,32 @@ echo "Starting Jellyfin Docker container..."
 echo "Starting Jellyfin Docker container..."
 echo "Starting Jellyfin Docker container..."
 
+#!/bin/bash
+
+
+# Define variables
+DOCKER_VOLUME="jellyfin-config-restore"
+BACKUP_FILE="/opt/drive_bkp/jellyfin-config_backup.tar.gz"
+
+# Pull Jellyfin Docker image if not already pulled
+docker pull jellyfin/jellyfin
+
+# Restore Jellyfin configuration from backup
+docker run --rm \
+  -v $DOCKER_VOLUME:/config \
+  -v $BACKUP_FILE:/restore/jellyfin-config_backup.tar.gz \
+  busybox sh -c "tar xzf /restore/jellyfin-config_backup.tar.gz -C /config && chown -R 1000:1000 /config"
+
+# Start Jellyfin Docker container
 docker run -d \
   --name jellyfin \
   --network host \
-  -v jellyfin-config:/config \
+  -v $DOCKER_VOLUME:/config \
   --mount type=bind,source=/workspaces/codespaces-blank,target=/media \
   jellyfin/jellyfin
+
+echo "Jellyfin Docker container started."
+
 
 echo "Jellyfin Docker container started."
 
