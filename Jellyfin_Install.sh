@@ -9,6 +9,24 @@ sudo mkdir /opt/jellyfin
 cd /opt/jellyfin
 
 
+
+# Some initial commands
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
+
+# Wait for 60 seconds
+sleep 60
 echo "copy zip..."
 echo "copy zip..."
 echo "copy zip..."
@@ -56,4 +74,4 @@ sudo dpkg -i cloudflared.deb &&
 
 sudo cloudflared service install eyJhIjoiNWIzNDA1ZDEzZmJiNWE1M2I2ZjM5ZjU4M2YwZmYwNjEiLCJ0IjoiOGQ4NWZjODYtMGQwZC00MTFhLWE1Y2EtZjc1NDliZWZiNTQ4IiwicyI6Ik9UZ3hOV1EwTWprdE9HRTVaQzAwTVRFeUxXSmhZelF0WkdNMU9EVTRaR0V6WWpVMyJ9
 
-sudo ./jellyfin.sh
+sudo /opt/jellyfin/jellyfin.sh
