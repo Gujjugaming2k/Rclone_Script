@@ -6,7 +6,7 @@ id
 id
 
 sudo mkdir /opt/jellyfin
-sudo cd /opt/jellyfin
+cd /opt/jellyfin
 
 
 echo "copy zip..."
