@@ -29,6 +29,27 @@ echo "Restore Docker image..."
 
 
 
+sudo apt install curl gnupg -y
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/jellyfin.gpg
+
+export VERSION_OS="$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release )"
+export VERSION_CODENAME="$( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release )"
+export DPKG_ARCHITECTURE="$( dpkg --print-architecture )"
+cat <<EOF | sudo tee /etc/apt/sources.list.d/jellyfin.sources
+Types: deb
+URIs: https://repo.jellyfin.org/${VERSION_OS}
+Suites: ${VERSION_CODENAME}
+Components: main
+Architectures: ${DPKG_ARCHITECTURE}
+Signed-By: /etc/apt/keyrings/jellyfin.gpg
+EOF
+
+sudo apt update -y
+sudo apt install jellyfin -y
+
+
+
 sudo curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && 
 
 sudo dpkg -i cloudflared.deb && 
