@@ -17,7 +17,7 @@ sudo cp /opt/drive_bkp/jellyfin_backup.zip /opt/jellyfin/
 echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
-sudo unzip -o /opt/jellyfin/jellyfin_backup.zip -d /opt/jellyfin/
+sudo unzip -o /opt/jellyfin/jellyfin_backup.zip -d /
 
 # Pull Jellyfin Docker image
 echo "Restore Docker image..."
