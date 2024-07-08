@@ -8,7 +8,15 @@ id
 sudo mkdir /opt/jellyfin
 sudo cd /opt/jellyfin
 
+
+echo "copy zip..."
+echo "copy zip..."
+echo "copy zip..."
+
 sudo cp /opt/drive_bkp/jellyfin_backup.zip /opt/jellyfin/
+echo "extract zip..."
+echo "extract zip..."
+echo "extract zip..."
 sudo unzip jellyfin_backup.zip .
 
 # Pull Jellyfin Docker image
