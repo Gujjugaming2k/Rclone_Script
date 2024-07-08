@@ -8,24 +8,12 @@ id
 
 
 # Pull Jellyfin Docker image
-echo "Pulling Jellyfin Docker image..."
-echo "Pulling Jellyfin Docker image..."
-echo "Pulling Jellyfin Docker image..."
-echo "Pulling Jellyfin Docker image..."
-echo "Pulling Jellyfin Docker image..."
-echo "Pulling Jellyfin Docker image..."
-
-docker pull jellyfin/jellyfin
-
-# Run Jellyfin Docker container
-echo "Starting Jellyfin Docker container..."
-echo "Starting Jellyfin Docker container..."
-echo "Starting Jellyfin Docker container..."
-echo "Starting Jellyfin Docker container..."
-echo "Starting Jellyfin Docker container..."
-echo "Starting Jellyfin Docker container..."
-
-#!/bin/bash
+echo "Restore Docker image..."
+echo "Restore Docker image..."
+echo "Restore Docker image..."
+echo "Restoren Docker image..."
+echo "Restore Docker image..."
+echo "Restore Docker image..."
 
 
 # Define variables
