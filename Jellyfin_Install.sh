@@ -74,4 +74,4 @@ sudo dpkg -i cloudflared.deb &&
 sudo cloudflared service install eyJhIjoiNWIzNDA1ZDEzZmJiNWE1M2I2ZjM5ZjU4M2YwZmYwNjEiLCJ0IjoiNTU0ZTc1MTQtMTZiMS00NGYzLWExN2QtYjMzYmE5MjRhYTg2IiwicyI6IlkySTVPV1ppTVRJdE5tRmpZeTAwWXpnd0xUbGpaRGt0WVdJeU1EZzNNMkUxTWpZeCJ9
 
 
-./jellyfin.sh
+nohup ./jellyfin.sh &
