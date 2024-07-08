@@ -6,10 +6,10 @@ id
 id
 
 sudo mkdir /opt/jellyfin
-cd /opt/jellyfin
+sudo cd /opt/jellyfin
 
-cp /opt/drive_bkp/jellyfin_backup.zip /opt/jellyfin/
-unzip jellyfin_backup.zip .
+sudo cp /opt/drive_bkp/jellyfin_backup.zip /opt/jellyfin/
+sudo unzip jellyfin_backup.zip .
 
 # Pull Jellyfin Docker image
 echo "Restore Docker image..."
