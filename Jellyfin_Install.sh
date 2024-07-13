@@ -68,4 +68,30 @@ sudo apt install jellyfin -y
 
 /etc/init.d/cloudflared start
 
+# Check the status of the cloudflared service
+/etc/init.d/cloudflared status
+
+sleep 5
+# Capture the status result
+STATUS=$?
+
+
+
+# If the status is not running (status code not equal to 0), start the service
+if [ $STATUS -ne 0 ]; then
+    echo "Not running"
+    echo "Starting the cloudflared service..."
+    /etc/init.d/cloudflared start
+
+    # Check if the service started successfully
+    if [ $? -eq 0 ]; then
+        echo "cloudflared service started successfully."
+    else
+        echo "Failed to start cloudflared service."
+        
+    fi
+else
+    echo "cloudflared service is running."
+fi
+
 ./jellyfin.sh
