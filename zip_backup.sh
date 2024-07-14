@@ -10,6 +10,7 @@ echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
+sudo rm -rf /opt/jellyfin/gofile-downloader
 
 sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
 
