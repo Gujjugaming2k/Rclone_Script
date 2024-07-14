@@ -31,13 +31,19 @@ FILE_PATH="link.txt"
 # Get the server to upload to
 server_response=$(curl -s https://api.gofile.io/getServer)
 server=$(echo $server_response | jq -r .data.server)
+echo "Server: $server"
 
 # File to upload
 file_path="/opt/jellyfin/jellyfin_backup.zip"
 
-# Upload the file
-upload_response=$(curl -s -F "file=@$file_path" https://$server.gofile.io/uploadFile)
+# Upload the file with progress bar
+upload_response=$(curl --progress-bar -F "file=@$file_path" https://$server.gofile.io/uploadFile)
 download_url=$(echo $upload_response | jq -r .data.downloadPage)
+
+# Print the download link
+echo "Download link: $download_url"
+
+
 
 # Create backupfile.sh with the download link only
 echo "$download_url" > $FILE_PATH
