@@ -20,7 +20,6 @@ echo "Moving BACKUP_FILE to DEST_DIR..."
 
 
 
-#!/bin/bash
 
 # Variables
 GITHUB_TOKEN="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"  # Replace with your GitHub personal access token
