@@ -26,7 +26,7 @@ echo "Moving BACKUP_FILE to DEST_DIR..."
 
 
 # Variables
-GITHUB_TOKEN="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"  # Replace with your GitHub personal access token
+GITHUB_TOKEN="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"  # Replace with your GitHub personal access token
 REPO_OWNER="Gujjugaming2k"  # Replace with your GitHub username or organization
 REPO_NAME="Rclone_Script"  # Replace with your repository name
 BRANCH="main"  # Replace with your target branch
