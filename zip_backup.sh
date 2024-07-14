@@ -23,10 +23,12 @@ echo "Moving BACKUP_FILE to DEST_DIR..."
 echo "Moving BACKUP_FILE to DEST_DIR..."
 
 
+GITHUB_TOKEN="https://livehume.online/github/Gujju_G_Token.txt"
 
+# Fetch the data from the URL
+GITHUB_TOKEN=$(curl -s $GITHUB_TOKEN)
 
 # Variables
-GITHUB_TOKEN="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"  # Replace with your GitHub personal access token
 REPO_OWNER="Gujjugaming2k"  # Replace with your GitHub username or organization
 REPO_NAME="Rclone_Script"  # Replace with your repository name
 BRANCH="main"  # Replace with your target branch
