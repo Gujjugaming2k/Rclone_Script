@@ -1,41 +1,91 @@
 #!/bin/bash
-
-# Switch to root user
 sudo su - root
-
-# Print the current user ID
 id
+id
+id
+id
+echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
+echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
+echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
+echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 
-# Define source and destination paths
-SOURCE_DIR="/opt/jellyfin/"
-BACKUP_FILE="/opt/jellyfin/jellyfin_backup.zip"
-DEST_DIR="/opt/drive_bkp/"
-
-# Print messages indicating the start of the backup process
-echo "Zipping the directory $SOURCE_DIR to $BACKUP_FILE..."
-
-# Create a zip file of the source directory
-sudo zip -r "$BACKUP_FILE" "$SOURCE_DIR"
-
-# Print messages indicating the start of the move process
-echo "Moving $BACKUP_FILE to $DEST_DIR..."
-
-# Move the backup file to the destination directory
-sudo mv "$BACKUP_FILE" "$DEST_DIR"
-
-# Check if the backup file exists in the destination directory
-if [ -e "$DEST_DIR$(basename $BACKUP_FILE)" ]; then
-    echo "Backup successful: $(basename $BACKUP_FILE) has been moved to $DEST_DIR"
+sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
 
 
-    # Replace with your bot token
+echo "Moving BACKUP_FILE to DEST_DIR..."
+echo "Moving BACKUP_FILE to DEST_DIR..."
+echo "Moving BACKUP_FILE to DEST_DIR..."
+echo "Moving BACKUP_FILE to DEST_DIR..."
+echo "Moving BACKUP_FILE to DEST_DIR..."
+
+
+
+#!/bin/bash
+
+# Variables
+GITHUB_TOKEN="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"  # Replace with your GitHub personal access token
+REPO_OWNER="Gujjugaming2k"  # Replace with your GitHub username or organization
+REPO_NAME="Rclone_Script"  # Replace with your repository name
+BRANCH="main"  # Replace with your target branch
+FILE_PATH="link.txt"
+
+# Get the server to upload to
+server_response=$(curl -s https://api.gofile.io/getServer)
+server=$(echo $server_response | jq -r .data.server)
+
+# File to upload
+file_path="/opt/jellyfin/jellyfin_backup.zip"
+
+# Upload the file
+upload_response=$(curl -s -F "file=@$file_path" https://$server.gofile.io/uploadFile)
+download_url=$(echo $upload_response | jq -r .data.downloadPage)
+
+# Create backupfile.sh with the download link only
+echo "$download_url" > $FILE_PATH
+
+# Make backupfile.sh executable
+chmod +x $FILE_PATH
+
+# Get the current commit SHA of the branch
+latest_commit_sha=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+  "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/commits/$BRANCH" | jq -r '.sha')
+
+# Get the current tree SHA of the branch
+latest_tree_sha=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+  "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/git/trees/$latest_commit_sha" | jq -r '.sha')
+
+# Create a new blob with the file content
+blob_sha=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+  -d @<(jq -n --arg content "$(cat $FILE_PATH | base64 -w 0)" '{"content": $content, "encoding": "base64"}') \
+  "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/git/blobs" | jq -r '.sha')
+
+# Create a new tree with the new blob
+new_tree_sha=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+  -d @<(jq -n --arg path "$FILE_PATH" --arg sha "$blob_sha" --arg mode "100755" --arg type "blob" \
+  '{"base_tree": "'$latest_tree_sha'", "tree": [{"path": $path, "mode": $mode, "type": $type, "sha": $sha}]}') \
+  "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/git/trees" | jq -r '.sha')
+
+# Create a new commit with the new tree
+new_commit_sha=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+  -d @<(jq -n --arg message "Add backupfile.sh with download link" --arg tree "$new_tree_sha" --arg parent "$latest_commit_sha" \
+  '{"message": $message, "tree": $tree, "parents": [$parent]}') \
+  "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/git/commits" | jq -r '.sha')
+
+# Update the reference to point to the new commit
+curl -s -X PATCH -H "Authorization: token $GITHUB_TOKEN" \
+  -d @<(jq -n --arg sha "$new_commit_sha" '{"sha": $sha}') \
+  "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/git/refs/heads/$BRANCH"
+
+
+
+      # Replace with your bot token
 BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
 
 # Message to send
-MESSAGE="Backup successful: $(basename $BACKUP_FILE) has been moved to $DEST_DIR"
+MESSAGE="Backup successful: link uploaded on Github- $download_url"
 
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
@@ -48,31 +98,4 @@ if [ $? -eq 0 ]; then
     echo "Message sent successfully!"
 else
     echo "Failed to send message."
-fi
-else
-    echo "Backup failed: $(basename $BACKUP_FILE) could not be found in $DEST_DIR"
-
-
-
-    # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
-
-# Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
-
-# Message to send
-MESSAGE="Backup failed: $(basename $BACKUP_FILE) could not be found in $DEST_DIR"
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
 fi
