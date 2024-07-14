@@ -110,3 +110,42 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
+
+
+
+
+url="https://livehume.online/github/github_token_date.php?type=create"
+
+# Get the output and response code using curl
+response=$(curl -s -w "%{http_code}" "$url")
+output=$(echo "$response" | sed '$ d')
+http_code=$(echo "$response" | tail -n 1)
+
+# Print the output and response code
+echo "Output:"
+echo "$output"
+echo "HTTP Status Code: $http_code"
+
+
+
+    # Replace with your bot token
+BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="Codespace Created - $output"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
