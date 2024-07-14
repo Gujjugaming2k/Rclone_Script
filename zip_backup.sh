@@ -9,6 +9,8 @@ echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 
+rm -rf /opt/jellyfin/jellyfin_backup.zip
+
 sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
 
 
