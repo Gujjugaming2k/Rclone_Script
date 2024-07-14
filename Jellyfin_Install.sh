@@ -88,10 +88,10 @@ EOF
 sudo apt update -y
 sudo apt install jellyfin -y
 
-/etc/init.d/cloudflared start
+sudo /etc/init.d/cloudflared start
 
 # Check the status of the cloudflared service
-/etc/init.d/cloudflared status
+sudo /etc/init.d/cloudflared status
 
 sleep 5
 # Capture the status result
@@ -103,7 +103,7 @@ STATUS=$?
 if [ $STATUS -ne 0 ]; then
     echo "Not running"
     echo "Starting the cloudflared service..."
-    /etc/init.d/cloudflared start
+   sudo /etc/init.d/cloudflared start
 
     # Check if the service started successfully
     if [ $? -eq 0 ]; then
@@ -115,5 +115,8 @@ if [ $STATUS -ne 0 ]; then
 else
     echo "cloudflared service is running."
 fi
-
-./jellyfin.sh
+sudo /etc/init.d/cloudflared start
+sudo /etc/init.d/cloudflared start
+sudo /etc/init.d/cloudflared start
+sudo /etc/init.d/cloudflared start
+sudo /opt/jellyfin/jellyfin.sh
