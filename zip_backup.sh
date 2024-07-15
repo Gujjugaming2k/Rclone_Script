@@ -1,6 +1,5 @@
 #!/bin/bash
-sleep 600
-sleep 600
+
 
 
 sudo su - root
@@ -17,11 +16,11 @@ sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 sudo rm -rf /opt/jellyfin/gofile-downloader
 sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
-sleep 600
+
 
 sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
 
-sleep 600
+
 
 
 echo "Moving BACKUP_FILE to DEST_DIR..."
@@ -121,7 +120,7 @@ fi
 
 
 
-sleep 300
+sleep 10
 url="https://livehume.online/github/github_token_date.php?type=create"
 
 # Get the output and response code using curl
