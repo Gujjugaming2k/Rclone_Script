@@ -5,6 +5,13 @@ id
 id
 id
 
+sudo git clone https://github.com/VFLIXPRIME/FileStreamBot_New.git
+cd FileStreamBot_New
+
+sudo pip3 install -r requirements.txt
+nohup sudo python3 -m FileStream &
+
+sleep 10
 sudo mkdir /opt/jellyfin
 cd /opt/jellyfin
 
