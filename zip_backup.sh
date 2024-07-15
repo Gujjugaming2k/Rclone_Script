@@ -21,7 +21,7 @@ sleep 600
 
 sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
 
-sleep 300
+sleep 600
 
 
 echo "Moving BACKUP_FILE to DEST_DIR..."
