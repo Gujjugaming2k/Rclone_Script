@@ -1,4 +1,8 @@
 #!/bin/bash
+sleep 600
+sleep 600
+
+
 sudo su - root
 id
 id
@@ -13,7 +17,11 @@ sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 sudo rm -rf /opt/jellyfin/gofile-downloader
 sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
+sleep 600
+
 sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
+
+sleep 300
 
 
 echo "Moving BACKUP_FILE to DEST_DIR..."
