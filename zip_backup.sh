@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sleep 13200
 
 
 sudo su - root
