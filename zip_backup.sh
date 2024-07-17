@@ -116,7 +116,8 @@ download_url=$(echo $upload_response | jq -r .data.downloadPage)
 
 # Print the download link
 echo "Download link: $download_url"
-
+# Create backupfile.sh with the download link only
+echo "$download_url" > $FILE_PATH
 else
   # Create backupfile.sh with the download link only
   echo "$download_url" > "$FILE_PATH"
