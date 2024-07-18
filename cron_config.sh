@@ -15,6 +15,7 @@ sudo chmod 777 /opt/zip_backup.sh
 /opt/zip_backup.sh > /dev/null 2>&1 &
 
 
-sudo wget -O /opt/index.php https://raw.githubusercontent.com/prasathmani/tinyfilemanager/master/tinyfilemanager.php
-cd /opt/
-nohup sudo php -S 127.0.0.1:8021 > /workspaces/php_server.log 2>&1 &
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | sudo bash
+nohup sudo filebrowser -p 8021 -r /opt/jellyfin/ > /workspaces/php_server.log 2>&1 &
+
+
