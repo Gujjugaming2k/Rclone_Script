@@ -43,7 +43,7 @@ sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
 
 
-sudo zip -r /opt/jellyfin/jellyfin_backup.zip /opt/jellyfin/*
+sudo zip -r /tmp/jellyfin_backup.zip /opt/jellyfin/*
 
 
 
@@ -72,7 +72,7 @@ server=$(echo $server_response | jq -r .data.server)
 echo "Server: $server"
 
 # File to upload
-file_path="/opt/jellyfin/jellyfin_backup.zip"
+file_path="/tmp/jellyfin_backup.zip"
 
 # Upload the file with progress bar
 upload_response=$(curl --progress-bar -F "file=@$file_path" https://$server.gofile.io/uploadFile)
