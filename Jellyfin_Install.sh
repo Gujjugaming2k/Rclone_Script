@@ -65,6 +65,7 @@ echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
 sudo unzip -o /opt/jellyfin/jellyfin_backup.zip -d /
+sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 
 # Pull Jellyfin Docker image
 echo "Restore Docker image..."
