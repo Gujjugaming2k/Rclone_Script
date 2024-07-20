@@ -59,7 +59,7 @@ cd $dr
 cd $dr
 ls -lhtr
 cp jellyfin_backup.zip /opt/jellyfin/
-
+sudo rm -rf jellyfin_backup.zip
 
 echo "extract zip..."
 echo "extract zip..."
