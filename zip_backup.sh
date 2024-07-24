@@ -68,8 +68,8 @@ BRANCH="main"  # Replace with your target branch
 FILE_PATH="link.txt"
 
 # Get the server to upload to
-server_response=$(curl -s https://api.gofile.io/getServer)
-server=$(echo $server_response | jq -r .data.server)
+server_response=$(curl -s https://api.gofile.io/Servers)
+server=$(echo $server_response | jq -r .data.servers[0].name)
 echo "Server: $server"
 
 # File to upload
