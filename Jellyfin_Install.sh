@@ -32,8 +32,8 @@ echo "Starting some initial tasks..."
 
 echo "Starting some initial tasks..."
 
-# Wait for 60 seconds
-sleep 60
+# Wait for 10 seconds
+sleep 10
 echo "copy zip..."
 echo "copy zip..."
 echo "copy zip..."
