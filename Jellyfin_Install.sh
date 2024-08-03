@@ -39,21 +39,24 @@ echo "copy zip..."
 echo "copy zip..."
 
 
-sudo wget https://download.vflix.xyz/jellyfin_backup.zip
+
+sudo wget https://download.vflix.xyz/jellyfin_backup.zip -P /tmp/
 
 
-cp jellyfin_backup.zip /opt/jellyfin/
-sudo rm -rf jellyfin_backup.zip
-sudo rm -rf jellyfin_backup.zip.1
 
+
+
+
+
+echo "extract zip..."
+echo "extract zip..."
+echo "extract zip..."
+sudo unzip -o /tmp/jellyfin_backup.zip -d /
+sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
+sudo rm -rf /tmp/jellyfin_backup.zip
 
 nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
-echo "extract zip..."
-echo "extract zip..."
-echo "extract zip..."
-sudo unzip -o /opt/jellyfin/jellyfin_backup.zip -d /
-sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 
 # Pull Jellyfin Docker image
 echo "Restore Docker image..."
