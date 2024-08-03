@@ -44,6 +44,7 @@ sudo wget https://download.vflix.xyz/jellyfin_backup.zip
 
 cp jellyfin_backup.zip /opt/jellyfin/
 sudo rm -rf jellyfin_backup.zip
+sudo rm -rf jellyfin_backup.zip.1
 
 
 nohup sudo python3 -m http.server 9012 -d /tmp/ &
