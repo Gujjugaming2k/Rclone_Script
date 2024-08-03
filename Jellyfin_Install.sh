@@ -38,26 +38,10 @@ echo "copy zip..."
 echo "copy zip..."
 echo "copy zip..."
 
-sudo git clone https://github.com/Gujjugaming2k/gofile-downloader.git
-cd gofile-downloader
-sudo pip3 install -r requirements.txt
+
+sudo wget https://download.vflix.xyz/jellyfin_backup.zip
 
 
-GITHUB_FILE_URL="https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/link.txt"
-
-# Fetch the data from the URL
-url=$(curl -s $GITHUB_FILE_URL)
-
-# Call the Python script with the fetched URL
-python gofile-downloader.py "$url"
-
-
-# Extract the identifier from the URL
-dr=$(echo $url | awk -F '/' '{print $NF}')
-
-cd $dr
-cd $dr
-ls -lhtr
 cp jellyfin_backup.zip /opt/jellyfin/
 sudo rm -rf jellyfin_backup.zip
 
