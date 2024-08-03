@@ -45,6 +45,9 @@ sudo wget https://download.vflix.xyz/jellyfin_backup.zip
 cp jellyfin_backup.zip /opt/jellyfin/
 sudo rm -rf jellyfin_backup.zip
 
+
+nohup sudo python3 -m http.server 9012 -d /tmp/ &
+
 echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
@@ -111,6 +114,7 @@ sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
+
 
 
 
