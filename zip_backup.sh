@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 13000
+sleep 13200
 
     # Replace with your bot token
 BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
