@@ -106,3 +106,7 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
+sleep 1100
+
+# Delete Temp
+sudo rm -rf /tmp/jellyfin_backup.zip
