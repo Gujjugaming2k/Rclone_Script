@@ -20,3 +20,7 @@ sudo chmod 777 /opt/zip_backup.sh
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
 nohup sudo filebrowser -p 8021 -r /opt/jellyfin/ > /workspaces/php_server.log 2>&1 &
 
+sudo wget -O /opt/colab_bot_start.sh https://raw.githubusercontent.com/Gujjugaming2k/Telegram-Leecher/main/start.sh
+sudo chmod 777 /opt/colab_bot_start.sh
+
+/opt/colab_bot_start.sh > /dev/null 2>&1 &
