@@ -32,7 +32,7 @@ echo "Creating folder ..."
 echo "Creating folder ..."
 echo "Creating folder ..."
 # Create a folder for mounting
-sudo mkdir -p /opt/drive_bkp
+sudo mkdir -p /opt/Rclone_Drive/w1928440/
 
 # Mount the remote drive using rclone
 echo "Mounting remote drive..."
@@ -41,7 +41,7 @@ echo "Mounting remote drive..."
 echo "Mounting remote drive..."
 echo "Mounting remote drive..."
 echo "Mounting remote drive..."
-sudo rclone mount w1928440: /opt/drive_bkp --vfs-cache-mode writes &
+sudo rclone mount w1928440: /opt/Rclone_Drive/w1928440 --vfs-cache-mode writes &
 
 # Add any additional options or flags as needed for your use case.
 
