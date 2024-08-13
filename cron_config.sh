@@ -14,10 +14,7 @@ sudo chmod 777 /opt/zip_backup.sh
 
 /opt/zip_backup.sh > /dev/null 2>&1 &
 
-sudo wget -O /opt/zip_backup.sh https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/gofilebackup.sh
-sudo chmod 777 /opt/gofilebackup.sh
 
-/opt/gofilebackup.sh > /dev/null 2>&1 &
 
 
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
