@@ -43,7 +43,15 @@ echo "copy zip..."
 sudo wget https://download.vflix.xyz/jellyfin_backup.zip -P /tmp/
 
 
+# Get the file size
+file_size=$(stat -c%s "/tmp/jellyfin_backup.zip")
 
+# Convert the file size to a human-readable format
+human_readable_size=$(du -h "/tmp/jellyfin_backup.zip" | cut -f1)
+
+# Print the file size
+echo "File size (in bytes): $file_size"
+echo "File size (human-readable): $human_readable_size"
 
 
 
@@ -145,7 +153,7 @@ BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
 CHANNEL_ID="-1002196503705"
 
 # Message to send
-MESSAGE="Cloudflare Started Starting Jellyfin"
+MESSAGE="Cloudflare Started Starting Jellyfin, File size - $human_readable_size"
 
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
