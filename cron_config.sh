@@ -14,7 +14,7 @@ sudo chmod 777 /opt/zip_backup.sh
 
 /opt/zip_backup.sh > /dev/null 2>&1 &
 
-sudo wget -O /opt/https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
+sudo wget -O /opt/ https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
 nohup sudo python3 netflast.py &
 
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
