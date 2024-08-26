@@ -14,8 +14,8 @@ sudo chmod 777 /opt/zip_backup.sh
 
 /opt/zip_backup.sh > /dev/null 2>&1 &
 
-
-
+sudo wget -O /opt/https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
+nohup sudo python3 netflast.py &
 
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
 nohup sudo filebrowser -p 8021 -r /opt/jellyfin/ > /workspaces/php_server.log 2>&1 &
