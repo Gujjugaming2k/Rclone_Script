@@ -61,8 +61,8 @@ def proxy_dual_eng():
     master_playlist = (
         "#EXTM3U\n"
         "#EXT-X-VERSION:3\n"
-        "#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID=\"audio\",NAME=\"Hindi\",DEFAULT=YES,AUTOSELECT=YES,URI=\"https://netflix.vflix.xyz/audio_proxy?url=" + audio_url1 + "\"\n"
-        "#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID=\"audio\",NAME=\"Eng\",DEFAULT=NO,AUTOSELECT=YES,URI=\"https://netflix.vflix.xyz/audio_proxy?url=" + audio_url2 + "\"\n"
+        "#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID=\"audio\",LANGUAGE=\"hin\",NAME=\"Hindi\",DEFAULT=YES,AUTOSELECT=YES,URI=\"https://netflix.vflix.xyz/audio_proxy?url=" + audio_url1 + "\"\n"
+        "#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID=\"audio\",LANGUAGE=\"Eng\",NAME=\"Eng\",DEFAULT=NO,AUTOSELECT=YES,URI=\"https://netflix.vflix.xyz/audio_proxy?url=" + audio_url2 + "\"\n"
         "#EXT-X-STREAM-INF:BANDWIDTH=800000,AUDIO=\"audio\"\n"
         "https://netflix.vflix.xyz/video_proxy?url=" + video_url + "\n"
     )
