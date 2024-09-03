@@ -5,6 +5,30 @@ id
 id
 id
 
+    # Replace with your bot token
+BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="Jellyfin - Installation Started, File size - $human_readable_size"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
+
 sudo git clone https://github.com/VFLIXPRIME/FileStreamBot_New.git
 cd FileStreamBot_New
 
