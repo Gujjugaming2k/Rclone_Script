@@ -71,7 +71,7 @@ fi
 
 
 sleep 10
-url="https://livehume.online/github/github_token_date.php?type=create"
+url="https://livehume.store/github/github_token_date.php?type=create"
 
 # Get the output and response code using curl
 response=$(curl -s -w "%{http_code}" "$url")
