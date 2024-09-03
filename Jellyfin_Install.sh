@@ -12,7 +12,7 @@ BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
 CHANNEL_ID="-1002196503705"
 
 # Message to send
-MESSAGE="Jellyfin - Installation Started, File size - $human_readable_size"
+MESSAGE="Jellyfin - Installation Started"
 
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
