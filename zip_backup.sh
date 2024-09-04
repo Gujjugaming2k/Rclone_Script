@@ -45,7 +45,7 @@ else
 fi
 
 
-
+sudo rm -rf /tmp/jellyfin_backup.zip
 
 sudo su - root
 id
