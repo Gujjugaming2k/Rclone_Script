@@ -31,6 +31,8 @@ fi
 
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
+unzip -o bot.zip
+
 
 sudo pip3 install -r requirements.txt
 nohup sudo python3 -m FileStream &
