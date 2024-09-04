@@ -29,8 +29,8 @@ fi
 
 
 
-sudo git clone https://github.com/VFLIXPRIME/FileStreamBot_New.git
-cd FileStreamBot_New
+https://github.com/Gujjugaming2k/FileStreamBot.git
+cd FileStreamBot
 
 sudo pip3 install -r requirements.txt
 nohup sudo python3 -m FileStream &
