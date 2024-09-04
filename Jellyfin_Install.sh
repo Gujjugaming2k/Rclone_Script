@@ -29,7 +29,7 @@ fi
 
 
 
-https://github.com/Gujjugaming2k/FileStreamBot.git
+sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
 
 sudo pip3 install -r requirements.txt
