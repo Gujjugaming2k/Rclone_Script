@@ -86,7 +86,7 @@ echo "extract zip..."
 echo "extract zip..."
 sudo unzip -o /tmp/jellyfin_backup.zip -d /
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
-sudo rm -rf /tmp/jellyfin_backup.zip
+#sudo rm -rf /tmp/jellyfin_backup.zip
 
 nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
