@@ -42,7 +42,7 @@ sudo mkdir /opt/jellyfin
 cd /opt/jellyfin
 
 sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
-nohup sudo python3 /opt/netflast.py &
+nohup sudo python3 /opt/netflast.py > /otp/jellyfin/log/netflast_output.log 2>&1 &
 
 # Some initial commands
 echo "Starting some initial tasks..."
