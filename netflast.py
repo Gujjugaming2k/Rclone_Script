@@ -81,7 +81,7 @@ def proxy_dual():
         return "Video or audio URL not provided", 400
 
     # Define the referer header
-    referer_header = 'https://pcmirror.cc/'  # Replace with the actual referer URL
+    referer_header = 'https://iosmirror.cc/'  # Replace with the actual referer URL
 
     # Fetch the video .m3u8 file content with the Referer header
     video_response = requests.get(video_url, headers={'Referer': referer_header}, stream=True, verify=False)
@@ -126,7 +126,7 @@ def video_proxy():
 
     # Fetch the .m3u8 file content
     headers = {
-        'Referer': 'https://pcmirror.cc/',  # Replace with the actual referer
+        'Referer': 'https://iosmirror.cc/',  # Replace with the actual referer
     }
     response = requests.get(url, headers=headers, stream=True, verify=False)
     if response.status_code != 200:
@@ -151,7 +151,7 @@ def audio_proxy():
 
     # Fetch the .m3u8 file content
     headers = {
-        'Referer': 'https://pcmirror.cc/',  # Replace with the actual referer
+        'Referer': 'https://iosmirror.cc/',  # Replace with the actual referer
     }
     response = requests.get(url, headers=headers, stream=True, verify=False)
     if response.status_code != 200:
@@ -176,7 +176,7 @@ def proxy():
 
     # Fetch the .m3u8 file content
     headers = {
-        'Referer': 'https://pcmirror.cc/',  # Replace with the actual referer
+        'Referer': 'https://iosmirror.cc/',  # Replace with the actual referer
     }
     response = requests.get(url, headers=headers, stream=True, verify=False)
     if response.status_code != 200:
