@@ -195,4 +195,9 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
+
+
+sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.9.11-amd64.tar.gz
+sudo tar xvzf jellyfin_10.9.11-amd64.tar.gz -C /opt/jellyfin/
+
 sudo /opt/jellyfin/jellyfin.sh
