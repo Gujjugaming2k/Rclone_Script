@@ -113,7 +113,7 @@ export VERSION_CODENAME="$( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/o
 export DPKG_ARCHITECTURE="$( dpkg --print-architecture )"
 cat <<EOF | sudo tee /etc/apt/sources.list.d/jellyfin.sources
 Types: deb
-URIs: https://repo.jellyfin.org/${VERSION_OS}
+URIs: https://tor1.mirror.jellyfin.org/ubuntu
 Suites: ${VERSION_CODENAME}
 Components: main
 Architectures: ${DPKG_ARCHITECTURE}
