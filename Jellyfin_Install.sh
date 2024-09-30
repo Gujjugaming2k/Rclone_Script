@@ -6,7 +6,7 @@ id
 id
 
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
@@ -175,7 +175,7 @@ sudo /etc/init.d/cloudflared start
 
 
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
