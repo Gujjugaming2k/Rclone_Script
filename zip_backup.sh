@@ -1,6 +1,6 @@
 #!/bin/bash
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
@@ -23,7 +23,7 @@ fi
 sleep 13000
 
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
@@ -67,7 +67,7 @@ sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 sudo zip -r /tmp/jellyfin_backup.zip /opt/jellyfin/*
 
  # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
@@ -106,7 +106,7 @@ echo "HTTP Status Code: $http_code"
 
 
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAH4yUO35M8Mf0jgKGwb5le4MLzXzSKxkWs"
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
 CHANNEL_ID="-1002196503705"
