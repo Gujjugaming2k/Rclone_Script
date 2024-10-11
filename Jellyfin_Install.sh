@@ -68,7 +68,122 @@ echo "copy zip..."
 
 
 
-sudo wget https://download.vflix.xyz/jellyfin_backup.zip -P /tmp/
+#sudo wget https://download.vflix.xyz/jellyfin_backup.zip -P /tmp/
+
+#!/bin/bash
+
+# Primary URL and local backup path
+primary_url="https://download.vflix.xyz/jellyfin_backup.zip"
+backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
+destination="/tmp/jellyfin_backup.zip"
+min_size=$((8 * 1024 * 1024 * 1024))  # 8 GB in bytes
+
+# Function to download the file from URL
+download_file() {
+  url=$1
+  echo "Downloading from $url..."
+  sudo wget $url -O $destination
+}
+
+# Function to copy the file from the backup path
+copy_backup_file() {
+  echo "Copying backup file from $backup_file..."
+      # Replace with your bot token
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="Downloading from Rclone"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+  sudo cp $backup_file $destination
+}
+
+# Check if the file size meets the minimum requirement
+check_file_size() {
+  file=$1
+  actual_size=$(stat -c%s "$file" 2>/dev/null || echo 0)
+  if [[ $actual_size -ge $min_size ]]; then
+    return 0  # File size is acceptable
+  else
+    return 1  # File size is too small
+  fi
+}
+
+# Retry download if file size is below 8 GB
+retry_download() {
+  url=$1
+  attempts=3  # Number of retries
+
+  for ((i=1; i<=attempts; i++)); do
+    echo "Attempt $i of $attempts..."
+    download_file $url
+    if check_file_size $destination; then
+      echo "File size is acceptable."
+      return 0
+    else
+      echo "File size is smaller than 8 GB. Retrying..."
+    fi
+  done
+
+  echo "Failed to download a valid file after $attempts attempts."
+  return 1
+}
+
+# Start by checking the primary URL
+if wget --spider $primary_url 2>/dev/null; then
+  echo "Primary URL is available."
+  
+      # Replace with your bot token
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="Dwonloading Primary URL"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+  if ! retry_download $primary_url; then
+    echo "Downloading from the primary URL failed or the file size was too small."
+    copy_backup_file
+  fi
+else
+  echo "Primary URL is down. Copying backup file..."
+  copy_backup_file
+fi
+
+# Check if the file was downloaded/copied successfully
+if [[ -f "$destination" && $(stat -c%s "$destination") -ge $min_size ]]; then
+  echo "File downloaded/copied successfully and meets the size requirement."
+else
+  echo "Failed to download/copy the file with the required size."
+fi
 
 
 # Get the file size
