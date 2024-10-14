@@ -76,7 +76,7 @@ echo "copy zip..."
 primary_url="https://download.vflix.xyz/jellyfin_backup.zip"
 backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
 destination="/tmp/jellyfin_backup.zip"
-min_size=$((8 * 1024 * 1024 * 1024))  # 8 GB in bytes
+min_size=$((7 * 1024 * 1024 * 1024))  # 8 GB in bytes
 
 # Function to download the file from URL
 download_file() {
