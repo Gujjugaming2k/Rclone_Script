@@ -9,10 +9,10 @@ sudo rm /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 sudo service cron start
 
-sudo wget -O /opt/zip_backup.sh https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/zip_backup.sh
-sudo chmod 777 /opt/zip_backup.sh
+sudo wget -O /tmp/zip_backup.sh https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/zip_backup.sh
+sudo chmod 777 /tmp/zip_backup.sh
 
-/opt/zip_backup.sh > /dev/null 2>&1 &
+/tmp/zip_backup.sh > /dev/null 2>&1 &
 
 
 curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
