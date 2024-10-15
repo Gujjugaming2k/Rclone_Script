@@ -135,4 +135,4 @@ else
 fi
 
 
-cp -r /tmp/jellyfin_backup.zip /opt/Rclone_Drive/w1928440/Jellyfin_BKP/
+
