@@ -20,7 +20,14 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
-sleep 13000
+
+sleep 7200
+
+curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
+chmod +x Rclone_zip_Backup.sh
+nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
+
+sleep 5800
 
     # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
