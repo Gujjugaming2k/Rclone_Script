@@ -23,9 +23,9 @@ fi
 
 sleep 7200
 
-curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
-chmod +x Rclone_zip_Backup.sh
-nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
+#curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
+#chmod +x Rclone_zip_Backup.sh
+#nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
 
 sleep 5800
 
