@@ -46,7 +46,7 @@ sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw
 nohup sudo python3 /opt/netflast.py &
 
 
-git clone https://github.com/shashstormer/m3u8_proxy-cors.git
+git clone https://github.com/Gujjugaming2k/m3u8_proxy-cors.git
 cd m3u8_proxy-cors
 pip install -r requirements.txt
 nohup sudo python main.py &
