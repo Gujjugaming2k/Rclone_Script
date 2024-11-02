@@ -69,9 +69,10 @@ sudo rm -rf /tmp/jellyfin_backup.zip
 sudo rm -rf /opt/jellyfin/gofile-downloader
 sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
-
-
+cd /opt/jellyfin/
+sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/ /STRM/
 sudo zip -r /tmp/jellyfin_backup.zip /opt/jellyfin/*
+
 
  # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
