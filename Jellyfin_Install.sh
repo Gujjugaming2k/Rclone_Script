@@ -82,7 +82,9 @@ echo "copy zip..."
 # Primary URL and local backup path
 primary_url="https://download.vflix.xyz/jellyfin_backup.zip"
 backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
+backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
 destination="/tmp/jellyfin_backup.zip"
+destination_STRM="/tmp/STRM.zip"
 min_size=$((7 * 1024 * 1024 * 1024))  # 8 GB in bytes
 
 # Function to download the file from URL
@@ -117,6 +119,7 @@ else
     echo "Failed to send message."
 fi
   sudo cp $backup_file $destination
+  sudo cp $backup_STRM_file $destination_STRM
 }
 
 # Check if the file size meets the minimum requirement
@@ -210,6 +213,7 @@ echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
 sudo unzip -o /tmp/jellyfin_backup.zip -d /
+sudo unzip -o /tmp/STRM.zip -d /
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 #sudo rm -rf /tmp/jellyfin_backup.zip
 
