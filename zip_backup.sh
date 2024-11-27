@@ -27,7 +27,7 @@ sleep 7200
 #chmod +x Rclone_zip_Backup.sh
 #nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
 
-sleep 5800
+sleep 4860
 
     # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
