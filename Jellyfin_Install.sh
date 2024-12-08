@@ -332,7 +332,7 @@ else
 fi
 
 
-sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.1-amd64.tar.gz
-sudo tar xvzf jellyfin_10.10.1-amd64.tar.gz -C /opt/jellyfin/
+sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.3-amd64.tar.gz
+sudo tar xvzf jellyfin_10.10.3-amd64.tar.gz -C /opt/jellyfin/
 
 sudo /opt/jellyfin/jellyfin.sh
