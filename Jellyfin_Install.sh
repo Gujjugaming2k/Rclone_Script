@@ -50,8 +50,8 @@ git clone https://github.com/Gujjugaming2k/vidsrc-api-js.git
 cd vidsrc-api-js
 
 
-sudo wget -O /opt/fetch_vidsrc.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/fetch_vidsrc.py
-nohup sudo python3 /opt/fetch_vidsrc.py &
+#sudo wget -O /opt/fetch_vidsrc.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/fetch_vidsrc.py
+#nohup sudo python3 /opt/fetch_vidsrc.py &
 
 git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
 cd M3U8-Proxy
