@@ -55,10 +55,12 @@ nohup npm run main > output.log 2>&1 &
 sudo wget -O /opt/fetch_vidsrc.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/fetch_vidsrc.py
 nohup sudo python3 /opt/fetch_vidsrc.py &
 
-git clone https://github.com/Gujjugaming2k/m3u8_proxy-cors.git
-cd m3u8_proxy-cors
-pip install -r requirements.txt
-nohup sudo python main.py &
+git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
+cd M3U8-Proxy
+npm i
+npm audit fix --force
+npm run build
+nohup npm start &
 
 
 # Some initial commands
