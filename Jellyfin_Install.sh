@@ -335,4 +335,9 @@ fi
 sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.3-amd64.tar.gz
 sudo tar xvzf jellyfin_10.10.3-amd64.tar.gz -C /opt/jellyfin/
 
+
+# Step 3-4: Run Rclone_Config.sh (assuming it should be run 4nd time)
+echo "Running Rclone_Config.sh... 2nd time"
+curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rclone_Config.sh | sudo bash
+
 sudo /opt/jellyfin/jellyfin.sh
