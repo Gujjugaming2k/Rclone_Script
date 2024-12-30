@@ -33,3 +33,11 @@ curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rcl
 echo "Running Rclone_Config.sh... 2nd time"
 curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rclone_Config.sh | sudo bash
 
+# Step 3-3: Run Rclone_Config.sh (assuming it should be run 3nd time)
+echo "Running Rclone_Config.sh... 2nd time"
+curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rclone_Config.sh | sudo bash
+
+# Step 3-4: Run Rclone_Config.sh (assuming it should be run 4nd time)
+echo "Running Rclone_Config.sh... 2nd time"
+curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rclone_Config.sh | sudo bash
+
