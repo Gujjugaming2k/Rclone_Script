@@ -42,12 +42,12 @@ sleep 10
 sudo mkdir /opt/jellyfin
 cd /opt/jellyfin
 
-sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
-nohup sudo python3 /opt/netflast.py &
+#sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
+#nohup sudo python3 /opt/netflast.py &
 
 
-git clone https://github.com/Gujjugaming2k/vidsrc-api-js.git
-cd vidsrc-api-js
+#git clone https://github.com/Gujjugaming2k/vidsrc-api-js.git
+#cd vidsrc-api-js
 
 
 #sudo wget -O /opt/fetch_vidsrc.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/fetch_vidsrc.py
@@ -335,6 +335,7 @@ fi
 sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.3-amd64.tar.gz
 sudo tar xvzf jellyfin_10.10.3-amd64.tar.gz -C /opt/jellyfin/
 
+rm -rf jellyfin_10.10.3-amd64.tar.gz
 
 # Step 3-4: Run Rclone_Config.sh (assuming it should be run 4nd time)
 echo "Running Rclone_Config.sh... 2nd time"
