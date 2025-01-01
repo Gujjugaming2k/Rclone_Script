@@ -6,10 +6,10 @@ id
 id
 
     # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+#BOT_TOKEN=""
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+#CHANNEL_ID=""
 
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
@@ -107,10 +107,11 @@ download_file() {
 copy_backup_file() {
   echo "Copying backup file from $backup_file..."
       # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+    # Replace with your bot token
+#BOT_TOKEN=""
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+#CHANNEL_ID=""
 
 # Message to send
 MESSAGE="Downloading from Rclone"
@@ -167,13 +168,14 @@ if wget --spider $primary_url 2>/dev/null; then
   echo "Primary URL is available."
   
       # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+    # Replace with your bot token
+#BOT_TOKEN=""
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+#CHANNEL_ID=""
 
 # Message to send
-MESSAGE="Dwonloading Primary URL"
+MESSAGE="Downloading Primary URL"
 
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
@@ -185,7 +187,7 @@ curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
 if [ $? -eq 0 ]; then
     echo "Message sent successfully!"
 else
-    echo "Failed to send message."
+    echo "Failed to send a message."
 fi
 
   if ! retry_download $primary_url; then
@@ -310,10 +312,11 @@ sudo /etc/init.d/cloudflared start
 
 
     # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+    # Replace with your bot token
+#BOT_TOKEN=""
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+#CHANNEL_ID=""
 
 # Message to send
 MESSAGE="Cloudflare Started Starting Jellyfin, File size - $human_readable_size"
