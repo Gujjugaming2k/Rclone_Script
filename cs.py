@@ -8,7 +8,7 @@ from telethon.tl.types import PeerChannel
 API_ID = '1365781'
 API_HASH = 'be325d65730f050aa8e66ee844d68b4f'
 BOT_TOKEN = '6491244345:AAEWUFD_DXlIusHkQjuiWdTPGGVZDkPooI4'
-BIN_CHANNEL = -1001992203444  # Replace with your channel ID
+BIN_CHANNEL = -1002196503705  # Replace with your channel ID
 
 # Create the Telegram client
 client = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
@@ -79,6 +79,14 @@ async def handle_create_strm(event):
     strm_file_name = f"{movie_id}.strm"
     if os.path.exists(strm_file_name):
         await client.send_file(BIN_CHANNEL, strm_file_name, caption=f"Here is the .strm file for movie ID {movie_id}")
+
+# Send a message to the channel when the bot starts
+# Send a message to the channel when the bot starts
+async def on_start():
+    await client.send_message(BIN_CHANNEL, "Bot has started and is now ready to process movie IDs.")
+
+# Start the client and send the startup message
+client.loop.run_until_complete(on_start())
 
 # Start the client
 print("Bot is running...")
