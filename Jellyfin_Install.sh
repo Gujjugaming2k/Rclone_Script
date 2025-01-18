@@ -77,6 +77,8 @@ cd /opt/jellyfin
 
 sudo wget -O /opt/cs.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/cs.py
 sudo pip3 install telethon
+sudo pip3 install requests
+sudo pip3 install bs4
 nohup sudo python3 /opt/cs.py &
 
 sudo wget -O /opt/fetch_vidsrc.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/fetch_vidsrc.py
