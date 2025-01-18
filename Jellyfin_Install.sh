@@ -40,6 +40,7 @@ cp env/.env .
 
 sudo pip3 install -r requirements.txt
 sudo pip3 install flask
+
 nohup sudo python3 -m FileStream &
 
 
@@ -74,9 +75,9 @@ cd /opt/jellyfin
 #nohup sudo python3 /opt/netflast.py &
 
 
-#git clone https://github.com/Gujjugaming2k/vidsrc-api-js.git
-#cd vidsrc-api-js
-
+sudo wget -O /opt/cs.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/cs.py
+sudo pip3 install telethon
+nohup sudo python3 /opt/cs.py &
 
 sudo wget -O /opt/fetch_vidsrc.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/fetch_vidsrc.py
 nohup sudo python3 /opt/fetch_vidsrc.py &
