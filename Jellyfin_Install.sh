@@ -6,10 +6,10 @@ id
 id
 
     # Replace with your bot token
-#BOT_TOKEN=""
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
-#CHANNEL_ID=""
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
