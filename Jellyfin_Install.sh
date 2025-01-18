@@ -38,6 +38,30 @@ sudo pip3 install -r requirements.txt
 sudo pip3 install flask
 nohup sudo python3 -m FileStream &
 
+
+    # Replace with your bot token
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="FileStreamBot Started"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
 sleep 10
 sudo mkdir /opt/jellyfin
 cd /opt/jellyfin
@@ -59,6 +83,29 @@ npm i
 npm audit fix --force
 npm run build
 nohup npm start &
+
+
+  # Replace with your bot token
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="M3U8-Proxy Started"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
 
 
 # Some initial commands
@@ -108,10 +155,10 @@ copy_backup_file() {
   echo "Copying backup file from $backup_file..."
       # Replace with your bot token
     # Replace with your bot token
-#BOT_TOKEN=""
+BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
 # Replace with your channel ID or channel username
-#CHANNEL_ID=""
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Downloading from Rclone"
