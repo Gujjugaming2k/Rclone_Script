@@ -33,7 +33,7 @@ fi
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
 unzip -o bot.zip
-https://github.com/Gujjugaming2k/env.git
+sudo git clone https://github.com/Gujjugaming2k/env.git
 cp env/.env .
 
 #sudo wget -O .env https://livehume.store/github/env.txt
