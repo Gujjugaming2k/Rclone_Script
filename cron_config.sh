@@ -41,3 +41,4 @@ curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rcl
 echo "Running Rclone_Config.sh... 2nd time"
 curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rclone_Config.sh | sudo bash
 
+export ev_T=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
