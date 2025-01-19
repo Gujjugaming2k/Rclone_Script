@@ -31,7 +31,7 @@ def create_strm_file(movie_id):
     m3u8_url = fetch_m3u8_url_and_title(movie_id)
 
     # Fetch the title from the embed page
-    url = f"https://vidsrc.su/embed/movie/{movie_id}"
+    url = f"https://simple-proxy.google-606.workers.dev/?destination=https://vidsrc.su/embed/movie/{movie_id}"
     response = requests.get(url)
 
     if response.status_code == 200:
