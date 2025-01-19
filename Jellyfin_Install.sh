@@ -81,6 +81,11 @@ sudo pip3 install requests
 sudo pip3 install bs4
 nohup sudo python3 /opt/cs.py &
 
+
+sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
+nohup sudo python3 /opt/auto_embed.py &
+
+
 sudo wget -O /opt/fetch_vidsrc.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/fetch_vidsrc.py
 nohup sudo python3 /opt/fetch_vidsrc.py &
 
