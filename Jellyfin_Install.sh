@@ -86,8 +86,8 @@ sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/
 nohup sudo python3 /opt/auto_embed.py &
 
 
-sudo wget -O /opt/vid_src_fetch.py.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/vid_src_fetch.py.py
-nohup sudo python3 /opt/vid_src_fetch.py.py &
+sudo wget -O /opt/vid_src_fetch.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/vid_src_fetch.py
+nohup sudo python3 /opt/vid_src_fetch.py &
 
 git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
 cd M3U8-Proxy
