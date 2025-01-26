@@ -97,6 +97,11 @@ npm run build
 nohup npm start &
 
 
+git clone https://github.com/Gujjugaming2k/hls-proxifier.git
+cd hls-proxifier
+sudo pip install -r requirements.txt
+nohup sudo python hls-proxifier.py
+
   # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
