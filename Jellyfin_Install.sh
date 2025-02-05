@@ -71,23 +71,23 @@ sleep 10
 sudo mkdir /opt/jellyfin
 cd /opt/jellyfin
 
-#sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
-#nohup sudo python3 /opt/netflast.py &
+sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
+nohup sudo python3 /opt/netflast.py &
 
 
-sudo wget -O /opt/cs.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/cs.py
-sudo pip3 install telethon
-sudo pip3 install requests
-sudo pip3 install bs4
-nohup sudo python3 /opt/cs.py &
+#sudo wget -O /opt/cs.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/cs.py
+#sudo pip3 install telethon
+#sudo pip3 install requests
+#sudo pip3 install bs4
+#nohup sudo python3 /opt/cs.py &
 
 
-sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
-nohup sudo python3 /opt/auto_embed.py &
+#sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
+#nohup sudo python3 /opt/auto_embed.py &
 
 
-sudo wget -O /opt/vid_src_fetch.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/vid_src_fetch.py
-nohup sudo python3 /opt/vid_src_fetch.py &
+#sudo wget -O /opt/vid_src_fetch.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/vid_src_fetch.py
+#nohup sudo python3 /opt/vid_src_fetch.py &
 
 git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
 cd M3U8-Proxy
