@@ -74,6 +74,12 @@ cd /opt/jellyfin
 sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
 nohup sudo python3 /opt/netflast.py &
 
+git clone https://github.com/Gujjugaming2k/m3u8_proxy-cors.git
+cd m3u8_proxy-cors
+sudo pip install -r requirements.txt
+nohup sudo python3 main.py &
+
+
 
 #sudo wget -O /opt/cs.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/cs.py
 #sudo pip3 install telethon
