@@ -159,7 +159,7 @@ echo "copy zip..."
 #!/bin/bash
 
 # Primary URL and local backup path
-primary_url="https://download.vflix.xyz/jellyfin_backup.zip"
+primary_url="https://download.vflix.life/jellyfin_backup.zip"
 backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
 backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
 destination="/tmp/jellyfin_backup.zip"
