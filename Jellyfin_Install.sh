@@ -108,6 +108,14 @@ cd hls-proxifier
 sudo pip install -r requirements.txt
 nohup sudo python3 hls-proxifier.py &
 
+
+git clone https://github.com/Inside4ndroid/vidsrc-api-js.git
+cd vidsrc-api-js
+npm install
+npm audit fix --force
+nohup npm run main &
+
+
   # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
