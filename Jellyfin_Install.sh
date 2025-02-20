@@ -109,7 +109,7 @@ sudo pip install -r requirements.txt
 nohup sudo python3 hls-proxifier.py &
 
 
-git clone https://github.com/Inside4ndroid/vidsrc-api-js.git
+git clone https://github.com/Gujjugaming2k/vidsrc-api-js.git
 cd vidsrc-api-js
 npm install
 npm audit fix --force
