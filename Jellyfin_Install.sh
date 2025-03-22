@@ -81,11 +81,11 @@ nohup sudo python3 main.py &
 
 
 
-#sudo wget -O /opt/cs.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/cs.py
-#sudo pip3 install telethon
-#sudo pip3 install requests
-#sudo pip3 install bs4
-#nohup sudo python3 /opt/cs.py &
+sudo wget -O /opt/FlaskStreamtapeApi.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/FlaskStreamtapeApi.py
+sudo pip3 install jsonify
+sudo pip3 install requests
+sudo pip3 install flask
+nohup sudo python3 /opt/FlaskStreamtapeApi.py &
 
 
 #sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
