@@ -93,6 +93,9 @@ sudo pip3 install bs4
 nohup sudo python3 /opt/FlaskStreamwishApi.py &
 
 
+sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
+nohup sudo python3 /opt/Flaskhub.py &
+
 #sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
 #nohup sudo python3 /opt/auto_embed.py &
 
