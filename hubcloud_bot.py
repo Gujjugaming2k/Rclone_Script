@@ -28,7 +28,7 @@ SUPPORTED_DOMAINS = [
     "https://hubcloud.xyz"
 ]
 
-SAVE_FOLDER = "/opt/jellyfin/STRM_BOT"  # Folder path to save .strm files
+SAVE_FOLDER = "/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
 
 # Ensure save folder exists
 if not os.path.exists(SAVE_FOLDER):
