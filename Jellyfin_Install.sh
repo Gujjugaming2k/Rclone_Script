@@ -96,6 +96,14 @@ nohup sudo python3 /opt/FlaskStreamwishApi.py &
 sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
 nohup sudo python3 /opt/Flaskhub.py &
 
+
+sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
+sudo pip3 install asyncio
+sudo pip3 install aiohttp
+sudo pip3 install aiofiles
+sudo pip3 install telegram
+nohup sudo python3 /opt/hubcloud_bot.py &
+
 #sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
 #nohup sudo python3 /opt/auto_embed.py &
 
