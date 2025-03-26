@@ -101,7 +101,7 @@ sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2
 sudo pip3 install asyncio
 sudo pip3 install aiohttp
 sudo pip3 install aiofiles
-sudo pip3 install telegram
+sudo pip3 install python-telegram-bot
 nohup sudo python3 /opt/hubcloud_bot.py &
 
 #sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
