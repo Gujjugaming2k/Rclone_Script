@@ -97,6 +97,10 @@ sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rc
 nohup sudo python3 /opt/Flaskhub.py &
 
 
+sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
+nohup sudo python3 /opt/Flaskgdflix.py &
+
+
 sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
 sudo pip3 install asyncio
 sudo pip3 install aiohttp
