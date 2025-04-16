@@ -75,8 +75,33 @@ def fetch_playlist():
 def run_update_strm_script(new_token):
     try:
         # Call the update_strm.py script with the new token as argument
-        subprocess.run(['python3', 'update_strm.py', new_token], check=True)
+        subprocess.run(['python', 'Token_update.py', new_token], check=True)
         print("[✅] update_strm.py executed successfully.")
+            # Replace with your bot token
+        # Replace with your bot token
+        BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+        
+        # Replace with your channel ID or channel username
+        CHANNEL_ID = "-1002196503705"
+        
+        # Message to send
+        MESSAGE = f"update_strm.py executed successfully - New Token: {new_token}"
+        
+        # Send the message using requests
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+        payload = {
+            "chat_id": CHANNEL_ID,
+            "text": MESSAGE,
+            "parse_mode": "Markdown"  # or "HTML" for HTML formatting
+        }
+        
+        response = requests.post(url, data=payload)
+        
+        # Check if the message was sent successfully
+        if response.status_code == 200:
+            print("Message sent successfully!")
+        else:
+            print("Failed to send message.")
     except subprocess.CalledProcessError as e:
         print(f"[❌] Error running update_strm.py: {e}")
 
