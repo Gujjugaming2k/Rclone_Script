@@ -75,7 +75,7 @@ def fetch_playlist():
 def run_update_strm_script(new_token):
     try:
         # Call the update_strm.py script with the new token as argument
-        subprocess.run(['python', 'Token_update.py', new_token], check=True)
+        subprocess.run(['python', 'update_strm.py', new_token], check=True)
         print("[✅] update_strm.py executed successfully.")
             # Replace with your bot token
         # Replace with your bot token
