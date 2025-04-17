@@ -7,7 +7,7 @@ OLD_DOMAIN = "iosmirror.cc"
 NEW_DOMAIN = "netfree2.cc/mobile"
 
 # Function to update .strm files with the new token
-def update_strm_links(base_folder="/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/Series/", new_token=""):
+def update_strm_links(base_folder, new_token):
     if not new_token:
         raise ValueError("New token is required")
 
@@ -16,6 +16,7 @@ def update_strm_links(base_folder="/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/Ser
             if file.endswith(".strm"):
                 file_path = os.path.join(root, file)
 
+                # Read the file content
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read().strip()
 
@@ -36,6 +37,7 @@ def update_strm_links(base_folder="/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/Ser
                 if count > 0:
                     changes_made = True
 
+                # If changes were made, write the updated content back
                 if changes_made:
                     with open(file_path, "w", encoding="utf-8") as f:
                         f.write(updated)
@@ -45,10 +47,14 @@ def update_strm_links(base_folder="/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/Ser
 
 # Main Execution
 if __name__ == "__main__":
-    # Get the new token passed as argument
-    if len(sys.argv) < 2:
-        print("[❌] New token is required as an argument.")
+    # Get the new token passed as an argument
+    if len(sys.argv) < 3:
+        print("[❌] Usage: python ts.py <base_folder> <new_token>")
         sys.exit(1)
-    
-    new_token = sys.argv[1].strip()
-    update_strm_links("STRM", new_token)
+
+    # Extract parameters from command-line arguments
+    base_folder = sys.argv[1].strip()
+    new_token = sys.argv[2].strip()
+
+    # Run the function
+    update_strm_links(base_folder, new_token)
