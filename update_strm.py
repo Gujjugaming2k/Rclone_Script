@@ -1,15 +1,24 @@
 import os
 import re
 import sys
+import requests
 
 # Old domain and new domain
 OLD_DOMAIN = "iosmirror.cc"
 NEW_DOMAIN = "netfree2.cc/mobile"
 
+# Telegram Bot details
+BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+CHANNEL_ID = "-1002196503705"
+
 # Function to update .strm files with the new token
 def update_strm_links(base_folder, new_token):
     if not new_token:
         raise ValueError("New token is required")
+    
+    files_updated = []  # Track updated files
+    skipped_count = 0   # Count skipped files
+    updated_count = 0   # Count updated files
 
     for root, dirs, files in os.walk(base_folder):
         for file in files:
@@ -41,9 +50,50 @@ def update_strm_links(base_folder, new_token):
                 if changes_made:
                     with open(file_path, "w", encoding="utf-8") as f:
                         f.write(updated)
-                    print(f"✅ Updated: {file_path}")
+                    files_updated.append(file_path)  # Track updated file
+                    updated_count += 1  # Increment updated count
                 else:
-                    print(f"⏭ Skipped (no match): {file_path}")
+                    skipped_count += 1  # Increment skipped count
+    
+    # Send a Telegram message summarizing the updates
+    send_telegram_message(new_token, updated_count, skipped_count, files_updated)
+
+# Function to send a Telegram message
+def send_telegram_message(new_token, updated_count, skipped_count, files_updated):
+        # Escape special characters (optional)
+    import html
+    escaped_token = html.escape(new_token)
+    message = (
+        f"update_strm.py executed successfully.\n"
+        f"New Token: {escaped_token}\n"
+        f"Files Updated: {updated_count}\n"
+        f"Files Skipped: {skipped_count}\n"
+    )
+    
+    BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
+    CHANNEL_ID = "-1002196503705"
+    #new_token = "da5cfa912a0ddd29e90092aebbdc7997::ffb1d1629b105d4999814c8887804327::1744857724::ni"
+    
+
+    
+    # Form the message string
+    #MESSAGE = f"update_strm.py executed successfully - New Token: {escaped_token}"
+    
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": CHANNEL_ID,
+        "text": message,
+        "parse_mode": "HTML"  # Use HTML to handle special characters
+    }
+    
+    response = requests.post(url, data=payload)
+    
+    # Check the API response
+    if response.status_code == 200:
+        print("Message sent successfully!")
+    else:
+        print("Failed to send message. Error:", response.json())
+
 
 # Main Execution
 if __name__ == "__main__":
