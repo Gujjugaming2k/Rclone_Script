@@ -138,9 +138,9 @@ nohup npm run main &
 
 
 #iostoken and strm update
-sudo wget -O fetch_token_ios.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/fetch_token_ios.py
-sudo wget -O update_strm.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/update_strm.py
-nohup sudo python3 fetch_token_ios.py &
+sudo wget -O /opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/fetch_token_ios.py
+sudo wget -O /opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/update_strm.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/update_strm.py
+nohup sudo python3 /opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py &
 
   # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
