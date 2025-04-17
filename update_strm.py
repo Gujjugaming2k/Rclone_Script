@@ -7,9 +7,7 @@ import requests
 OLD_DOMAIN = "iosmirror.cc"
 NEW_DOMAIN = "netfree2.cc/mobile"
 
-# Telegram Bot details
-BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
-CHANNEL_ID = "-1002196503705"
+
 
 # Function to update .strm files with the new token
 def update_strm_links(base_folder, new_token):
