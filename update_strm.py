@@ -2,12 +2,11 @@ import os
 import re
 import sys
 import requests
+import html  # For escaping special characters in the token
 
 # Old domain and new domain
 OLD_DOMAIN = "iosmirror.cc"
 NEW_DOMAIN = "netfree2.cc/mobile"
-
-
 
 # Function to update .strm files with the new token
 def update_strm_links(base_folder, new_token):
@@ -30,19 +29,29 @@ def update_strm_links(base_folder, new_token):
                 updated = content
                 changes_made = False
 
+                # Print the original content (for debugging purposes)
+                print(f"Processing file: {file_path}")
+                print(f"Original content: {content}")
+
                 # Replace domain
                 if OLD_DOMAIN in updated:
                     updated = updated.replace(OLD_DOMAIN, NEW_DOMAIN)
                     changes_made = True
+                    print(f"Domain replaced in: {file_path}")
 
                 # Replace dynamic token using regex
-                updated, count = re.subn(
-                    r'(in=)[^"&]+',
-                    rf'\1{new_token}',
-                    updated
-                )
-                if count > 0:
-                    changes_made = True
+                try:
+                    updated, count = re.subn(
+                        r'(in=)[^"&]+',  # Match `in=` followed by the token
+                        f'in={new_token}',  # Replace with the new token directly
+                        updated
+                    )
+                    if count > 0:
+                        changes_made = True
+                        print(f"Token replaced in: {file_path}")
+                except re.error as e:
+                    print(f"Regex error in file {file_path}: {e}")
+                    continue  # Skip this file if there's a regex error
 
                 # If changes were made, write the updated content back
                 if changes_made:
@@ -58,8 +67,7 @@ def update_strm_links(base_folder, new_token):
 
 # Function to send a Telegram message
 def send_telegram_message(new_token, updated_count, skipped_count, files_updated):
-        # Escape special characters (optional)
-    import html
+    # Escape special characters in the token (optional)
     escaped_token = html.escape(new_token)
     message = (
         f"update_strm.py executed successfully.\n"
@@ -68,15 +76,10 @@ def send_telegram_message(new_token, updated_count, skipped_count, files_updated
         f"Files Skipped: {skipped_count}\n"
     )
     
-    BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
-    CHANNEL_ID = "-1002196503705"
-    #new_token = "da5cfa912a0ddd29e90092aebbdc7997::ffb1d1629b105d4999814c8887804327::1744857724::ni"
-    
-
+    BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"  # Replace with your actual bot token
+    CHANNEL_ID = "-1002196503705"  # Replace with your actual channel ID
     
     # Form the message string
-    #MESSAGE = f"update_strm.py executed successfully - New Token: {escaped_token}"
-    
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": CHANNEL_ID,
@@ -92,12 +95,11 @@ def send_telegram_message(new_token, updated_count, skipped_count, files_updated
     else:
         print("Failed to send message. Error:", response.json())
 
-
 # Main Execution
 if __name__ == "__main__":
     # Get the new token passed as an argument
     if len(sys.argv) < 3:
-        print("[❌] Usage: python ts.py <base_folder> <new_token>")
+        print("[❌] Usage: python update_strm.py <base_folder> <new_token>")
         sys.exit(1)
 
     # Extract parameters from command-line arguments
