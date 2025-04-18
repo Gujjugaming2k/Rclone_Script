@@ -423,5 +423,5 @@ $JELLYFINDIR/jellyfin/jellyfin \
  --ffmpeg $FFMPEGDIR/ffmpeg
 EOF'
 
-
+chmod 777 /tmp/opt/jellyfin/jellyfin.sh
 sudo /tmp/opt/jellyfin/jellyfin.sh
