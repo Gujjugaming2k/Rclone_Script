@@ -70,7 +70,7 @@ sudo rm -rf /opt/jellyfin/gofile-downloader
 sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
 
-sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /opt/jellyfin/STRM/
+sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /tmp/opt/jellyfin/STRM/
 sudo zip -r /tmp/jellyfin_backup.zip /tmp/opt/jellyfin/*
 
 
