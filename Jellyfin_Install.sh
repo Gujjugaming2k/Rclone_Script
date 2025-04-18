@@ -282,8 +282,8 @@ echo "File size (human-readable): $human_readable_size"
 echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
-sudo unzip -o /tmp/jellyfin_backup.zip -d /tmp/
-sudo unzip -o /tmp/STRM.zip -d /tmp/
+sudo unzip -o /tmp/jellyfin_backup.zip -d /
+sudo unzip -o /tmp/STRM.zip -d /
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 #sudo rm -rf /tmp/jellyfin_backup.zip
 
