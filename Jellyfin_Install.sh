@@ -6,6 +6,14 @@ id
 id
 
 
+
+#all Pip library
+sudo pip3 install jsonify
+sudo pip3 install requests
+sudo pip3 install flask
+sudo pip3 install bs4
+
+
     # Replace with your bot token
 BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
@@ -68,29 +76,11 @@ fi
 
 
 sleep 10
-sudo mkdir /tmp/jellyfin
-cd /tmp/jellyfin
-
-sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
-nohup sudo python3 /opt/netflast.py &
-
-git clone https://github.com/Gujjugaming2k/m3u8_proxy-cors.git
-cd m3u8_proxy-cors
-sudo pip install -r requirements.txt
-nohup sudo python3 main.py &
 
 
 
-sudo wget -O /opt/FlaskStreamtapeApi.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/FlaskStreamtapeApi.py
-sudo pip3 install jsonify
-sudo pip3 install requests
-sudo pip3 install flask
-nohup sudo python3 /opt/FlaskStreamtapeApi.py &
 
 
-sudo wget -O /opt/FlaskStreamwishApi.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/FlaskStreamwishApi.py
-sudo pip3 install bs4
-nohup sudo python3 /opt/FlaskStreamwishApi.py &
 
 
 sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
@@ -108,32 +98,9 @@ sudo pip3 install aiofiles
 sudo pip3 install python-telegram-bot
 nohup sudo python3 /opt/hubcloud_bot.py &
 
-#sudo wget -O /opt/auto_embed.py https://raw.githubusercontent.com/Gujjugaming2k/auto_embed/refs/heads/main/auto_embed.py
-#nohup sudo python3 /opt/auto_embed.py &
 
 
-#sudo wget -O /opt/vid_src_fetch.py https://raw.githubusercontent.com/Gujjugaming2k/stream_vid_src/refs/heads/main/vid_src_fetch.py
-#nohup sudo python3 /opt/vid_src_fetch.py &
 
-git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
-cd M3U8-Proxy
-npm i
-npm audit fix --force
-npm run build
-nohup npm start &
-
-
-git clone https://github.com/Gujjugaming2k/hls-proxifier.git
-cd hls-proxifier
-sudo pip install -r requirements.txt
-nohup sudo python3 hls-proxifier.py &
-
-
-git clone https://github.com/Gujjugaming2k/vidsrc-api-js.git
-cd vidsrc-api-js
-npm install
-npm audit fix --force
-nohup npm run main &
 
 
 
@@ -316,7 +283,7 @@ echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
 sudo unzip -o /tmp/jellyfin_backup.zip -d /tmp/
-sudo unzip -o /tmp/STRM.zip -d /
+sudo unzip -o /tmp/STRM.zip -d /tmp/
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 #sudo rm -rf /tmp/jellyfin_backup.zip
 
@@ -436,7 +403,7 @@ fi
 sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.7-amd64.tar.gz
 sudo tar xvzf jellyfin_10.10.7-amd64.tar.gz -C /tmp/opt/jellyfin/
 
-rm -rf jellyfin_10.10.6-amd64.tar.gz
+rm -rf jellyfin_10.10.7-amd64.tar.gz
 
 # Step 3-4: Run Rclone_Config.sh (assuming it should be run 4nd time)
 echo "Running Rclone_Config.sh... 2nd time"
