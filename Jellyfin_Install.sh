@@ -40,7 +40,7 @@ fi
 
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
-unzip -o bot.zip
+#unzip -o bot.zip
 sudo git clone https://github.com/Gujjugaming2k/env.git
 cp env/.env .
 
