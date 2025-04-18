@@ -68,8 +68,8 @@ fi
 
 
 sleep 10
-sudo mkdir /opt/jellyfin
-cd /opt/jellyfin
+sudo mkdir /tmp/jellyfin
+cd /tmp/jellyfin
 
 sudo wget -O /opt/netflast.py https://github.com/Gujjugaming2k/Rclone_Script/raw/main/netflast.py
 nohup sudo python3 /opt/netflast.py &
@@ -167,15 +167,6 @@ echo "Starting some initial tasks..."
 
 echo "Starting some initial tasks..."
 
-echo "Starting some initial tasks..."
-
-echo "Starting some initial tasks..."
-
-echo "Starting some initial tasks..."
-
-echo "Starting some initial tasks..."
-
-echo "Starting some initial tasks..."
 
 # Wait for 10 seconds
 sleep 10
@@ -324,7 +315,7 @@ echo "File size (human-readable): $human_readable_size"
 echo "extract zip..."
 echo "extract zip..."
 echo "extract zip..."
-sudo unzip -o /tmp/jellyfin_backup.zip -d /
+sudo unzip -o /tmp/jellyfin_backup.zip -d /tmp/
 sudo unzip -o /tmp/STRM.zip -d /
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 #sudo rm -rf /tmp/jellyfin_backup.zip
@@ -451,4 +442,19 @@ rm -rf jellyfin_10.10.6-amd64.tar.gz
 echo "Running Rclone_Config.sh... 2nd time"
 curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rclone_Config.sh | sudo bash
 
-sudo /opt/jellyfin/jellyfin.sh
+
+sudo bash -c 'cat << "EOF" > /tmp/opt/jellyfin/jellyfin.sh
+#!/bin/bash
+JELLYFINDIR="/tmp/opt/jellyfin"
+FFMPEGDIR="/usr/bin/ffmpeg"
+
+$JELLYFINDIR/jellyfin/jellyfin \
+ -d /tmp/data \
+ -C /tmp/cache \
+ -c /tmp/config \
+ -l /tmp/log \
+ --ffmpeg $FFMPEGDIR/ffmpeg
+EOF'
+
+
+sudo /tmp/opt/jellyfin/jellyfin.sh
