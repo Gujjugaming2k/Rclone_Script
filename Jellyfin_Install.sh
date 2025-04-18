@@ -433,8 +433,8 @@ else
 fi
 
 
-sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.6-amd64.tar.gz
-sudo tar xvzf jellyfin_10.10.6-amd64.tar.gz -C /opt/jellyfin/
+sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.7-amd64.tar.gz
+sudo tar xvzf jellyfin_10.10.7-amd64.tar.gz -C /tmp/opt/jellyfin/
 
 rm -rf jellyfin_10.10.6-amd64.tar.gz
 
@@ -446,13 +446,13 @@ curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rcl
 sudo bash -c 'cat << "EOF" > /tmp/opt/jellyfin/jellyfin.sh
 #!/bin/bash
 JELLYFINDIR="/tmp/opt/jellyfin"
-FFMPEGDIR="/usr/bin/ffmpeg"
+FFMPEGDIR="/usr/share/jellyfin-ffmpeg"
 
 $JELLYFINDIR/jellyfin/jellyfin \
- -d /tmp/data \
- -C /tmp/cache \
- -c /tmp/config \
- -l /tmp/log \
+ -d /tmp/opt/jellyfin/data \
+ -C /tmp/opt/jellyfin/cache \
+ -c /tmp/opt/jellyfin/config \
+ -l /tmp/opt/jellyfin/log \
  --ffmpeg $FFMPEGDIR/ffmpeg
 EOF'
 
