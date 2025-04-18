@@ -7,7 +7,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import re
 
-SAVE_FOLDER = "/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
+SAVE_FOLDER = "/tmp/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
 
 # 🔥 Replace with your bot token
 TELEGRAM_BOT_TOKEN = "7556090644:AAHuRIPH1KqiRf0Ykd_Ert97cLedZWDr51I"
