@@ -289,9 +289,9 @@ sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 
 
 #iostoken and strm update
-sudo wget -O /opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/fetch_token_ios.py
-sudo wget -O /opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/update_strm.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/update_strm.py
-nohup sudo python3 /opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py &
+sudo wget -O /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/fetch_token_ios.py
+sudo wget -O /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/update_strm.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/update_strm.py
+nohup sudo python3 /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py &
 
 nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
