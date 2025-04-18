@@ -75,7 +75,7 @@ def fetch_playlist():
 def run_update_strm_script(new_token):
     try:
         # Call the update_strm.py script with the new token as argument
-        subprocess.run(['python', '/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/update_strm.py', '/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/Series',new_token], check=True)
+        subprocess.run(['python', '/tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/update_strm.py', '/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/Series',new_token], check=True)
         print("[✅] update_strm.py executed successfully.")
             # Replace with your bot token
         # Replace with your bot token
