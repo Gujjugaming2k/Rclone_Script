@@ -372,6 +372,11 @@ sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
 
+sudo apt-get update && sudo apt-get install curl apt-transport-https gnupg
+curl https://apt.hrfee.dev/hrfee.pubkey.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.hrfee.dev.gpg
+echo "deb https://apt.hrfee.dev trusty main" | sudo tee /etc/apt/sources.list.d/hrfee.list
+sudo apt-get update
+sudo apt-get install jfa-go
 
 
 
