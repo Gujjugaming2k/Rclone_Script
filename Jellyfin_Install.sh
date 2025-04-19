@@ -51,7 +51,7 @@ cp /tmp/opt/jellyfin/Token/.env .
 
 echo ".env file copied to current directory."
 
-#sudo wget -O .env https://livehume.store/github/env.txt
+
 
 sudo pip3 install -r requirements.txt
 sudo pip3 install flask
