@@ -78,11 +78,17 @@ def run_update_strm_script(new_token):
         subprocess.run(['python', '/tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/update_strm.py', '/tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix',new_token], check=True)
         print("[✅] update_strm.py executed successfully.")
             # Replace with your bot token
-        # Replace with your bot token
-        BOT_TOKEN = "6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
-        
-        # Replace with your channel ID or channel username
-        CHANNEL_ID = "-1002196503705"
+        # File path
+        file_path = "/tmp/opt/jellyfin/Token/Telegram_token.txt"
+
+        # Assign to new variables (with quotes)
+        BOT_TOKEN = TOKEN
+        CHANNEL_ID = CHANNELID
+
+        # Print to verify (also in quotes)
+        print(f'BOT_TOKEN="{BOT_TOKEN}"')
+        print(f'CHANNEL_ID="{CHANNEL_ID}"')
+
         
         # Message to send
         MESSAGE = f"update_strm.py executed successfully - New Token: {new_token}"
