@@ -1,14 +1,9 @@
 #!/bin/bash
     # Replace with your bot token
-. /tmp/opt/jellyfin/Token/Telegram_token.txt
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
 
-# Assign to new variables with quotes
-BOT_TOKEN="$TOKEN"
-CHANNEL_ID="$CHANNELID"
-
-# Print to verify (also in quotes)
-echo "BOT_TOKEN=\"$BOT_TOKEN\""
-echo "CHANNEL_ID=\"$CHANNEL_ID\""
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Backup Script Placed"
@@ -28,10 +23,17 @@ fi
 
 sleep 7200
 
+#curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
+#chmod +x Rclone_zip_Backup.sh
+#nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
 
 sleep 4860
 
+    # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
 
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Backup Started."
@@ -72,7 +74,11 @@ sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /tmp/opt/jellyfin/S
 sudo zip -r /tmp/jellyfin_backup.zip /tmp/opt/jellyfin/*
 
 
+ # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
 
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Backup Completed."
@@ -107,7 +113,11 @@ echo "HTTP Status Code: $http_code"
 
 
 
+    # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
 
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Codespace Created - $output"
@@ -124,47 +134,5 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
-
-
-# Set timezone to IST
-export TZ='Asia/Kolkata'
-
-current_time=$(date '+%I:%M:%S %p')
-echo "Current Time: $current_time"
-
-# Calculate next backup time (3.35 hours ahead) in 12-hour format
-next_backup_time=$(date -d "+12060 seconds" '+%I:%M:%S %p')
-echo "Next Backup Started Time: $next_backup_time"
-
-# Calculate off time (4 hours ahead) in 12-hour format
-off_time=$(date -d "+4 hours" '+%I:%M:%S %p')
-echo "Off Time: $off_time"
-
-
-msg="Current Time: $current_time --- Next Backup Time: $next_backup_time --- Off Time: $off_time"
-
-
-
-# Message to send
-MESSAGE="Next Details - $msg"
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-
-
-
-
-
 
 
