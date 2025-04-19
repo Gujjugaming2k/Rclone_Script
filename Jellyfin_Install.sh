@@ -14,11 +14,18 @@ sudo pip3 install flask
 sudo pip3 install bs4
 
 
-    # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
 
-# Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+. /tmp/opt/jellyfin/Token/Telegram_token.txt
+
+# Assign to new variables with quotes
+BOT_TOKEN="$TOKEN"
+CHANNEL_ID="$CHANNELID"
+
+# Print to verify (also in quotes)
+echo "BOT_TOKEN=\"$BOT_TOKEN\""
+echo "CHANNEL_ID=\"$CHANNEL_ID\""
+
+
 
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
@@ -52,11 +59,6 @@ sudo pip3 install flask
 nohup sudo python3 -m FileStream &
 
 
-    # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
-
-# Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="FileStreamBot Started"
@@ -104,13 +106,6 @@ nohup sudo python3 /opt/hubcloud_bot.py &
 
 
 
-
-
-  # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
-
-# Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="M3U8-Proxy Started"
@@ -167,10 +162,6 @@ copy_backup_file() {
   echo "Copying backup file from $backup_file..."
       # Replace with your bot token
     # Replace with your bot token
-BOT_TOKEN="6808963452:AAHwB1p6MLfIpk-tioldZrLrJ5QWd2vVG60"
-
-# Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Downloading from Rclone"
@@ -226,12 +217,8 @@ retry_download() {
 if wget --spider $primary_url 2>/dev/null; then
   echo "Primary URL is available."
   
-      # Replace with your bot token
-    # Replace with your bot token
-#BOT_TOKEN=""
 
-# Replace with your channel ID or channel username
-#CHANNEL_ID=""
+
 
 # Message to send
 MESSAGE="Downloading Primary URL"
