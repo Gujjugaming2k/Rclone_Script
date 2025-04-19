@@ -28,9 +28,6 @@ fi
 
 sleep 7200
 
-#curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
-#chmod +x Rclone_zip_Backup.sh
-#nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
 
 sleep 4860
 
@@ -127,6 +124,47 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
+
+
+# Set timezone to IST
+export TZ='Asia/Kolkata'
+
+current_time=$(date '+%I:%M:%S %p')
+echo "Current Time: $current_time"
+
+# Calculate next backup time (3.35 hours ahead) in 12-hour format
+next_backup_time=$(date -d "+12060 seconds" '+%I:%M:%S %p')
+echo "Next Backup Started Time: $next_backup_time"
+
+# Calculate off time (4 hours ahead) in 12-hour format
+off_time=$(date -d "+4 hours" '+%I:%M:%S %p')
+echo "Off Time: $off_time"
+
+
+msg="Current Time: $current_time --- Next Backup Time: $next_backup_time --- Off Time: $off_time"
+
+
+
+# Message to send
+MESSAGE="Next Details - $msg"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
+
+
+
 
 
 
