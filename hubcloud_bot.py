@@ -9,11 +9,17 @@ import re
 
 SAVE_FOLDER = "/tmp/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
 
-# 🔥 Replace with your bot token
-TELEGRAM_BOT_TOKEN = "7556090644:AAHuRIPH1KqiRf0Ykd_Ert97cLedZWDr51I"
+file_path = "/tmp/opt/jellyfin/Token/Telegram_token.txt"
 
-# 🔥 Telegram group ID for logs
-TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
+ # Assign to new variables (with quotes)
+TELEGRAM_BOT_TOKEN = TOKEN
+TELEGRAM_GROUP_ID = CHANNELID
+
+# Print to verify (also in quotes)
+print(f'BOT_TOKEN="{BOT_TOKEN}"')
+print(f'CHANNEL_ID="{CHANNEL_ID}"')
+
+
 
 # 🔥 Current domains
 HUBCLOUD_DOMAIN = "https://hubcloud.bz"
