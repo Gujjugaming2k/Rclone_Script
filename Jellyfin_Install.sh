@@ -14,7 +14,125 @@ sudo pip3 install flask
 sudo pip3 install bs4
 
 
+    # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
 
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="Jellyfin - Installation Started"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
+
+sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
+cd FileStreamBot
+#unzip -o bot.zip
+sudo git clone https://github.com/Gujjugaming2k/env.git
+cp env/.env .
+
+#sudo wget -O .env https://livehume.store/github/env.txt
+
+sudo pip3 install -r requirements.txt
+sudo pip3 install flask
+
+nohup sudo python3 -m FileStream &
+
+
+    # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="FileStreamBot Started"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
+sleep 10
+
+
+
+
+
+
+
+sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
+nohup sudo python3 /opt/Flaskhub.py &
+
+
+sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
+nohup sudo python3 /opt/Flaskgdflix.py &
+
+
+sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
+sudo pip3 install asyncio
+sudo pip3 install aiohttp
+sudo pip3 install aiofiles
+sudo pip3 install python-telegram-bot
+nohup sudo python3 /opt/hubcloud_bot.py &
+
+
+
+
+
+
+
+
+
+  # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
+
+# Message to send
+MESSAGE="M3U8-Proxy Started"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
+# Some initial commands
+echo "Starting some initial tasks..."
+
+echo "Starting some initial tasks..."
 
 
 # Wait for 10 seconds
@@ -35,7 +153,7 @@ backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
 backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
 destination="/tmp/jellyfin_backup.zip"
 destination_STRM="/tmp/STRM.zip"
-min_size=$((6 * 1024 * 1024 * 1024))
+min_size=$((50 * 1024 * 1024))  # 8 GB in bytes
 
 # Function to download the file from URL
 download_file() {
@@ -49,6 +167,10 @@ copy_backup_file() {
   echo "Copying backup file from $backup_file..."
       # Replace with your bot token
     # Replace with your bot token
+BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+
+# Replace with your channel ID or channel username
+CHANNEL_ID="-1002196503705"
 
 # Message to send
 MESSAGE="Downloading from Rclone"
@@ -104,8 +226,12 @@ retry_download() {
 if wget --spider $primary_url 2>/dev/null; then
   echo "Primary URL is available."
   
+      # Replace with your bot token
+    # Replace with your bot token
+#BOT_TOKEN=""
 
-
+# Replace with your channel ID or channel username
+#CHANNEL_ID=""
 
 # Message to send
 MESSAGE="Downloading Primary URL"
@@ -160,140 +286,6 @@ sudo unzip -o /tmp/jellyfin_backup.zip -d /
 sudo unzip -o /tmp/STRM.zip -d /
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 #sudo rm -rf /tmp/jellyfin_backup.zip
-
-
-
-
-. /tmp/opt/jellyfin/Token/Telegram_token.txt
-
-# Assign to new variables with quotes
-BOT_TOKEN="$TOKEN"
-CHANNEL_ID="$CHANNELID"
-
-# Print to verify (also in quotes)
-echo "BOT_TOKEN=\"$BOT_TOKEN\""
-echo "CHANNEL_ID=\"$CHANNEL_ID\""
-
-
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-
-
-# Message to send
-MESSAGE="Jellyfin - Installation Started"
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-
-
-sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
-cd FileStreamBot
-cp /tmp/opt/jellyfin/Token/.env .
-
-echo ".env file copied to current directory."
-
-
-
-sudo pip3 install -r requirements.txt
-sudo pip3 install flask
-
-nohup sudo python3 -m FileStream &
-
-
-
-# Message to send
-MESSAGE="FileStreamBot Started"
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-
-sleep 10
-
-
-
-
-
-
-
-sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
-nohup sudo python3 /opt/Flaskhub.py &
-
-
-sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
-nohup sudo python3 /opt/Flaskgdflix.py &
-
-
-sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
-sudo pip3 install asyncio
-sudo pip3 install aiohttp
-sudo pip3 install aiofiles
-sudo pip3 install python-telegram-bot
-nohup sudo python3 /opt/hubcloud_bot.py &
-
-
-
-
-
-
-
-
-# Message to send
-MESSAGE="M3U8-Proxy Started"
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-
-
-# Some initial commands
-echo "Starting some initial tasks..."
-
-echo "Starting some initial tasks..."
-
-
 
 
 #iostoken and strm update
