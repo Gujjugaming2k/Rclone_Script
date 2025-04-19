@@ -47,9 +47,9 @@ fi
 
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
-#unzip -o bot.zip
-sudo git clone https://github.com/Gujjugaming2k/env.git
-cp env/.env .
+cp /tmp/opt/jellyfin/Token/.env .
+
+echo ".env file copied to current directory."
 
 #sudo wget -O .env https://livehume.store/github/env.txt
 
