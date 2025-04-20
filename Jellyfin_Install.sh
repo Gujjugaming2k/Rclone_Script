@@ -83,20 +83,6 @@ sleep 10
 
 
 
-sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
-nohup sudo python3 /opt/Flaskhub.py &
-
-
-sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
-nohup sudo python3 /opt/Flaskgdflix.py &
-
-
-sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
-sudo pip3 install asyncio
-sudo pip3 install aiohttp
-sudo pip3 install aiofiles
-sudo pip3 install python-telegram-bot
-nohup sudo python3 /opt/hubcloud_bot.py &
 
 
 
@@ -427,6 +413,36 @@ $JELLYFINDIR/jellyfin/jellyfin \
  -l /tmp/opt/jellyfin/log \
  --ffmpeg $FFMPEGDIR/ffmpeg
 EOF'
+
+
+
+
+
+sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
+nohup sudo python3 /opt/Flaskhub.py &
+
+
+sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
+nohup sudo python3 /opt/Flaskgdflix.py &
+
+
+sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
+sudo pip3 install asyncio
+sudo pip3 install aiohttp
+sudo pip3 install aiofiles
+sudo pip3 install python-telegram-bot
+nohup sudo python3 /opt/hubcloud_bot.py &
+
+
+
+sudo wget -O /opt/Telegram_jellyfin_usercreate.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Telegram_jellyfin_usercreate.py
+nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
+
+
+
+
+
+
 
 chmod 777 /tmp/opt/jellyfin/jellyfin.sh
 sudo /tmp/opt/jellyfin/jellyfin.sh
