@@ -65,7 +65,7 @@ def configure_user_policy(user_id):
         "EnableRemoteControlOfOtherUsers": False,
         "EnableLiveTvManagement": False,
         "EnableLiveTvRecordingManagement": False,
-        "EnableSharedDeviceControl": False,
+        "EnableSharedDeviceControl": True,
         "EnableAllChannels": True,
         "EnableAllDevices": True,
         "EnableAllLibraries": True,
