@@ -114,7 +114,7 @@ async def create_hub_strm_file(title, url):
 async def create_gd_strm_file(title, url):
     """Create .strm file for GDFlix."""
     filename = os.path.join(SAVE_FOLDER, f"{title}.strm")
-    content = f"https://gdflix.vflix.life/redirect_video?base_url={url}"
+    content = f"https://h2r-gdflix-xdirect.hdmovielover.workers.dev/?url={url}"
 
     async with aiofiles.open(filename, "w") as file:
         await file.write(content)
