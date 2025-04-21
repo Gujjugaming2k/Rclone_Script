@@ -15,11 +15,9 @@ TELEGRAM_BOT_TOKEN = "7556090644:AAHuRIPH1KqiRf0Ykd_Ert97cLedZWDr51I"
 # 🔥 Telegram group ID for logs
 TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
 
-
-
 # 🔥 Current domains
 HUBCLOUD_DOMAIN = "https://hubcloud.bz"
-GDFLIX_DOMAIN = "https://new4.gdflix.dad"
+GDFLIX_DOMAIN = "https://new6.gdflix.dad"
 
 # 🔥 Supported HubCloud and GDFlix domains
 HUBCLOUD_DOMAINS = [
@@ -62,21 +60,6 @@ def normalize_gdflix_url(url):
         if url.startswith(domain):
             return url.replace(domain, GDFLIX_DOMAIN)
     return url  # Return original if no match
-
-# ✅ Validate GDFlix domain and URL structure
-def validate_gdflix_url(url):
-    """Check if the domain is valid and the URL structure matches."""
-    # Check if the domain is valid
-    valid_domain = any(url.startswith(domain) for domain in GDFLIX_DOMAINS)
-    if not valid_domain:
-        return False, "❌ Invalid GDFlix domain."
-
-    # Check if the URL structure is valid
-    pattern = re.compile(r"https:\/\/new\d+\.gdflix\.dad\/file\/[A-Za-z0-9]+")
-    if not pattern.match(url):
-        return False, "❌ Invalid GDFlix link format."
-
-    return True, None
 
 # ✅ Fetch title from URL
 async def fetch_title(url):
@@ -158,7 +141,7 @@ async def hub_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Normalize the URL
     normalized_url = normalize_hubcloud_url(url)
 
-    # Validate domain
+    # Validate Hubcloud domain
     if not normalized_url.startswith(f"{HUBCLOUD_DOMAIN}/drive/"):
         await update.message.reply_text("❌ Invalid HubCloud link.")
         return
@@ -197,17 +180,16 @@ async def gd_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     url = context.args[0]
 
-    # ✅ Validate GDFlix URL
-    is_valid, error_message = validate_gdflix_url(url)
-    if not is_valid:
-        await update.message.reply_text(error_message)
+    # Normalize the URL
+    normalized_url = normalize_gdflix_url(url)
+
+    # Validate GDFlix domain
+    if not normalized_url.startswith(f"{GDFLIX_DOMAIN}/file/"):
+        await update.message.reply_text("❌ Invalid GDFlix link Structure.")
         return
 
-    # Modify the URL from `/file/` to `/xfile/`
-    modified_url = url.replace("/file/", "/xfile/")
-
     # Fetch the title
-    title = await fetch_title(modified_url)
+    title = await fetch_title(normalized_url)
 
     if title == "Unknown" or title == "GDFlix | Google Drive Files Sharing Platform":
         await update.message.reply_text("❌ Invalid GDFlix link. Please provide a valid link.")
@@ -217,7 +199,7 @@ async def gd_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     final_title = title.replace("GDFlix | ", "")
 
     # Create .strm file
-    filename = await create_gd_strm_file(final_title, modified_url)
+    filename = await create_gd_strm_file(final_title, normalized_url)
     
     reply = (
         f"✅ **Uploaded Successfully**\n🎥 Title: `{final_title}`"
