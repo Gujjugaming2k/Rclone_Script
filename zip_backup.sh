@@ -3,7 +3,8 @@
     #echo "BOT_TOKEN=\"$BOT_TOKEN\""
 
 
-
+BOT_TOKEN="6491244345:AAFKAeud7ZMwVnmXHQ_F-K__OTw9P_AtPyo"
+CHANNEL_ID="-1002196503705"
 # Message to send
 MESSAGE="Backup Script Placed"
 
