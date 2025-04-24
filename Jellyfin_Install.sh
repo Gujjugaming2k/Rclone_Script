@@ -40,11 +40,7 @@ fi
 
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
-#unzip -o bot.zip
-sudo git clone https://github.com/Gujjugaming2k/env.git
-cp env/.env .
 
-#sudo wget -O .env https://livehume.store/github/env.txt
 
 sudo pip3 install -r requirements.txt
 sudo pip3 install flask
