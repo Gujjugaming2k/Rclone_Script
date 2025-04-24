@@ -4,11 +4,7 @@ from bs4 import BeautifulSoup
 from telethon import TelegramClient, events
 from telethon.tl.types import PeerChannel
 
-# Replace with your API credentials
-API_ID = '1365781'
-API_HASH = 'be325d65730f050aa8e66ee844d68b4f'
-BOT_TOKEN = '6491244345:AAEWUFD_DXlIusHkQjuiWdTPGGVZDkPooI4'
-BIN_CHANNEL = -1002196503705  # Replace with your channel ID
+
 
 # Create the Telegram client
 client = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
