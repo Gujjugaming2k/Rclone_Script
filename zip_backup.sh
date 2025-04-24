@@ -1,9 +1,9 @@
 #!/bin/bash
     # Replace with your bot token
-BOT_TOKEN="$BOT_TOKEN
+BOT_TOKEN=$BOT_TOKEN
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="$CHANNEL_ID
+CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="Backup Script Placed"
@@ -29,11 +29,7 @@ sleep 7200
 
 sleep 4860
 
-    # Replace with your bot token
-BOT_TOKEN="$BOT_TOKEN
 
-# Replace with your channel ID or channel username
-CHANNEL_ID="$CHANNEL_ID
 
 # Message to send
 MESSAGE="Backup Started."
@@ -74,11 +70,6 @@ sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /tmp/opt/jellyfin/S
 sudo zip -r /tmp/jellyfin_backup.zip /tmp/opt/jellyfin/*
 
 
- # Replace with your bot token
-BOT_TOKEN="$BOT_TOKEN
-
-# Replace with your channel ID or channel username
-CHANNEL_ID="$CHANNEL_ID
 
 # Message to send
 MESSAGE="Backup Completed."
@@ -113,11 +104,7 @@ echo "HTTP Status Code: $http_code"
 
 
 
-    # Replace with your bot token
-BOT_TOKEN="$BOT_TOKEN
 
-# Replace with your channel ID or channel username
-CHANNEL_ID="$CHANNEL_ID
 
 # Message to send
 MESSAGE="Codespace Created - $output"
