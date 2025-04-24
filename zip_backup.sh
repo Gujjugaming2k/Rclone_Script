@@ -1,10 +1,11 @@
 #!/bin/bash
     # Replace with your bot token
     #echo "BOT_TOKEN=\"$BOT_TOKEN\""
-BOT_TOKEN=\"$BOT_TOKEN\"
 
+export "BOT_TOKEN=\"$BOT_TOKEN\""
 # Replace with your channel ID or channel username
-CHANNEL_ID=\"$CHANNEL_ID"
+
+export "CHANNEL_ID=\"$CHANNEL_ID\""
 
 # Message to send
 MESSAGE="Backup Script Placed"
@@ -122,5 +123,3 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
-
-
