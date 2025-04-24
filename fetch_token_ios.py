@@ -82,8 +82,8 @@ def run_update_strm_script(new_token):
         file_path = "/tmp/opt/jellyfin/Token/Telegram_token.txt"
 
         # Assign to new variables (with quotes)
-        BOT_TOKEN = TOKEN
-        CHANNEL_ID = CHANNELID
+        BOT_TOKEN = $BOT_TOKEN  # Replace with your actual bot token
+        CHANNEL_ID = $CHANNEL_ID  # Replace with your actual channel ID
 
         # Print to verify (also in quotes)
         print(f'BOT_TOKEN="{BOT_TOKEN}"')
