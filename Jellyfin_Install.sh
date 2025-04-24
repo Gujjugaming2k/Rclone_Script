@@ -15,10 +15,10 @@ sudo pip3 install bs4
 
 
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+BOT_TOKEN=$BOT_TOKEN
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
@@ -53,10 +53,10 @@ nohup sudo python3 -m FileStream &
 
 
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+BOT_TOKEN=$BOT_TOKEN
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="FileStreamBot Started"
@@ -79,24 +79,11 @@ sleep 10
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # Replace with your bot token
-BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+    # Replace with your bot token
+BOT_TOKEN=$BOT_TOKEN
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="M3U8-Proxy Started"
@@ -151,12 +138,15 @@ download_file() {
 # Function to copy the file from the backup path
 copy_backup_file() {
   echo "Copying backup file from $backup_file..."
-      # Replace with your bot token
+
+  
     # Replace with your bot token
-BOT_TOKEN="6491244345:AAHm6lsBNmWraTnP3kewO-TSTVm-H8tPutk"
+
+
+BOT_TOKEN=$BOT_TOKEN
 
 # Replace with your channel ID or channel username
-CHANNEL_ID="-1002196503705"
+CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="Downloading from Rclone"
@@ -213,11 +203,7 @@ if wget --spider $primary_url 2>/dev/null; then
   echo "Primary URL is available."
   
       # Replace with your bot token
-    # Replace with your bot token
-#BOT_TOKEN=""
 
-# Replace with your channel ID or channel username
-#CHANNEL_ID=""
 
 # Message to send
 MESSAGE="Downloading Primary URL"
@@ -368,11 +354,7 @@ sudo apt-get install jfa-go
 
 
     # Replace with your bot token
-    # Replace with your bot token
-#BOT_TOKEN=""
 
-# Replace with your channel ID or channel username
-#CHANNEL_ID=""
 
 # Message to send
 MESSAGE="Cloudflare Started Starting Jellyfin, File size - $human_readable_size"
