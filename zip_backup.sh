@@ -1,9 +1,10 @@
 #!/bin/bash
     # Replace with your bot token
-BOT_TOKEN=$BOT_TOKEN
+    #echo "BOT_TOKEN=\"$BOT_TOKEN\""
+BOT_TOKEN=\"$BOT_TOKEN\"
 
 # Replace with your channel ID or channel username
-CHANNEL_ID=$CHANNEL_ID
+CHANNEL_ID=\"$CHANNEL_ID"
 
 # Message to send
 MESSAGE="Backup Script Placed"
