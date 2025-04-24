@@ -1,5 +1,8 @@
 #!/bin/bash
 
+eval $(gh codespace env)
+export BOT_TOKEN=$(gh codespace env get BOT_TOKEN)
+export CHANNEL_ID=$(gh codespace env get CHANNEL_ID)
 
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="$CHANNEL_ID" \
