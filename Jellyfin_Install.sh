@@ -15,10 +15,10 @@ sudo pip3 install bs4
 
 
     # Replace with your bot token
-BOT_TOKEN=$BOT_TOKEN
+BOT_TOKEN=\"$BOT_TOKEN\"
 
 # Replace with your channel ID or channel username
-CHANNEL_ID=$CHANNEL_ID
+CHANNEL_ID=\"$CHANNEL_ID"
 
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
@@ -48,12 +48,6 @@ sudo pip3 install flask
 nohup sudo python3 -m FileStream &
 
 
-    # Replace with your bot token
-BOT_TOKEN=$BOT_TOKEN
-
-# Replace with your channel ID or channel username
-CHANNEL_ID=$CHANNEL_ID
-
 # Message to send
 MESSAGE="FileStreamBot Started"
 
@@ -75,11 +69,6 @@ sleep 10
 
 
 
-    # Replace with your bot token
-BOT_TOKEN=$BOT_TOKEN
-
-# Replace with your channel ID or channel username
-CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="M3U8-Proxy Started"
@@ -135,14 +124,9 @@ download_file() {
 copy_backup_file() {
   echo "Copying backup file from $backup_file..."
 
-  
-    # Replace with your bot token
 
 
-BOT_TOKEN=$BOT_TOKEN
 
-# Replace with your channel ID or channel username
-CHANNEL_ID=$CHANNEL_ID
 
 # Message to send
 MESSAGE="Downloading from Rclone"
