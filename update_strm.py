@@ -76,8 +76,10 @@ def send_telegram_message(new_token, updated_count, skipped_count, files_updated
         f"Files Skipped: {skipped_count}\n"
     )
     
-    BOT_TOKEN = $BOT_TOKEN  # Replace with your actual bot token
-    CHANNEL_ID = $CHANNEL_ID  # Replace with your actual channel ID
+    BOT_TOKEN = os.getenv("BOT_TOKEN")
+    BOT_TOKEN = f'BOT_TOKEN="{BOT_TOKEN}"'# Replace with your actual bot token
+    CHANNEL_ID= os.getenv("CHANNEL_ID")
+    CHANNEL_ID = f'BOT_TOKEN="{CHANNEL_ID}"'  # Replace with your actual channel ID
     
     # Form the message string
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
