@@ -1,12 +1,13 @@
 import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+import os
 
 # === CONFIGURATION ===
 JELLYFIN_URL = "https://jellyfin.vflix.life"  # Replace with your server URL
 API_KEY = $API_KEY  # Replace with your admin API key
 AUTH_PROVIDER_ID = "DefaultAuthenticationProvider"
-TELEGRAM_BOT_TOKEN = $VFlix_Jellyfin_User_Create_TELEGRAM_BOT_TOKEN  # Replace with your bot token
+TELEGRAM_BOT_TOKEN = os.getenv("VFlix_Jellyfin_User_Create_TELEGRAM_BOT_TOKEN")  # Replace with your bot token
 
 # === HEADERS ===
 HEADERS = {
