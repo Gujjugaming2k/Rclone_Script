@@ -162,7 +162,67 @@ async def hub_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # ✅ Send log to Telegram group
     await send_log_to_group(context.bot, title, os.path.basename(filename))
+async def gdseries_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handle /gdseries command for multi-episode extraction."""
+    if len(context.args) == 0:
+        message = (
+            "📌 **Usage:**\n"
+            "`/gdseries <GDFlix URL>` → Extracts episode links & creates .strm files\n\n"
+            "✅ Example:\n"
+            "`/gdseries https://new4.gdflix.dad/pack/xyz123`\n\n"
+            "The bot will organize files correctly for Jellyfin/Kodi."
+        )
+        await update.message.reply_text(message, parse_mode="Markdown")
+        return
 
+    url = context.args[0]
+    
+    # Normalize the URL
+    normalized_url = normalize_gdflix_url(url)
+
+    # Fetch the webpage content asynchronously
+    headers = {"User-Agent": "Mozilla/5.0"}
+    async with aiohttp.ClientSession() as session:
+        async with session.get(normalized_url, headers=headers, timeout=10) as response:
+            if response.status != 200:
+                await update.message.reply_text("❌ Failed to fetch the page.")
+                return
+            html = await response.text()
+
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Extract and format series title dynamically
+    raw_title = soup.title.text.strip()
+    cleaned_title = re.sub(r"^[^|]*\| ", "", raw_title)  # Remove "GDFlix |"
+    series_match = re.search(r'([\w\s]+)\.?S\d+', cleaned_title, re.IGNORECASE)
+    series_folder = series_match.group(1) + " " + series_match.group(0).split('.')[-1] if series_match else "Unknown_Series"
+
+    # Create folder dynamically
+    series_path = os.path.join(SAVE_FOLDER, series_folder)
+    os.makedirs(series_path, exist_ok=True)
+
+    # Extract episode links and create .strm files
+    episode_links = []
+    for a_tag in soup.select("li.list-group-item a"):
+        href = a_tag.get("href")
+        episode_match = re.search(r'E\d+', a_tag.text)
+        if episode_match:
+            episode_name = episode_match.group() + ".strm"
+            episode_link = f"https://h2r-gdflix-xdirect.hdmovielover.workers.dev/?url={normalize_gdflix_url(site_base_url + href)}"
+            episode_links.append((episode_name, episode_link))
+
+    # Save episodes to .strm files
+    for ep_name, ep_link in episode_links:
+        ep_file_path = os.path.join(series_path, ep_name)
+        async with aiofiles.open(ep_file_path, "w") as file:
+            await file.write(ep_link)
+
+    message = f"✅ **Series Extracted Successfully**\n🎥 **Title:** `{series_folder}`\n📂 Episodes saved in `{series_folder}`"
+    await update.message.reply_text(message, parse_mode="Markdown")
+
+    # ✅ Send log to Telegram group
+    await send_log_to_group(context.bot, series_folder, series_folder)
+    
 # ✅ /gd handler with domain and structure validation
 async def gd_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle /gd command with domain and URL structure validation."""
@@ -216,6 +276,7 @@ def main():
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("hub", hub_command))
     app.add_handler(CommandHandler("gd", gd_command))
+    app.add_handler(CommandHandler("gdseries", gdseries_command))
 
     print("Bot is running with domain and structure validation...")
     app.run_polling()
