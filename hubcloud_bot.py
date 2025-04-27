@@ -15,7 +15,6 @@ TELEGRAM_BOT_TOKEN = "7556090644:AAHuRIPH1KqiRf0Ykd_Ert97cLedZWDr51I"
 # 🔥 Telegram group ID for logs
 TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
 
-
 # 🔥 Current domains
 HUBCLOUD_DOMAIN = "https://hubcloud.bz"
 GDFLIX_DOMAIN = "https://new6.gdflix.dad"
@@ -114,11 +113,13 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "👋 **Welcome to the HubCloud and GDFlix Bot!**\n\n"
         "📌 **Usage:**\n"
         "`/hub <HubCloud URL>` → Uploads HubCloud links\n"
-        "`/gd <GDFlix URL>` → Uploads GDFlix links\n\n"
-        "✅ Example:\n"
+        "`/gd <GDFlix URL>` → Uploads GDFlix movie links\n"
+        "`/gdseries <GDFlix URL>` → Extracts episode links & creates .strm files\n\n"
+        "✅ Examples:\n"
         "`/hub https://hubcloud.ink/drive/xyz123`\n"
-        "`/gd https://new4.gdflix.dad/file/abc456`\n\n"
-        "The bot will upload the file in VFlix Prime Server."
+        "`/gd https://new4.gdflix.dad/file/abc456`\n"
+        "`/gdseries https://new4.gdflix.dad/pack/xyz123`\n\n"
+        "The bot will organize files properly for Jellyfin/Kodi."
     )
     await update.message.reply_text(message, parse_mode="Markdown")
 
@@ -209,7 +210,7 @@ async def gdseries_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         episode_match = re.search(r'E\d+', a_tag.text)
         if episode_match:
             episode_name = episode_match.group() + ".strm"
-            episode_link = f"https://h2r-gdflix-xdirect.hdmovielover.workers.dev/?url={normalize_gdflix_url(site_base_url + href)}"
+            episode_link = f"https://h2r-gdflix-xdirect.hdmovielover.workers.dev/?url={normalize_gdflix_url(url + href)}"
             episode_links.append((episode_name, episode_link))
 
     # Save episodes to .strm files
