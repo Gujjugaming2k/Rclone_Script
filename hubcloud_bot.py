@@ -82,7 +82,7 @@ async def fetch_title(url):
 async def create_hub_strm_file(title, url):
     """Create .strm file for HubCloud."""
     filename = os.path.join(SAVE_FOLDER, f"{title}.strm")
-    content = f"https://hub.vflix.life/redirect_video?base_url={url}"
+    content = f"https://hubcloud-r2-dev.hdmovielover.workers.dev/download?url={url}"
 
     async with aiofiles.open(filename, "w") as file:
         await file.write(content)
