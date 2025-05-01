@@ -5,9 +5,9 @@ import os
 
 # === CONFIGURATION ===
 JELLYFIN_URL = "https://jellyfin.vflix.life"  # Replace with your server URL
-API_KEY = $API_KEY  # Replace with your admin API key
+API_KEY = "f194e40abd604fb29ec2c401cfcd346e"  # Replace with your admin API key
 AUTH_PROVIDER_ID = "DefaultAuthenticationProvider"
-TELEGRAM_BOT_TOKEN = os.getenv("VFlix_Jellyfin_User_Create_TELEGRAM_BOT_TOKEN")  # Replace with your bot token
+TELEGRAM_BOT_TOKEN = "7824471135:AAECqxTf4sThE-V8o6bviXnbGSjAIraN-l8"  # Replace with your bot token
 
 # === HEADERS ===
 HEADERS = {
