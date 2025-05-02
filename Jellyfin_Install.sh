@@ -14,7 +14,7 @@ sudo pip3 install flask
 sudo pip3 install bs4
 
 
-BOT_TOKEN="6491244345:AAFKAeud7ZMwVnmXHQ_F-K__OTw9P_AtPyo"
+BOT_TOKEN="6491244345:AAGvuSdiQ4InqP54OIcKlJ7G-olIlFs56pU"
 CHANNEL_ID="-1002196503705"
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
