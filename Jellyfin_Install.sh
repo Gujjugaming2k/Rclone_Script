@@ -14,7 +14,7 @@ sudo pip3 install flask
 sudo pip3 install bs4
 
 
-BOT_TOKEN="6491244345:AAGvuSdiQ4InqP54OIcKlJ7G-olIlFs56pU"
+BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
 CHANNEL_ID="-1002196503705"
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
@@ -36,6 +36,41 @@ fi
 
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
+
+
+# Local backup path
+val_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
+destination_val="FileStreamBot/val.txt"
+
+# Function to copy and rename the backup file
+copy_val_file() {
+  echo "Copying backup file from $val_file..."
+
+  # Message to send
+  MESSAGE="Downloading from val env file"
+
+  # Send the message using curl
+  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+      -d chat_id="${CHANNEL_ID}" \
+      -d text="${MESSAGE}" \
+      -d parse_mode="Markdown"
+
+  # Check if the message was sent successfully
+  if [ $? -eq 0 ]; then
+      echo "Message sent successfully!"
+  else
+      echo "Failed to send message."
+  fi
+
+  # Copy and rename the file
+  sudo cp "$val_file" "$destination_val"
+  sudo mv "$destination_val" "FileStreamBot/.env"
+}
+
+# Start the process
+copy_val_file
+
+
 
 
 sudo pip3 install -r requirements.txt
@@ -66,21 +101,6 @@ sleep 10
 
 
 
-# Message to send
-MESSAGE="M3U8-Proxy Started"
-
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
 
 
 # Some initial commands
