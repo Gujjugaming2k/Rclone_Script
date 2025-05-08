@@ -40,7 +40,7 @@ cd FileStreamBot
 
 # Local backup path
 val_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
-destination_val="FileStreamBot/val.txt"
+destination_val="/workspaces/FileStreamBot_2024/FileStreamBot/val.txt"
 
 # Function to copy and rename the backup file
 copy_val_file() {
