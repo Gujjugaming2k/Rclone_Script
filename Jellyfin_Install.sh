@@ -64,7 +64,7 @@ copy_val_file() {
 
   # Copy and rename the file
   sudo cp "$val_file" "$destination_val"
-  sudo mv "$destination_val" "FileStreamBot/.env"
+  sudo mv "$destination_val" "/workspaces/FileStreamBot_2024/FileStreamBot/.env"
 }
 
 # Start the process
