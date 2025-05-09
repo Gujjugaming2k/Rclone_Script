@@ -80,7 +80,7 @@ def run_update_strm_script(new_token):
             # Replace with your bot token
         
         # Assign to new variables (with quotes)
-        BOT_TOKEN = "6491244345:AAFKAeud7ZMwVnmXHQ_F-K__OTw9P_AtPyo"  # Replace with your actual bot token
+        BOT_TOKEN = "6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"  # Replace with your actual bot token
         CHANNEL_ID = "-1002196503705"  # Replace with your actual channel ID
 
         # Print to verify (also in quotes)
