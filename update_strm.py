@@ -76,7 +76,7 @@ def send_telegram_message(new_token, updated_count, skipped_count, files_updated
         f"Files Skipped: {skipped_count}\n"
     )
     
-    BOT_TOKEN = "6491244345:AAFKAeud7ZMwVnmXHQ_F-K__OTw9P_AtPyo"
+    BOT_TOKEN = "6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
     CHANNEL_ID = "-1002196503705"
     
     # Form the message string
