@@ -76,7 +76,8 @@ copy_val_file
 sudo pip3 install -r requirements.txt
 sudo pip3 install flask
 
-nohup sudo python3 -m FileStream &
+
+nohup sudo python3 -m FileStream > /tmp/opt/jellyfin/FileStream_bot_output.log 2>&1 &
 
 
 # Message to send
