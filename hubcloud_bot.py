@@ -10,7 +10,7 @@ import re
 SAVE_FOLDER = "/tmp/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
 
 # 🔥 Replace with your bot token
-TELEGRAM_BOT_TOKEN = "7556090644:AAHuRIPH1KqiRf0Ykd_Ert97cLedZWDr51I"
+TELEGRAM_BOT_TOKEN = "7531637845:AAEHIucLbu41bf08ckwGAr-fjF-BPBYNB_Q"
 
 # 🔥 Telegram group ID for logs
 TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
