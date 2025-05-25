@@ -78,6 +78,7 @@ sudo pip3 install flask
 
 sudo mkdir /tmp/opt
 sudo mkdir /tmp/opt/jellyfin
+rm /tmp/opt/jellyfin/FileStream_bot_output.log
 nohup sudo python3 -m FileStream > /tmp/opt/jellyfin/FileStream_bot_output.log 2>&1 &
 
 
