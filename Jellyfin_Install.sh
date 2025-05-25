@@ -12,6 +12,9 @@ sudo pip3 install jsonify
 sudo pip3 install requests
 sudo pip3 install flask
 sudo pip3 install bs4
+sudo pip uninstall Flask Jinja2 markupsafe -y
+sudo pip install Flask
+
 
 
 BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
