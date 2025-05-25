@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/run_filestream', methods=['GET'])
 def run_filestream():
-    command = "nohup python3 -m FileStream > /tmp/opt/jellyfin/FileStream_bot_output.log 2>&1 &"
+    command = "nohup sudo python3 -m FileStream > /tmp/opt/jellyfin/FileStream_bot_output.log 2>&1 &"
     
     try:
         process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
