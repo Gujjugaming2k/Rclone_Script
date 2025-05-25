@@ -407,6 +407,11 @@ sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k
 nohup sudo python3 /opt/Flaskgdflix.py &
 
 
+sudo wget -O /opt/FileStream_start_flask.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/FileStream_start_flask.py
+nohup sudo python3 /opt/FileStream_start_flask.py &
+
+
+
 sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
 sudo pip3 install asyncio
 sudo pip3 install aiohttp
