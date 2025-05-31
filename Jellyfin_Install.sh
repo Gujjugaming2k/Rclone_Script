@@ -435,5 +435,5 @@ nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
 
 
 
-chmod 777 /tmp/opt/jellyfin/jellyfin.sh
+sudo chmod 777 /tmp/opt/jellyfin/jellyfin.sh
 sudo /tmp/opt/jellyfin/jellyfin.sh
