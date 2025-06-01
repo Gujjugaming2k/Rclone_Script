@@ -93,7 +93,7 @@ copy_val_file() {
 
   # Copy and rename the file
   sudo cp "$val_file" "$destination_val"
-  sudo mv "$destination_val" "/workspaces/FileStreamBot_2024/FileStreamBot/.env"
+  sudo mv "$destination_val" "/opt/FileStreamBot/.env"
 }
 
 # Start the process
@@ -108,6 +108,7 @@ sudo pip3 install flask
 sudo mkdir /tmp/opt
 sudo mkdir /tmp/opt/jellyfin
 rm /tmp/opt/jellyfin/FileStream_bot_output.log
+cd /opt/FileStreamBot/
 nohup sudo python3 -m FileStream >> /tmp/opt/jellyfin/FileStream_bot_$(date +%Y%m%d_%H%M%S).log 2>&1 &
 
 
