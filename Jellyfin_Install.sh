@@ -38,7 +38,8 @@ fi
 
 echo "checking current folder"
 pwd
-sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
+cd 
+sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git /opt/
 cd FileStreamBot
 
 
@@ -68,7 +69,7 @@ echo "File exists. Continuing..."
 
 # Local backup path
 val_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
-destination_val="/workspaces/FileStreamBot_2024/FileStreamBot/val.txt"
+destination_val="/opt/FileStreamBot/val.txt"
 
 # Function to copy and rename the backup file
 copy_val_file() {
