@@ -41,6 +41,30 @@ sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
 
 
+sleep 10
+if [ ! -f "/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt" ]; then
+    echo "env File does not exist. Exiting script."
+      # Message to send
+  MESSAGE="env File does not exist. Exiting script"
+
+  # Send the message using curl
+  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+      -d chat_id="${CHANNEL_ID}" \
+      -d text="${MESSAGE}" \
+      -d parse_mode="Markdown"
+
+  # Check if the message was sent successfully
+  if [ $? -eq 0 ]; then
+      echo "Message sent successfully!"
+  else
+      echo "Failed to send message."
+  fi
+    exit 1
+fi
+
+echo "File exists. Continuing..."
+
+
 # Local backup path
 val_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
 destination_val="/workspaces/FileStreamBot_2024/FileStreamBot/val.txt"
