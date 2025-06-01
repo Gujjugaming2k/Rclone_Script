@@ -238,7 +238,7 @@ if wget --spider $primary_url 2>/dev/null; then
 
 # Message to send
 MESSAGE="Downloading Primary URL"
-
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="${CHANNEL_ID}" \
