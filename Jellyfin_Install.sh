@@ -39,8 +39,8 @@ fi
 echo "checking current folder"
 pwd
 cd 
-sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git /opt/
-cd FileStreamBot
+sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git /opt/FileStreamBot
+
 
 
 sleep 10
