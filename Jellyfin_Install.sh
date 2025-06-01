@@ -378,11 +378,11 @@ sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
 
-sudo apt-get update && sudo apt-get install curl apt-transport-https gnupg
+sudo apt-get update -y && sudo apt-get install curl apt-transport-https gnupg -y
 curl https://apt.hrfee.dev/hrfee.pubkey.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.hrfee.dev.gpg
 echo "deb https://apt.hrfee.dev trusty main" | sudo tee /etc/apt/sources.list.d/hrfee.list
-sudo apt-get update
-sudo apt-get install jfa-go
+sudo apt-get update -y
+sudo apt-get install jfa-go -y
 
 
 
@@ -432,7 +432,6 @@ EOF'
 
 
 
-nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Cloudflarestart.sh | bash > /tmp/opt/cloudflared_script.log 2>&1 &
 
 sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
 nohup sudo python3 /opt/Flaskhub.py &
