@@ -102,7 +102,7 @@ copy_val_file
 
 
 cd /opt/FileStreamBot/
-sudo pip3 install -r requirements.txt
+sudo pip3 install -r /opt/FileStreamBot/requirements.txt
 sudo pip3 install flask
 
 sudo mkdir /tmp/opt
