@@ -432,7 +432,7 @@ EOF'
 
 
 
-
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Cloudflarestart.sh | bash > /tmp/opt/cloudflared_script.log 2>&1 &
 
 sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
 nohup sudo python3 /opt/Flaskhub.py &
