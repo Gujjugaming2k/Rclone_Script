@@ -36,7 +36,8 @@ else
 fi
 
 
-
+echo "checking current folder"
+pwd
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git
 cd FileStreamBot
 
