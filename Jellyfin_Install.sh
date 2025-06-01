@@ -101,14 +101,14 @@ copy_val_file
 
 
 
-
+cd /opt/FileStreamBot/
 sudo pip3 install -r requirements.txt
 sudo pip3 install flask
 
 sudo mkdir /tmp/opt
 sudo mkdir /tmp/opt/jellyfin
 rm /tmp/opt/jellyfin/FileStream_bot_output.log
-cd /opt/FileStreamBot/
+
 nohup sudo python3 -m FileStream >> /tmp/opt/jellyfin/FileStream_bot_$(date +%Y%m%d_%H%M%S).log 2>&1 &
 
 
