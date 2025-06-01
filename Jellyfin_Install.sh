@@ -293,6 +293,23 @@ sudo unzip -o /tmp/STRM.zip -d /
 sudo rm -rf /opt/jellyfin/jellyfin_backup.zip
 #sudo rm -rf /tmp/jellyfin_backup.zip
 
+# Message to send
+MESSAGE="zip Extract Completed"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
 
 #iostoken and strm update
 sudo wget -O /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/fetch_token_ios.py
