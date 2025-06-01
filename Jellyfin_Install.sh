@@ -280,6 +280,9 @@ echo "File size (in bytes): $file_size"
 echo "File size (human-readable): $human_readable_size"
 
 
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+
+
 
 
 echo "extract zip..."
