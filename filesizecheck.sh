@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sleep 10
 # Configuration
 FILE="/tmp/jellyfin_backup.zip"
 BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
