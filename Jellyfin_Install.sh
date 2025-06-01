@@ -463,7 +463,12 @@ nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
 
 
 
-
+sudo /etc/init.d/cloudflared start
+sudo /etc/init.d/cloudflared start
 
 sudo chmod 777 /tmp/opt/jellyfin/jellyfin.sh
+
+sudo /etc/init.d/cloudflared start
+sudo /etc/init.d/cloudflared start
+
 sudo /tmp/opt/jellyfin/jellyfin.sh
