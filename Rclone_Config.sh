@@ -41,7 +41,7 @@ echo "Mounting remote drive..."
 echo "Mounting remote drive..."
 echo "Mounting remote drive..."
 echo "Mounting remote drive..."
-sudo rclone mount w1928440: /opt/Rclone_Drive/w1928440 --vfs-cache-mode writes &
+sudo rclone mount w1928440: /opt/Rclone_Drive/w1928440 --vfs-cache-mode writes --allow-non-empty &
 
 # Add any additional options or flags as needed for your use case.
 
