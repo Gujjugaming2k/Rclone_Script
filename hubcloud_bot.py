@@ -13,8 +13,8 @@ SAVE_FOLDER = "/tmp/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm file
 TELEGRAM_BOT_TOKEN = "7531637845:AAEHIucLbu41bf08ckwGAr-fjF-BPBYNB_Q"
 
 # 🔥 Telegram group ID for logs
-TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
-
+#TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
+TELEGRAM_GROUP_ID = "-1002873454819"
 # 🔥 Current domains
 HUBCLOUD_DOMAIN = "https://hubcloud.bz"
 GDFLIX_DOMAIN = "https://new6.gdflix.dad"
