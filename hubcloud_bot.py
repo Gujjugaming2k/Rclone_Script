@@ -39,7 +39,12 @@ GDFLIX_DOMAINS = [
     "https://new3.gdflix.dad",
     "https://new4.gdflix.dad",
     "https://new5.gdflix.dad",
-    "https://new6.gdflix.dad"
+    "https://new6.gdflix.dad",
+    "https://new7.gdflix.dad",
+    "https://new8.gdflix.dad",
+    "https://new9.gdflix.dad",
+    "https://new10.gdflix.dad",
+    "https://new11.gdflix.dad"
 ]
 
 # Ensure save folder exists
