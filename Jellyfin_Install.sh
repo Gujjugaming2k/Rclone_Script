@@ -476,7 +476,7 @@ sudo wget -O /opt/Telegram_jellyfin_usercreate.py https://raw.githubusercontent.
 nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
 
 
-nohup curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash > /tmp/scriptfilesystem.log 2>&1 &
+#nohup curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash > /tmp/scriptfilesystem.log 2>&1 &
 
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
