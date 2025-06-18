@@ -15,9 +15,9 @@ sudo chmod 777 /tmp/zip_backup.sh
 /tmp/zip_backup.sh > /dev/null 2>&1 &
 
 
-#curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
-#nohup sudo filebrowser -p 8021 -r /tmp/opt/jellyfin/ > /workspaces/php_server.log 2>&1 &
-#docker run -d -v /tmp/opt/jellyfin/:/srv -p 8021:80 gtstef/filebrowser:beta
+curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash
+nohup sudo filebrowser -p 8021 -r /tmp/opt/jellyfin/ > /workspaces/php_server.log 2>&1 &
+
 
 
 
