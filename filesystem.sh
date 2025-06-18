@@ -1,59 +1,15 @@
 #!/bin/bash
 
-# Define the config file path
-CONFIG_FILE="config.yaml"
+# Install File Browser
+echo "Installing File Browser..."
+curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | sudo bash
 
-# Write the required configuration to the file
-sudo cat <<EOL > "$CONFIG_FILE"
-server:
-  port: 8021
-  database: ./database.db
-  sources:
-  - path: /tmp/opt/jellyfin/
-  logging:
-  - levels: info|warning|error
-    apiLevels: info|warning|error
-    output: stdout
-    noColors: false
-    utc: false
-frontend:
-  name: FileBrowser Quantum
-userDefaults:
-  permissions:
-    api: false
-    admin: false
-    modify: false
-    share: false
-    realtime: false
-EOL
+# Initialize configuration
+echo "Initializing configuration..."
+sudo filebrowser config init
 
-# Verify file creation
-if [ -f "$CONFIG_FILE" ]; then
-    echo "Configuration file '$CONFIG_FILE' created successfully."
-else
-    echo "Failed to create configuration file."
-    exit 1
-fi
+# Create admin user
+echo "Adding admin user..."
+sudo filebrowser users add admin1 VFlix1 --perm.admin
 
-# Download the FileBrowser binary
-echo "Downloading FileBrowser..."
-sudo wget https://github.com/gtsteffaniak/filebrowser/releases/download/v0.7.9-beta/linux-amd64-filebrowser
-
-# Check if download was successful
-if [ -f "linux-amd64-filebrowser" ]; then
-    echo "FileBrowser downloaded successfully."
-else
-    echo "Failed to download FileBrowser."
-    exit 1
-fi
-
-# Change permission to executable
-sudo chmod 777 linux-amd64-filebrowser
-echo "Permissions updated."
-
-# Run FileBrowser in the background
-echo "Starting FileBrowser in the background..."
-sudo ./linux-amd64-filebrowser
-
-# Inform the user
-echo "FileBrowser is running in the background."
+echo "✅ File Browser setup complete!"
