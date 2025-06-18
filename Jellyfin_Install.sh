@@ -321,11 +321,7 @@ nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
 # Pull Jellyfin Docker image
 echo "Restore Docker image..."
-echo "Restore Docker image..."
-echo "Restore Docker image..."
-echo "Restoren Docker image..."
-echo "Restore Docker image..."
-echo "Restore Docker image..."
+
 
 
 
@@ -476,7 +472,27 @@ sudo wget -O /opt/Telegram_jellyfin_usercreate.py https://raw.githubusercontent.
 nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
 
 
-#nohup curl -fsSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/filesystem.sh | sudo bash > /tmp/scriptfilesystem.log 2>&1 &
+
+#Send password to telgeram
+
+# Extract password from the log
+PASSWORD=$(grep "Generated random admin password" /workspaces/php_server.log | awk -F': ' '{print $2}')
+
+# Construct your message
+MESSAGE="🛠️ *Jellyfin Setup Started*  🔐 *Admin Password:* \`$PASSWORD\`"
+
+# Send it to Telegram
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"
+
+# Check success
+if [ $? -eq 0 ]; then
+    echo "Telegram message sent!"
+else
+    echo "Failed to send Telegram message."
+fi
 
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
