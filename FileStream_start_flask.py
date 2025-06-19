@@ -14,5 +14,15 @@ def run_filestream():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route('/run_ftp', methods=['GET'])
+def run_ftp():
+    command = "PASSWORD=$(grep "Generated random admin password" /workspaces/php_server.log | awk -F': ' '{print $2}')"
+    
+    try:
+        process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return jsonify({"message": "*Admin Password:* \`$PASSWORD\`", "pid": process.pid})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5018, debug=True)
