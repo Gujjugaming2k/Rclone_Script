@@ -1,26 +1,41 @@
 from flask import Flask, jsonify
 import subprocess
-import shlex
 
 app = Flask(__name__)
 
 @app.route('/run_filestream', methods=['GET'])
 def run_filestream():
-    command = "nohup sudo python3 -m FileStream >> /tmp/opt/jellyfin/FileStream_bot_output.log 2>&1 &"
-    
+    command = "sudo python3 -m FileStream"
+    working_dir = "/opt/FileStreamBot/"
+
     try:
-        process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        return jsonify({"message": "FileStream bot started!", "pid": process.pid})
+        # Run command from specified directory and capture output
+        process = subprocess.Popen(
+            command,
+            shell=True,
+            cwd=working_dir,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True
+        )
+        output, _ = process.communicate(timeout=30)  # Adjust timeout as needed
+        return jsonify({"message": "FileStream executed.", "output": output})
+    except subprocess.TimeoutExpired:
+        process.kill()
+        return jsonify({"error": "FileStream timed out."}), 504
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @app.route('/run_ftp', methods=['GET'])
 def run_ftp():
-    command = "PASSWORD=$(grep "Generated random admin password" /workspaces/php_server.log | awk -F': ' '{print $2}')"
+    command = "grep 'Generated random admin password' /workspaces/php_server.log | awk -F': ' '{print $2}'"
     
     try:
-        process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        return jsonify({"message": "*Admin Password:* \`$PASSWORD\`", "pid": process.pid})
+        # Run command in shell to use pipes and awk
+        output = subprocess.check_output(command, shell=True, text=True).strip()
+        return jsonify({"message": f"*Admin Password:* `{output}`"})
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": "Failed to retrieve password", "details": e.output}), 500
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
