@@ -476,7 +476,7 @@ nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
 #Send password to telgeram
 
 # Extract password from the log
-PASSWORD=$(grep "Generated random admin password" /workspaces/php_server.log | awk -F': ' '{print $2}')
+PASSWORD=$(grep "Randomly generated password for user 'admin'" /tmp/filesystem_php_server.log | awk -F': ' '{print $2}')
 
 # Construct your message
 MESSAGE="🛠️ *Jellyfin Setup Started*  🔐 *Admin Password:* \`$PASSWORD\`"
