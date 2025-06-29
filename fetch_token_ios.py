@@ -19,7 +19,8 @@ def get_cookie(base_url: str) -> str:
     print(f"[+] addhash: {addhash}")
 
     # Step 2: Trigger verification
-    verify_url = f"https://userverify.netmirror.app/?fr3={addhash}&a=y"
+    verify_url = f"https://userver.netfree2.cc/?heyyst={addhash}&a=y"
+    #https://userver.netfree2.cc/?heyyst=330e7704a891906362a7bd86af04835a::3207e03f568d43e5b3351bb5628148b6::1751175793::ni&a=y&t=0.17306092957192842
     session.get(verify_url)
 
     # Step 3: POST to verify2.php until statusup = All Done
