@@ -121,3 +121,7 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
+
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
