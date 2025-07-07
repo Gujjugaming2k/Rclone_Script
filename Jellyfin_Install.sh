@@ -344,51 +344,12 @@ EOF
 sudo apt update -y
 sudo apt install jellyfin -y
 
-sudo /etc/init.d/cloudflared start
-
-# Check the status of the cloudflared service
-sudo /etc/init.d/cloudflared status
 
 
 
 
-sleep 5
 
 
-# Download the script
-curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/cloudflared_status.sh
-
-# Make the script executable
-chmod +x cloudflared_status.sh
-
-# Run the script in the background and redirect output to status_log.txt
-./cloudflared_status.sh >> status_log.txt 2>&1 &
-
-# Capture the status result
-STATUS=$?
-
-
-
-# If the status is not running (status code not equal to 0), start the service
-if [ $STATUS -ne 0 ]; then
-    echo "Not running"
-    echo "Starting the cloudflared service..."
-   sudo /etc/init.d/cloudflared start
-
-    # Check if the service started successfully
-    if [ $? -eq 0 ]; then
-        echo "cloudflared service started successfully."
-    else
-        echo "Failed to start cloudflared service."
-        
-    fi
-else
-    echo "cloudflared service is running."
-fi
-sudo /etc/init.d/cloudflared start
-sudo /etc/init.d/cloudflared start
-sudo /etc/init.d/cloudflared start
-sudo /etc/init.d/cloudflared start
 
 
 sudo apt-get update -y && sudo apt-get install curl apt-transport-https gnupg -y
@@ -494,6 +455,41 @@ else
     echo "Failed to send Telegram message."
 fi
 
+
+
+
+
+# Download the script
+curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/cloudflared_status.sh
+
+# Make the script executable
+chmod +x cloudflared_status.sh
+
+# Run the script in the background and redirect output to status_log.txt
+./cloudflared_status.sh >> status_log.txt 2>&1 &
+
+# Capture the status result
+STATUS=$?
+
+
+
+# If the status is not running (status code not equal to 0), start the service
+if [ $STATUS -ne 0 ]; then
+    echo "Not running"
+    echo "Starting the cloudflared service..."
+   sudo /etc/init.d/cloudflared start
+
+    # Check if the service started successfully
+    if [ $? -eq 0 ]; then
+        echo "cloudflared service started successfully."
+    else
+        echo "Failed to start cloudflared service."
+        
+    fi
+else
+    echo "cloudflared service is running."
+fi
+sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
