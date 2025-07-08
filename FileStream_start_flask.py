@@ -28,7 +28,9 @@ def run_filestream():
 
 @app.route('/run_ftp', methods=['GET'])
 def run_ftp():
-    command = "grep 'Generated random admin password' /workspaces/php_server.log | awk -F': ' '{print $2}'"
+    #command = "grep 'Generated random admin password' /workspaces/php_server.log | awk -F': ' '{print $2}'"
+    command=$(grep "Randomly generated password for user 'admin'" /tmp/filesystem_php_server.log | awk -F': ' '{print $2}')
+
     
     try:
         # Run command in shell to use pipes and awk
