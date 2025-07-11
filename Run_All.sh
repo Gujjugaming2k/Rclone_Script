@@ -1,5 +1,7 @@
 #!/bin/bash
-
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
 eval $(gh codespace env)
 export BOT_TOKEN=$(gh codespace env get BOT_TOKEN)
 export CHANNEL_ID=$(gh codespace env get CHANNEL_ID)
