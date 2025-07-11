@@ -31,7 +31,8 @@ else
     echo "Failed to send message."
 fi
 
-sleep 20m
+sleep 5
+
 
 # Message to send
 MESSAGE="Codespace Stoped - $CODESPACE_NAME"
@@ -48,4 +49,6 @@ if [ $? -eq 0 ]; then
 else
     echo "Failed to send message."
 fi
+
+sleep 5
 gh codespace stop -c $CODESPACE_NAME
