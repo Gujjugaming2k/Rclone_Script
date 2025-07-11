@@ -1,4 +1,4 @@
-sleep 5
+
 url="https://livehume.store/github/github_token_date.php?type=create"
 
 # Get the output and response code using curl
