@@ -15,7 +15,7 @@ STRM_DEFAULT_DIR = "/tmp/opt/jellyfin/STRM/m3u8/"
 CHECK_INTERVAL = 60  # 10 minutes
 
 BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
-CHANNEL_ID="-1002196503705"
+CHANNEL_ID="-1002873454819"
 # Message to send
 #MESSAGE="Jellyfin - Installation Started"
 
@@ -131,17 +131,18 @@ def create_strm_file(filename, url):
     strm_dir = get_strm_dir(filename)
     path = os.path.join(strm_dir, f"{filename}.strm")
 
+    # Wrap original URL
+    modified_url = f"https://hubcloud-r2-dev.hdmovielover.workers.dev/download?url={url}"
+
     if not os.path.exists(path):
         with open(path, "w") as f:
-            f.write(url)
+            f.write(modified_url)
         print(f"✅ .strm created: {filename} → {strm_dir}")
 
         # Send Telegram message with dynamic content
         send_telegram_message(f"*{filename}* added in `{strm_dir}`")
     else:
         print(f"⚠️ Skipped (already exists): {filename}")
-
-
 def monitor():
 
     while True:
