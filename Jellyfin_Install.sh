@@ -319,6 +319,8 @@ nohup sudo python3 /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/Netflix/fetch_token_ios
 nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
 
+
+
 # Pull Jellyfin Docker image
 echo "Restore Docker image..."
 
@@ -431,6 +433,9 @@ nohup sudo python3 /opt/hubcloud_bot.py &
 
 sudo wget -O /opt/Telegram_jellyfin_usercreate.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Telegram_jellyfin_usercreate.py
 nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
+
+sudo wget -O /opt/4khdhub_auto_upload.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/4khdhub_auto_upload.py
+nohup sudo python3 /opt/4khdhub_auto_upload.py &
 
 
 
