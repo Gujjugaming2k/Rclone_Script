@@ -44,24 +44,31 @@ sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git /opt/FileStrea
 
 
 sleep 10
-if [ ! -f "/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt" ]; then
+#!/bin/bash
+
+ENV_PATH="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
+
+if [ ! -f "$ENV_PATH" ]; then
     echo "env File does not exist. Exiting script."
-      # Message to send
-  MESSAGE="env File does not exist. Exiting script"
 
-  # Send the message using curl
-  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-      -d chat_id="${CHANNEL_ID}" \
-      -d text="${MESSAGE}" \
-      -d parse_mode="Markdown"
+    MESSAGE="*env File does not exist.* Running recovery setup ⚙️"
 
-  # Check if the message was sent successfully
-  if [ $? -eq 0 ]; then
-      echo "Message sent successfully!"
-  else
-      echo "Failed to send message."
-  fi
-    exit 1
+    # Send Telegram notification
+    RESPONSE=$(curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+        -d chat_id="${CHANNEL_ID}" \
+        -d text="${MESSAGE}" \
+        -d parse_mode="Markdown")
+
+    if [ $? -eq 0 ]; then
+        echo "✅ Message sent successfully!"
+    else
+        echo "❌ Failed to send message."
+    fi
+
+    # Run recovery/setup script
+    curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Restart.sh | sudo bash
+
+    
 fi
 
 echo "File exists. Continuing..."
