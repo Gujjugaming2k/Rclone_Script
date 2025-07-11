@@ -16,7 +16,7 @@ echo "HTTP Status Code: $http_code"
 
 
 # Message to send
-MESSAGE="Codespace Created - $output"
+MESSAGE="Codespace Created from Restart Script- $output"
 
 # Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
