@@ -50,5 +50,4 @@ else
     echo "Failed to send message."
 fi
 
-sleep 5
-gh codespace stop -c $CODESPACE_NAME
+
