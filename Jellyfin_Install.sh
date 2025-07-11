@@ -42,6 +42,10 @@ cd
 sudo git clone https://github.com/Gujjugaming2k/FileStreamBot.git /opt/FileStreamBot
 
 
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+
 
 sleep 10
 #!/bin/bash
@@ -164,6 +168,11 @@ echo "copy zip..."
 
 #!/bin/bash
 
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+
+
 # Primary URL and local backup path
 primary_url="https://download.vflix.life/jellyfin_backup.zip"
 backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
@@ -243,7 +252,9 @@ if wget --spider $primary_url 2>/dev/null; then
   
       # Replace with your bot token
 
-
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
 # Message to send
 MESSAGE="Downloading Primary URL"
 nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
