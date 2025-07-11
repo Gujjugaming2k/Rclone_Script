@@ -1,5 +1,7 @@
 #!/bin/bash
-
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
 sudo su - root
 id
 id
