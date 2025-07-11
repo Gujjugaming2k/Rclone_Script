@@ -21,7 +21,7 @@ else
     echo "Failed to send message."
 fi
 
-sleep 10800
+sleep 3h
 
 #curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
 #chmod +x Rclone_zip_Backup.sh
@@ -89,7 +89,7 @@ fi
 
 
 
-sleep 10
+sleep 5
 url="https://livehume.store/github/github_token_date.php?type=create"
 
 # Get the output and response code using curl
@@ -122,3 +122,4 @@ else
     echo "Failed to send message."
 fi
 
+ 10
