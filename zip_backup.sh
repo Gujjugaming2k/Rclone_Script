@@ -122,4 +122,22 @@ else
     echo "Failed to send message."
 fi
 
- 10
+sleep 20m
+
+# Message to send
+MESSAGE="Codespace Stoped - $CODESPACE_NAME"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+gh codespace stop -c $CODESPACE_NAME
+ 
