@@ -214,7 +214,7 @@ def monitor():
 
                 for file_title, final_url in hubcloud_links:
                     if final_url not in old_links:
-                        create_strm_file(file_title, final_url)
+                        create_strm_file(file_title, final_url, soup)
                         new_links.append(final_url)
 
                 if new_links:
