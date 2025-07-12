@@ -226,7 +226,7 @@ def get_grouped_episode_links(movie_url):
         season_header = section.select_one(".episode-number")
         season_label = season_header.text.strip() if season_header else "SeasonUnknown"
 
-        download_blocks = section.select(".episode-download-item")
+        download_blocks = section.select(".episode-downloads .episode-download-item")
         for item in download_blocks:
             title_el = item.select_one(".episode-file-title")
             if not title_el:
