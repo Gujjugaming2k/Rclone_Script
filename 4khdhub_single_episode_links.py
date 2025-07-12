@@ -85,15 +85,15 @@ def get_single_episode_links(movie_url):
         if "1080p" not in file_title:
             continue
 
-        codec = "H.264" if "H.264" in file_title else ("H.265" if "H.265" in file_title else None)
+        codec = "264" if "264" in file_title else ("265" if "265" in file_title else None)
         if not codec:
             continue
 
         episode_id = re.search(r"(S\d+E\d+)", file_title)
         key = episode_id.group(1) if episode_id else file_title
 
-        # Skip H.265 if H.264 already saved
-        if codec == "H.265" and codec_tracker.get(key) == "H.264":
+        # Skip 265 if 264 already saved
+        if codec == "265" and codec_tracker.get(key) == "264":
             continue
         codec_tracker[key] = codec
 
