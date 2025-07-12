@@ -35,6 +35,19 @@ def get_strm_dir(filename):
     else:
         return STRM_DEFAULT_DIR
 
+def get_series_and_season_path(soup, filename):
+    # Extract series name
+    title_tag = soup.find("h1", class_="page-title")
+    series_name = title_tag.text.strip() if title_tag else "UnknownSeries"
+
+    # Match season from filename (e.g. S01 or S1)
+    match = re.search(r"\bS(?:eason)?0?(\d+)\b", filename, re.IGNORECASE)
+    season = f"S{match.group(1).zfill(2)}" if match else "SeasonUnknown"
+
+    folder_path = os.path.join(STRM_1080_DIR, series_name, season)
+    os.makedirs(folder_path, exist_ok=True)
+    return folder_path
+
 
 def send_telegram_message(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -169,22 +182,20 @@ def get_hubcloud_links(movie_url):
 
     return links
 
-def create_strm_file(filename, url):
-    strm_dir = get_strm_dir(filename)
+def create_strm_file(filename, url, soup):
+    strm_dir = get_series_and_season_path(soup, filename)
     path = os.path.join(strm_dir, f"{filename}.strm")
-
-    # Wrap original URL
     modified_url = f"https://hubcloud-r2-dev.hdmovielover.workers.dev/download?url={url}"
 
     if not os.path.exists(path):
         with open(path, "w") as f:
             f.write(modified_url)
         print(f"✅ .strm created: {filename} → {strm_dir}")
-
-        # Send Telegram message with dynamic content
         send_telegram_message(f"*{filename}* added in `{strm_dir}`")
     else:
         print(f"⚠️ Skipped (already exists): {filename}")
+
+        
 def monitor():
 
     while True:
