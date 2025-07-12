@@ -41,12 +41,13 @@ def get_series_and_season_path(soup, filename):
     series_name = title_tag.text.strip() if title_tag else "UnknownSeries"
 
     # Match season from filename (e.g. S01 or S1)
-    match = re.search(r"\bS(?:eason)?0?(\d+)\b", filename, re.IGNORECASE)
-    season = f"S{match.group(1).zfill(2)}" if match else "SeasonUnknown"
+    match = re.search(r"(S(?:eason)?0?(\d+))", filename, re.IGNORECASE)
+    season = f"S{match.group(2).zfill(2)}" if match else "SeasonUnknown"
 
     folder_path = os.path.join(STRM_1080_DIR, series_name, season)
     os.makedirs(folder_path, exist_ok=True)
     return folder_path
+
 
 
 def send_telegram_message(message):
