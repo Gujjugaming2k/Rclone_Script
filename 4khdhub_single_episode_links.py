@@ -192,32 +192,51 @@ def create_strm_file(filename, url, soup):
         with open(path, "w") as f:
             f.write(modified_url)
         print(f"✅ .strm created: {filename} → {strm_dir}")
-        send_telegram_message(f"*{filename}* added in `{strm_dir}`")
+        return strm_dir, filename
     else:
         print(f"⚠️ Skipped (already exists): {filename}")
+        return None, None
+
 
         
 def monitor():
-
     while True:
         print("\n🔄 Checking for updates...")
         processed = load_processed_data()
+
         try:
             movie_urls = get_movie_list()
 
             for movie_url in movie_urls:
                 print(f"\n📄 Processing {movie_url}")
-                hubcloud_links, soup = get_single_episode_links(movie_url)
 
+                hubcloud_links, soup = get_single_episode_links(movie_url)
 
                 old_links = processed.get(movie_url, [])
                 new_links = []
+                season_batches = {}  # For season-wise grouping
 
                 for file_title, final_url in hubcloud_links:
                     if final_url not in old_links:
-                        create_strm_file(file_title, final_url, soup)
+                        season_folder, written_file = create_strm_file(file_title, final_url, soup)
                         new_links.append(final_url)
 
+                        if season_folder and written_file:
+                            season_batches.setdefault(season_folder, []).append(written_file)
+
+                # Send grouped Telegram messages after processing all episodes
+                for season_path, files in season_batches.items():
+                    movie_name = os.path.basename(os.path.dirname(season_path))
+                    season_name = os.path.basename(season_path)
+                    count = len(files)
+
+                    message = (
+                        f"📦 Added: *{movie_name}* - `{season_name}` ({count} episodes)\n"
+                        f"📁 Location: `{season_path}`"
+                    )
+                    send_telegram_message(message)
+
+                # Update processed record if new links found
                 if new_links:
                     processed[movie_url] = list(set(old_links + new_links))
                     save_processed_data(processed)
@@ -227,6 +246,7 @@ def monitor():
 
         print(f"\n⏳ Waiting {CHECK_INTERVAL // 60} minutes before next check...")
         time.sleep(CHECK_INTERVAL)
+
 
 if __name__ == "__main__":
     monitor()
