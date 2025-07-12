@@ -106,7 +106,7 @@ def get_single_episode_links(movie_url):
                     collected_links.append((file_title, final_url))
                 break  # only one HubCloud per episode
 
-    return collected_links
+    return collected_links, soup
 
 
 def load_processed_data():
@@ -206,7 +206,7 @@ def monitor():
 
             for movie_url in movie_urls:
                 print(f"\n📄 Processing {movie_url}")
-                hubcloud_links = get_single_episode_links(movie_url)
+                hubcloud_links, soup = get_single_episode_links(movie_url)
 
 
                 old_links = processed.get(movie_url, [])
