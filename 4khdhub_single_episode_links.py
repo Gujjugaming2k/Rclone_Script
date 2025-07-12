@@ -93,22 +93,20 @@ def get_single_episode_links(movie_url):
         if "1080p" not in file_title:
             continue
 
-        # Match codec: accepts 'x264', 'H.264', '264' (same for 265)
-        if re.search(r"\b(?:x)?264\b", file_title) or "H.264" in file_title or "264" in file_title:
+        # Match codec using '264' or '265'
+        if "264" in file_title:
             codec = "H.264"
-        elif re.search(r"\b(?:x)?265\b", file_title) or "H.265" in file_title or "265" in file_title:
+        elif "265" in file_title:
             codec = "H.265"
         else:
             codec = None
 
         if not codec:
-            continue  # skip if codec isn’t valid
+            continue
 
-        # Track by episode ID or fallback to full title
+        # Prefer H.264 if duplicate episode exists
         episode_id = re.search(r"S\d{1,2}E\d{1,2}", file_title)
         key = episode_id.group(0) if episode_id else file_title
-
-        # Prefer H.264 if duplicate exists
         if codec == "H.265" and codec_tracker.get(key) == "H.264":
             continue
         codec_tracker[key] = codec
@@ -121,9 +119,10 @@ def get_single_episode_links(movie_url):
                 final_url = extract_and_decode_final_link(short_url)
                 if final_url:
                     collected_links.append((file_title, final_url))
-                break  # use only HubCloud once
+                break
 
     return collected_links, soup
+
 
 
 def load_processed_data():
@@ -213,6 +212,58 @@ def create_strm_file(filename, url, soup):
         print(f"⚠️ Skipped (already exists): {filename}")
         return None, None
 
+def get_grouped_episode_links(movie_url):
+    full_url = "https://4khdhub.fans" + movie_url
+    response = requests.get(full_url)
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    season_sections = soup.select(".season-content .season-item")
+    collected_links = []
+    codec_tracker = {}
+
+    for section in season_sections:
+        # Extract season label like 'S07'
+        season_header = section.select_one(".episode-number")
+        season_label = season_header.text.strip() if season_header else "SeasonUnknown"
+
+        download_blocks = section.select(".episode-download-item")
+        for item in download_blocks:
+            title_el = item.select_one(".episode-file-title")
+            if not title_el:
+                continue
+
+            file_title = title_el.text.strip()
+            if "1080p" not in file_title:
+                continue
+
+            # Match codec using '264' or '265'
+            if "264" in file_title:
+                codec = "H.264"
+            elif "265" in file_title:
+                codec = "H.265"
+            else:
+                codec = None
+
+            if not codec:
+                continue
+
+            episode_id = re.search(r"S\d{1,2}E\d{1,2}", file_title)
+            key = episode_id.group(0) if episode_id else file_title
+            if codec == "H.265" and codec_tracker.get(key) == "H.264":
+                continue
+            codec_tracker[key] = codec
+
+            links = item.select(".episode-links a")
+            for link in links:
+                label = link.text.strip()
+                if "HubCloud" in label:
+                    short_url = link["href"]
+                    final_url = extract_and_decode_final_link(short_url)
+                    if final_url:
+                        collected_links.append((file_title, final_url))
+                    break
+
+    return collected_links, soup
 
         
 def monitor():
@@ -225,12 +276,22 @@ def monitor():
 
             for movie_url in movie_urls:
                 print(f"\n📄 Processing {movie_url}")
+                full_url = "https://4khdhub.fans" + movie_url
+                response = requests.get(full_url)
+                soup = BeautifulSoup(response.content, "html.parser")
 
-                hubcloud_links, soup = get_single_episode_links(movie_url)
+                # Dynamically select parser based on structure
+                if soup.select(".season-content .season-item"):
+                    hubcloud_links, soup = get_grouped_episode_links(movie_url)
+                elif soup.select("#episodes .episode-download-item"):
+                    hubcloud_links, soup = get_single_episode_links(movie_url)
+                else:
+                    print(f"⚠️ Unknown page layout, skipping: {movie_url}")
+                    continue
 
                 old_links = processed.get(movie_url, [])
                 new_links = []
-                season_batches = {}  # For season-wise grouping
+                season_batches = {}
 
                 for file_title, final_url in hubcloud_links:
                     if final_url not in old_links:
@@ -240,7 +301,7 @@ def monitor():
                         if season_folder and written_file:
                             season_batches.setdefault(season_folder, []).append(written_file)
 
-                # Send grouped Telegram messages after processing all episodes
+                # Batch Telegram messages by season
                 for season_path, files in season_batches.items():
                     movie_name = os.path.basename(os.path.dirname(season_path))
                     season_name = os.path.basename(season_path)
@@ -252,7 +313,6 @@ def monitor():
                     )
                     send_telegram_message(message)
 
-                # Update processed record if new links found
                 if new_links:
                     processed[movie_url] = list(set(old_links + new_links))
                     save_processed_data(processed)
@@ -262,6 +322,7 @@ def monitor():
 
         print(f"\n⏳ Waiting {CHECK_INTERVAL // 60} minutes before next check...")
         time.sleep(CHECK_INTERVAL)
+
 
 
 if __name__ == "__main__":
