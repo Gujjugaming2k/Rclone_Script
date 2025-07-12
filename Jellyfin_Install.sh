@@ -456,7 +456,8 @@ nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
 sudo wget -O /opt/4khdhub_auto_upload.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/4khdhub_auto_upload.py
 nohup sudo python3 /opt/4khdhub_auto_upload.py &
 
-
+sudo wget -O /opt/4khdhub_single_episode_links.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/4khdhub_single_episode_links.py
+nohup sudo python3 /opt/4khdhub_single_episode_links.py &
 
 #Send password to telgeram
 
