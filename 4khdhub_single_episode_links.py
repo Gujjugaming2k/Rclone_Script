@@ -36,14 +36,22 @@ def get_strm_dir(filename):
         return STRM_DEFAULT_DIR
 
 def get_series_and_season_path(soup, filename):
-    # Extract series name
+    # Extract series name from <h1 class="page-title">
     title_tag = soup.find("h1", class_="page-title")
-    series_name = title_tag.text.strip() if title_tag else "UnknownSeries"
+    raw_name = title_tag.text.strip() if title_tag else "UnknownSeries"
 
-    # Match season from filename (e.g. S01 or S1)
-    match = re.search(r"(S(?:eason)?0?(\d+))", filename, re.IGNORECASE)
-    season = f"S{match.group(2).zfill(2)}" if match else "SeasonUnknown"
+    # Sanitize folder name
+    series_name = re.sub(r"[^\w\s.-]", "", raw_name).strip().replace("  ", " ")
+    series_name = series_name.replace("’", "'")  # optional, handle curly apostrophes
 
+    # Detect season from filename
+    match = re.search(r"\bS(?:eason)?0?(\d{1,2})\b", filename, re.IGNORECASE)
+    if not match:
+        match = re.search(r"S(\d{1,2})E\d{1,2}", filename)
+
+    season = f"S{match.group(1).zfill(2)}" if match else "SeasonUnknown"
+
+    # Create full path
     folder_path = os.path.join(STRM_1080_DIR, series_name, season)
     os.makedirs(folder_path, exist_ok=True)
     return folder_path
@@ -85,27 +93,35 @@ def get_single_episode_links(movie_url):
         if "1080p" not in file_title:
             continue
 
-        codec = "264" if "264" in file_title else ("265" if "265" in file_title else None)
+        # Match codec: accepts 'x264', 'H.264', '264' (same for 265)
+        if re.search(r"\b(?:x)?264\b", file_title) or "H.264" in file_title or "264" in file_title:
+            codec = "H.264"
+        elif re.search(r"\b(?:x)?265\b", file_title) or "H.265" in file_title or "265" in file_title:
+            codec = "H.265"
+        else:
+            codec = None
+
         if not codec:
-            continue
+            continue  # skip if codec isn’t valid
 
-        episode_id = re.search(r"(S\d+E\d+)", file_title)
-        key = episode_id.group(1) if episode_id else file_title
+        # Track by episode ID or fallback to full title
+        episode_id = re.search(r"S\d{1,2}E\d{1,2}", file_title)
+        key = episode_id.group(0) if episode_id else file_title
 
-        # Skip 265 if 264 already saved
-        if codec == "265" and codec_tracker.get(key) == "264":
+        # Prefer H.264 if duplicate exists
+        if codec == "H.265" and codec_tracker.get(key) == "H.264":
             continue
         codec_tracker[key] = codec
 
         anchors = item.select(".episode-links a")
         for anchor in anchors:
-            span_text = anchor.text.strip()
-            if "HubCloud" in span_text:
+            label = anchor.text.strip()
+            if "HubCloud" in label:
                 short_url = anchor["href"]
                 final_url = extract_and_decode_final_link(short_url)
                 if final_url:
                     collected_links.append((file_title, final_url))
-                break  # only one HubCloud per episode
+                break  # use only HubCloud once
 
     return collected_links, soup
 
