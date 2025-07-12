@@ -217,14 +217,21 @@ def get_grouped_episode_links(movie_url):
     response = requests.get(full_url)
     soup = BeautifulSoup(response.content, "html.parser")
 
-    season_sections = soup.select(".season-content .episode-item")
+    season_sections = soup.select(".season-content .season-item.episode-item")
     collected_links = []
     codec_tracker = {}
 
     for section in season_sections:
-        # Extract season label like 'S07'
-        season_header = section.select_one(".episode-number")
-        season_label = season_header.text.strip() if season_header else "SeasonUnknown"
+        # Extract group header like "S01 1080p BluRay x265"
+        header_el = section.select_one(".episode-title")
+        header_text = header_el.text.strip() if header_el else ""
+
+        # Determine fallback codec from season header
+        default_codec = None
+        if re.search(r"265|x265|HEVC", header_text, re.IGNORECASE):
+            default_codec = "H.265"
+        elif re.search(r"264|x264|AVC|H\.264", header_text, re.IGNORECASE):
+            default_codec = "H.264"
 
         download_blocks = section.select(".episode-downloads .episode-download-item")
         for item in download_blocks:
@@ -236,23 +243,26 @@ def get_grouped_episode_links(movie_url):
             if "1080p" not in file_title:
                 continue
 
-            # Match codec using '264' or '265'
-            if "264" in file_title:
+            # Try direct codec detection from filename
+            if re.search(r"264|x264|AVC|H\.264", file_title, re.IGNORECASE):
                 codec = "H.264"
-            elif "265" in file_title:
+            elif re.search(r"265|x265|HEVC", file_title, re.IGNORECASE):
                 codec = "H.265"
             else:
-                codec = None
+                codec = default_codec  # Fallback to group header codec
 
             if not codec:
                 continue
 
             episode_id = re.search(r"S\d{1,2}E\d{1,2}", file_title)
             key = episode_id.group(0) if episode_id else file_title
+
+            # Prefer H.264 over H.265 if duplicate episode
             if codec == "H.265" and codec_tracker.get(key) == "H.264":
                 continue
             codec_tracker[key] = codec
 
+            # Get HubCloud link
             links = item.select(".episode-links a")
             for link in links:
                 label = link.text.strip()
@@ -261,7 +271,7 @@ def get_grouped_episode_links(movie_url):
                     final_url = extract_and_decode_final_link(short_url)
                     if final_url:
                         collected_links.append((file_title, final_url))
-                    break
+                    break  # only grab one HubCloud per episode
 
     return collected_links, soup
 
