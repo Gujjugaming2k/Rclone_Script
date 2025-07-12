@@ -7,7 +7,7 @@ import codecs
 import json
 import time
 
-PROCESSED_FILE = "/tmp/opt/jellyfin/STRM/processed_movies.json"
+PROCESSED_FILE = "/tmp/opt/jellyfin/STRM/m3u8/hdhub4u/Series/processed_movies.json"
 STRM_2160_DIR = "/tmp/opt/jellyfin/STRM/m3u8/4k_hubcloud/Movies/"
 STRM_1080_DIR = "/tmp/opt/jellyfin/STRM/m3u8/hdhub4u/Series/"
 STRM_DEFAULT_DIR = "/tmp/opt/jellyfin/STRM/m3u8/hdhub4u/Series/"
