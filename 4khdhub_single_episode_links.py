@@ -217,7 +217,7 @@ def get_grouped_episode_links(movie_url):
     response = requests.get(full_url)
     soup = BeautifulSoup(response.content, "html.parser")
 
-    season_sections = soup.select(".season-content .season-item")
+    season_sections = soup.select(".season-content .episode-item")
     collected_links = []
     codec_tracker = {}
 
@@ -281,7 +281,7 @@ def monitor():
                 soup = BeautifulSoup(response.content, "html.parser")
 
                 # Dynamically select parser based on structure
-                if soup.select(".season-content .season-item"):
+                if soup.select(".season-content .episode-item"):
                     hubcloud_links, soup = get_grouped_episode_links(movie_url)
                 elif soup.select("#episodes .episode-download-item"):
                     hubcloud_links, soup = get_single_episode_links(movie_url)
