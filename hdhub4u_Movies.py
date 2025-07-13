@@ -7,10 +7,10 @@ import codecs
 import json
 import time
 
-PROCESSED_FILE = "/tmp/opt/jellyfin/STRM/processed_movies.json"
-STRM_2160_DIR = "/tmp/opt/jellyfin/STRM/m3u8/4k_hubcloud/Movies/"
-STRM_1080_DIR = "/tmp/opt/jellyfin/STRM/m3u8/hdhub4u/Movies/"
-STRM_DEFAULT_DIR = "/tmp/opt/jellyfin/STRM/m3u8/"
+PROCESSED_FILE = "processed_movies.json"
+STRM_2160_DIR = "Movies/"
+STRM_1080_DIR = "Movies/"
+STRM_DEFAULT_DIR = "m3u8/"
 
 CHECK_INTERVAL = 600  # 10 minutes
 
@@ -94,38 +94,69 @@ def extract_and_decode_final_link(short_url):
         print(f"❌ Request error: {e}")
         return None
 
-def get_movie_list():
-    url = f"https://4khdhub.fans/category/movies-10810.html/page/1.html"
+def get_hdhub4u_links():
+    url = "https://hdhub4u.family/"
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
 
-    movie_cards = soup.find_all("a", class_="movie-card")
-    movie_urls = [card['href'] for card in movie_cards if 'href' in card.attrs]
-    return movie_urls[::-1]  # Latest first
+    movie_links = []
+    for a_tag in soup.find_all("a", href=True):
+        href = a_tag['href']
+        # Only include links that contain "full-movie"
+        if href.startswith("https://hdhub4u.family/") and "full-movie" in href.lower():
+            movie_links.append(href)
+
+    return movie_links[::-1]
+
 
 def get_hubcloud_links(movie_url):
-    full_url = "https://4khdhub.fans" + movie_url
+    full_url = movie_url if movie_url.startswith("http") else "https://hdhub4u.family" + movie_url
     response = requests.get(full_url)
     soup = BeautifulSoup(response.content, "html.parser")
 
-    download_items = soup.find_all("div", class_="download-item")
-    links = []
+    filename_base = extract_movie_title_and_year(soup)
 
-    for item in download_items:
-        file_title = item.find("div", class_="file-title").text.strip() if item.find("div", class_="file-title") else None
-        grid_div = item.find("div", class_="grid grid-cols-2 gap-2")
+    x264_link = None
+    x265_link = None
 
-        if grid_div:
-            anchors = grid_div.find_all("a")
-            for anchor in anchors:
-                span = anchor.find("span")
-                if span and "Download HubCloud" in span.text:
-                    short_url = anchor['href']
-                    final_url = extract_and_decode_final_link(short_url)
-                    if final_url and file_title:
-                        links.append((file_title, final_url))
+    for h3_tag in soup.find_all("h3"):
+        a_tag = h3_tag.find("a", href=True)
+        if a_tag:
+            text = a_tag.get_text(strip=True)
+            href = a_tag['href']
 
-    return links
+            if "1080p" in text:
+                final_url = extract_and_decode_final_link(href)
+                if final_url:
+                    if "x264" in text.lower():
+                        x264_link = (filename_base, final_url)
+                    elif "x265" in text.lower():
+                        x265_link = (filename_base, final_url)
+
+    if x264_link:
+        return [x264_link]
+    elif x265_link:
+        return [x265_link]
+    else:
+        return []
+
+
+def extract_movie_title_and_year(soup):
+    # Try meta tag first
+    meta_tag = soup.find("meta", property="og:title")
+    title_text = meta_tag['content'] if meta_tag else soup.title.string
+
+    # Example: "Dhadak (2018) BluRay [Hindi DD5.1] 1080p ..." → "Dhadak", "2018"
+    import re
+    title_match = re.search(r"^(.*)\((\d{4})\)", title_text)
+    if title_match:
+        movie_name = title_match.group(1).strip()
+        movie_year = title_match.group(2)
+        return f"{movie_name} {movie_year}"
+    else:
+        return "Unknown_Title"
+
+
 
 def create_strm_file(filename, url):
     strm_dir = get_strm_dir(filename)
@@ -140,7 +171,7 @@ def create_strm_file(filename, url):
         print(f"✅ .strm created: {filename} → {strm_dir}")
 
         # Send Telegram message with dynamic content
-        send_telegram_message(f"*{filename}* added in `{strm_dir}`")
+        #send_telegram_message(f"*{filename}* added in `{strm_dir}`")
     else:
         print(f"⚠️ Skipped (already exists): {filename}")
 def monitor():
@@ -149,7 +180,7 @@ def monitor():
         print("\n🔄 Checking for updates...")
         processed = load_processed_data()
         try:
-            movie_urls = get_movie_list()
+            movie_urls = get_hdhub4u_links()
 
             for movie_url in movie_urls:
                 print(f"\n📄 Processing {movie_url}")
