@@ -428,16 +428,16 @@ EOF'
 
 
 
-sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
-nohup sudo python3 /opt/Flaskhub.py &
+#sudo wget -O /opt/Flaskhub.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskhub.py
+#nohup sudo python3 /opt/Flaskhub.py &
 
 
-sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
-nohup sudo python3 /opt/Flaskgdflix.py &
+#sudo wget -O /opt/Flaskgdflix.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Flaskgdflix.py
+#nohup sudo python3 /opt/Flaskgdflix.py &
 
 
-sudo wget -O /opt/FileStream_start_flask.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/FileStream_start_flask.py
-nohup sudo python3 /opt/FileStream_start_flask.py &
+#sudo wget -O /opt/FileStream_start_flask.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/FileStream_start_flask.py
+#nohup sudo python3 /opt/FileStream_start_flask.py &
 
 
 
