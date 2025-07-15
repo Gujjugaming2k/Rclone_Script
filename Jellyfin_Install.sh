@@ -70,9 +70,9 @@ if [ ! -f "$ENV_PATH" ]; then
     fi
 
     # Run recovery/setup script
-    curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Restart.sh | sudo bash &
+    #curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Restart.sh | sudo bash &
     sleep 30
-    gh codespace stop -c $CODESPACE_NAME
+    #gh codespace stop -c $CODESPACE_NAME
     
 fi
 
