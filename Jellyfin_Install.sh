@@ -174,118 +174,125 @@ sudo /etc/init.d/cloudflared stop
 
 
 # Primary URL and local backup path
+# Define URLs and paths
 primary_url="https://download.vflix.life/jellyfin_backup.zip"
-backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
-backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
+backup_primary_url="https://rclone.vflixprime.workers.dev/0:/Jellyfin/jellyfin_backup.zip"
+local_backup="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
+local_STRM="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
 destination="/tmp/jellyfin_backup.zip"
 destination_STRM="/tmp/STRM.zip"
-min_size=$((8000 * 1024 * 1024))  # 8 GB in bytes
+min_size=$((8000 * 1024 * 1024))  # 8 GB
 
-# Function to download the file from URL
+# Download file from URL
 download_file() {
   url=$1
   echo "Downloading from $url..."
-  sudo wget $url -O $destination
+  sudo wget "$url" -O "$destination"
 }
 
-# Function to copy the file from the backup path
+# Copy local backup
 copy_backup_file() {
-  echo "Copying backup file from $backup_file..."
+  echo "Copying from local backup..."
 
 
 
+  # Telegram notification
+  MESSAGE="Fallback triggered: Copying from local backup"
+  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+      -d chat_id="${CHANNEL_ID}" \
+      -d text="${MESSAGE}" \
+      -d parse_mode="Markdown"
 
-
-# Message to send
-MESSAGE="Downloading from Rclone"
-nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
-
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send message."
-fi
-  sudo cp $backup_file $destination
-  sudo cp $backup_STRM_file $destination_STRM
-}
-
-# Check if the file size meets the minimum requirement
-check_file_size() {
-  file=$1
-  actual_size=$(stat -c%s "$file" 2>/dev/null || echo 0)
-  if [[ $actual_size -ge $min_size ]]; then
-    return 0  # File size is acceptable
+  # Optional status check
+  if [ $? -eq 0 ]; then
+    echo "📣 Telegram alert sent: local backup in use"
   else
-    return 1  # File size is too small
+    echo "⚠️ Failed to send Telegram alert for local backup"
   fi
+    # Copy files
+  sudo cp "$local_backup" "$destination"
+  sudo cp "$local_STRM" "$destination_STRM"
 }
 
-# Retry download if file size is below 8 GB
+
+# Check file size
+check_file_size() {
+  [[ $(stat -c%s "$1" 2>/dev/null || echo 0) -ge $min_size ]]
+}
+
+# Retry with given URL
 retry_download() {
   url=$1
-  attempts=3  # Number of retries
-
-  for ((i=1; i<=attempts; i++)); do
-    echo "Attempt $i of $attempts..."
-    download_file $url
-    if check_file_size $destination; then
-      echo "File size is acceptable."
+  for i in {1..3}; do
+    echo "Attempt $i for $url..."
+    download_file "$url"
+    if check_file_size "$destination"; then
+      echo "✅ File size OK"
       return 0
-    else
-      echo "File size is smaller than 8 GB. Retrying..."
     fi
+    echo "⚠️ File too small, retrying..."
   done
-
-  echo "Failed to download a valid file after $attempts attempts."
   return 1
 }
 
-# Start by checking the primary URL
-if wget --spider $primary_url 2>/dev/null; then
-  echo "Primary URL is available."
-  
-      # Replace with your bot token
-
+# Stop cloudflared just once
 sudo /etc/init.d/cloudflared stop
-sudo /etc/init.d/cloudflared stop
-sudo /etc/init.d/cloudflared stop
-# Message to send
-MESSAGE="Downloading Primary URL"
-nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
-# Send the message using curl
-curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-    -d chat_id="${CHANNEL_ID}" \
-    -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
 
-# Check if the message was sent successfully
-if [ $? -eq 0 ]; then
-    echo "Message sent successfully!"
-else
-    echo "Failed to send a message."
-fi
+# Try primary URL
+if wget --spider "$primary_url" 2>/dev/null; then
+  echo "Primary URL is up"
+  MESSAGE="Downloading Primary URL"
+  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+      -d chat_id="${CHANNEL_ID}" \
+      -d text="${MESSAGE}" \
+      -d parse_mode="Markdown"
 
-  if ! retry_download $primary_url; then
-    echo "Downloading from the primary URL failed or the file size was too small."
-    copy_backup_file
+  if ! retry_download "$primary_url"; then
+    echo "Primary failed, trying backup URL..."
+    if wget --spider "$backup_primary_url" 2>/dev/null; then
+      echo "Backup URL is up"
+      MESSAGE="Downloading Backup Primary URL"
+      curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+          -d chat_id="${CHANNEL_ID}" \
+          -d text="${MESSAGE}" \
+          -d parse_mode="Markdown"
+
+      if ! retry_download "$backup_primary_url"; then
+        echo "Backup URL download failed"
+        copy_backup_file
+      fi
+    else
+      echo "Backup URL is down"
+      copy_backup_file
+    fi
   fi
 else
-  echo "Primary URL is down. Copying backup file..."
-  copy_backup_file
+  echo "Primary URL is down, checking backup..."
+  if wget --spider "$backup_primary_url" 2>/dev/null; then
+    echo "Backup URL is up"
+    MESSAGE="Downloading Backup Primary URL"
+    curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+        -d chat_id="${CHANNEL_ID}" \
+        -d text="${MESSAGE}" \
+        -d parse_mode="Markdown"
+
+    if ! retry_download "$backup_primary_url"; then
+      echo "Backup URL download failed"
+      copy_backup_file
+    fi
+  else
+    echo "Both URLs down. Using local backup."
+    copy_backup_file
+  fi
 fi
 
-# Check if the file was downloaded/copied successfully
-if [[ -f "$destination" && $(stat -c%s "$destination") -ge $min_size ]]; then
-  echo "File downloaded/copied successfully and meets the size requirement."
+# Final check
+if check_file_size "$destination"; then
+  echo "✅ Final file is ready with sufficient size."
 else
-  echo "Failed to download/copy the file with the required size."
+  echo "❌ Final file is insufficient or missing."
 fi
+
 
 
 # Get the file size
