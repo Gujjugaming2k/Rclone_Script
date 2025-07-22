@@ -173,59 +173,68 @@ sudo /etc/init.d/cloudflared stop
 sudo /etc/init.d/cloudflared stop
 
 
-#!/bin/bash
-
-# === Configuration ===
+# Primary URL and local backup path
 primary_url="https://download.vflix.life/jellyfin_backup.zip"
-backup_url="https://yourdomain.com/path/to/jellyfin_backup.zip"  # updated to be URL-based
+backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
 backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
-
 destination="/tmp/jellyfin_backup.zip"
 destination_STRM="/tmp/STRM.zip"
 min_size=$((8000 * 1024 * 1024))  # 8 GB in bytes
 
-# Telegram bot credentials (replace with actual values)
-BOT_TOKEN="your_bot_token_here"
-CHANNEL_ID="your_channel_id_here"
-
-# === Functions ===
-
+# Function to download the file from URL
 download_file() {
   url=$1
   echo "Downloading from $url..."
-  sudo wget "$url" -O "$destination"
+  sudo wget $url -O $destination
 }
 
+# Function to copy the file from the backup path
 copy_backup_file() {
-  echo "Downloading backup zip from backup URL and copying STRM locally..."
-  nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
-  MESSAGE="Downloading backup zip from URL and copying STRM locally"
-  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-      -d chat_id="${CHANNEL_ID}" \
-      -d text="${MESSAGE}" \
-      -d parse_mode="Markdown"
+  echo "Copying backup file from $backup_file..."
 
-  # Download backup zip from URL
-  sudo wget "$backup_url" -O "$destination"
 
-  # Copy STRM file from local path
-  sudo cp "$backup_STRM_file" "$destination_STRM"
+
+
+
+# Message to send
+MESSAGE="Downloading from Rclone"
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+  sudo cp $backup_file $destination
+  sudo cp $backup_STRM_file $destination_STRM
 }
 
+# Check if the file size meets the minimum requirement
 check_file_size() {
   file=$1
   actual_size=$(stat -c%s "$file" 2>/dev/null || echo 0)
-  [[ $actual_size -ge $min_size ]]
+  if [[ $actual_size -ge $min_size ]]; then
+    return 0  # File size is acceptable
+  else
+    return 1  # File size is too small
+  fi
 }
 
+# Retry download if file size is below 8 GB
 retry_download() {
   url=$1
-  attempts=3
-nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+  attempts=3  # Number of retries
+
   for ((i=1; i<=attempts; i++)); do
     echo "Attempt $i of $attempts..."
-    download_file "$url"
-    if check_file_size "$destination"; then
+    download_file $url
+    if check_file_size $destination; then
       echo "File size is acceptable."
       return 0
     else
@@ -237,35 +246,45 @@ nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/re
   return 1
 }
 
+# Start by checking the primary URL
+if wget --spider $primary_url 2>/dev/null; then
+  echo "Primary URL is available."
+  
+      # Replace with your bot token
 
 sudo /etc/init.d/cloudflared stop
-
-
-# Notify via Telegram
+sudo /etc/init.d/cloudflared stop
+sudo /etc/init.d/cloudflared stop
+# Message to send
 MESSAGE="Downloading Primary URL"
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+# Send the message using curl
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="${CHANNEL_ID}" \
     -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
 
-# Check if primary URL is live and proceed
-if wget --spider "$primary_url" 2>/dev/null; then
-  echo "Primary URL is available."
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send a message."
+fi
 
-  if ! retry_download "$primary_url"; then
-    echo "Downloading from primary URL failed or file too small. Switching to backup URL."
+  if ! retry_download $primary_url; then
+    echo "Downloading from the primary URL failed or the file size was too small."
     copy_backup_file
   fi
 else
-  echo "Primary URL is down. Using backup source..."
+  echo "Primary URL is down. Copying backup file..."
   copy_backup_file
 fi
 
-# Final verification
+# Check if the file was downloaded/copied successfully
 if [[ -f "$destination" && $(stat -c%s "$destination") -ge $min_size ]]; then
-  echo "File downloaded/copied successfully and meets size requirement."
+  echo "File downloaded/copied successfully and meets the size requirement."
 else
-  echo "Download or copy failed to meet minimum size."
+  echo "Failed to download/copy the file with the required size."
 fi
 
 
