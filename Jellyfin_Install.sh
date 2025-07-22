@@ -195,7 +195,7 @@ copy_backup_file() {
   echo "Copying from local backup..."
 
 
-
+MESSAGE="Downloading from Rclone"
   # Telegram notification
 nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
 # Send the message using curl
@@ -264,10 +264,19 @@ fi
     if wget --spider "$backup_primary_url" 2>/dev/null; then
       echo "Backup URL is up"
       MESSAGE="Downloading Backup Primary URL"
-      curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-          -d chat_id="${CHANNEL_ID}" \
-          -d text="${MESSAGE}" \
-          -d parse_mode="Markdown"
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send a message."
+fi
 
       if ! retry_download "$backup_primary_url"; then
         echo "Backup URL download failed"
