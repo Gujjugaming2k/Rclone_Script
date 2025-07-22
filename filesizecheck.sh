@@ -36,14 +36,8 @@ send_initial_message() {
 update_message() {
     message_id=$(cat "$MSG_ID_FILE")
     SIZE=$(get_file_size)
-    CUR_SIZE=$(get_file_size)
-    CURRENT_TIME=$(date +%s)
 
-    DIFF_SIZE=$(( CUR_SIZE - PREV_SIZE ))
-    TIME_DIFF=$(( CURRENT_TIME - PREV_TIME ))
-    SPEED=$(awk "BEGIN {printf \"%.2f\", $DIFF_SIZE / $TIME_DIFF}")
-    NEW_MESSAGE="Monitoring download... Current size: ${CUR_SIZE} MB and Speed: ${SPEED} MB/s"
-
+    NEW_MESSAGE="Monitoring download... Current size: ${SIZE} MB"
 
     curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/editMessageText" \
         -d chat_id="${CHANNEL_ID}" \
