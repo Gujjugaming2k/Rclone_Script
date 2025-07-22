@@ -197,18 +197,21 @@ copy_backup_file() {
 
 
   # Telegram notification
-  MESSAGE="Fallback triggered: Copying from local backup"
-  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-      -d chat_id="${CHANNEL_ID}" \
-      -d text="${MESSAGE}" \
-      -d parse_mode="Markdown"
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
 
-  # Optional status check
-  if [ $? -eq 0 ]; then
-    echo "📣 Telegram alert sent: local backup in use"
-  else
-    echo "⚠️ Failed to send Telegram alert for local backup"
-  fi
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
     # Copy files
   sudo cp "$local_backup" "$destination"
   sudo cp "$local_STRM" "$destination_STRM"
@@ -242,10 +245,19 @@ sudo /etc/init.d/cloudflared stop
 if wget --spider "$primary_url" 2>/dev/null; then
   echo "Primary URL is up"
   MESSAGE="Downloading Primary URL"
-  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-      -d chat_id="${CHANNEL_ID}" \
-      -d text="${MESSAGE}" \
-      -d parse_mode="Markdown"
+nohup curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/filesizecheck.sh | bash > /tmp/script.log 2>&1 &
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send a message."
+fi
 
   if ! retry_download "$primary_url"; then
     echo "Primary failed, trying backup URL..."
