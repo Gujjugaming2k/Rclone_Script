@@ -1,5 +1,6 @@
 #!/bin/bash
 sleep 10
+
 # Configuration
 FILE="/tmp/jellyfin_backup.zip"
 BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
@@ -32,26 +33,34 @@ send_initial_message() {
     echo "$message_id" > "$MSG_ID_FILE"
 }
 
-# Function to update the Telegram message with the latest file size
+# Function to update the Telegram message with size and speed
 update_message() {
     message_id=$(cat "$MSG_ID_FILE")
-    SIZE=$(get_file_size)
+    CUR_SIZE=$(get_file_size)
+    CURRENT_TIME=$(date +%s)
 
-    NEW_MESSAGE="Monitoring download... Current size: ${SIZE} MB"
+    DIFF_SIZE=$(( CUR_SIZE - PREV_SIZE ))
+    TIME_DIFF=$(( CURRENT_TIME - PREV_TIME ))
+    SPEED=$(awk "BEGIN {printf \"%.2f\", $DIFF_SIZE / $TIME_DIFF}")
+
+    NEW_MESSAGE="Monitoring download... Current size: ${CUR_SIZE} MB and Speed: ${SPEED} MB/s"
 
     curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/editMessageText" \
         -d chat_id="${CHANNEL_ID}" \
         -d message_id="${message_id}" \
         -d text="${NEW_MESSAGE}" \
         -d parse_mode="Markdown"
+
+    PREV_SIZE=$CUR_SIZE
+    PREV_TIME=$CURRENT_TIME
 }
 
-# Start by sending the initial message
+# Begin monitoring
 send_initial_message
 
 PREV_SIZE=$(get_file_size)
+PREV_TIME=$(date +%s)
 
-# Check file size every 15 seconds and update message
 while true; do
     sleep "$CHECK_INTERVAL"
     CUR_SIZE=$(get_file_size)
@@ -60,18 +69,17 @@ while true; do
         ((RETRY_COUNT++))
         echo "Size unchanged, retry attempt $RETRY_COUNT/$MAX_RETRIES"
     else
-        RETRY_COUNT=0  # Reset retry count if size changes
+        RETRY_COUNT=0
     fi
 
     update_message
-    PREV_SIZE=$CUR_SIZE
 
     if [ "$RETRY_COUNT" -ge "$MAX_RETRIES" ]; then
         FINAL_MSG="Download completed. Final file size: ${CUR_SIZE} MB"
         curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/editMessageText" \
             -d chat_id="${CHANNEL_ID}" \
             -d message_id="$(cat $MSG_ID_FILE)" \
-            -d text="$FINAL_MSG" \
+            -d text="${FINAL_MSG}" \
             -d parse_mode="Markdown"
         echo "Download complete. Exiting..."
         exit 0
