@@ -173,11 +173,9 @@ sudo /etc/init.d/cloudflared stop
 sudo /etc/init.d/cloudflared stop
 
 
-#!/bin/bash
-
 # === Configuration ===
 primary_url="https://download.vflix.life/jellyfin_backup.zip"
-backup_url="https://yourdomain.com/path/to/jellyfin_backup.zip"  # updated to be URL-based
+backup_url="https://rclone.vflixprime.workers.dev/0:/Jellyfin/jellyfin_backup.zip"  # updated to be URL-based
 backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
 
 destination="/tmp/jellyfin_backup.zip"
