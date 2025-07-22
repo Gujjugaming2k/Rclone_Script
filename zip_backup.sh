@@ -21,6 +21,30 @@ else
     echo "Failed to send message."
 fi
 
+
+# Current time in IST with AM/PM format
+current_time=$(TZ='Asia/Kolkata' date +"%I:%M %p")
+echo "🕒 Current Time (IST): $current_time"
+
+# Calculate future time by adding 3h 20m 5s
+future_time=$(TZ='Asia/Kolkata' date -d "$current_time +3 hours +20 minutes +5 seconds" +"%I:%M %p")
+echo "🔜 Next Time After Sleep (IST): $future_time"
+
+MESSAGE="🕒 Current Time : $current_time   🔜 Backup Will Start : $future_time"
+
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="HTML"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
 sleep 3h
 
 #curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
