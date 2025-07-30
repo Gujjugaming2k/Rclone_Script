@@ -50,67 +50,19 @@ sudo /etc/init.d/cloudflared stop
 sleep 10
 #!/bin/bash
 
-ENV_PATH="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
-
-if [ ! -f "$ENV_PATH" ]; then
-    echo "env File does not exist. Exiting script."
-
-    MESSAGE="*env File does not exist.* Running recovery setup ⚙️"
-
-    # Send Telegram notification
-    RESPONSE=$(curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-        -d chat_id="${CHANNEL_ID}" \
-        -d text="${MESSAGE}" \
-        -d parse_mode="Markdown")
-
-    if [ $? -eq 0 ]; then
-        echo "✅ Message sent successfully!"
-    else
-        echo "❌ Failed to send message."
-    fi
-
-    # Run recovery/setup script
-    #curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Restart.sh | sudo bash &
-    sleep 30
-    #gh codespace stop -c $CODESPACE_NAME
-    
-fi
-
-echo "File exists. Continuing..."
 
 
-# Local backup path
-val_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/val.txt"
-destination_val="/opt/FileStreamBot/val.txt"
+env_data="VBJX0lEPTEzNjU3ODEKQVBJX0hBU0g9YmUzMjVkNjU3MzBmMDUwYWE4ZTY2ZWU4NDRkNjhiNGYK
+Qk9UX1RPS0VOPTY0OTEyNDQzNDU6QUFIT1l0ZndQZENSajJGVnM4YjFXQUJCVXlwMV9aVFVUcFUK
+QklOX0NIQU5ORUw9LTEwMDE5OTIyMDM0NDQKRkxPR19DSEFOTkVMPS0xMDAxOTkyMjAzNDQ0ClVM
+T0dfQ0hBTk5FTD0tMTAwMTk5MjIwMzQ0NApEQVRBQkFTRV9VUkw9bW9uZ29kYitzcnY6Ly92Zmxp
+eHByaW1lOk9kbmtwRUE5OUs0RTFNa2VAY2x1c3RlcjAubGZ3d2Nlbi5tb25nb2RiLm5ldC8/cmV0
+cnlXcml0ZXM9dHJ1ZSZ3PW1ham9yaXR5JmFwcE5hbWU9Q2x1c3RlcjAKRlFETj1ib3QudmZsaXgu
+bGlmZQpIQVNfU1NMPVRydWUKT1dORVJfSUQ9NTAwMzg3NjYzClBPUlQ9OTAwMApBVVRIX1VTRVJT
+PTUwMDM4NzY2MyA1OTIzOTgzODI5IDEwOTgxNTk3NTIgNjkxOTA1ODMwIDc2Nzk5NDcxMzIK"
 
-# Function to copy and rename the backup file
-copy_val_file() {
-  echo "Copying backup file from $val_file..."
-
-  # Message to send
-  MESSAGE="Downloading from val env file"
-
-  # Send the message using curl
-  curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-      -d chat_id="${CHANNEL_ID}" \
-      -d text="${MESSAGE}" \
-      -d parse_mode="Markdown"
-
-  # Check if the message was sent successfully
-  if [ $? -eq 0 ]; then
-      echo "Message sent successfully!"
-  else
-      echo "Failed to send message."
-  fi
-
-  # Copy and rename the file
-  sudo cp "$val_file" "$destination_val"
-  sudo mv "$destination_val" "/opt/FileStreamBot/.env"
-}
-
-# Start the process
-copy_val_file
-
+# Decode and write to .env file in one go
+echo "$env_data" | base64 -d | sudo tee /opt/FileStreamBot/.env > /dev/null
 
 
 cd /opt/FileStreamBot/
