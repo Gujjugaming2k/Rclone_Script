@@ -4,10 +4,13 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import os
 
 # === CONFIGURATION ===
+
+
+
 JELLYFIN_URL = "https://jellyfin.vflix.life"  # Replace with your server URL
 API_KEY = "f194e40abd604fb29ec2c401cfcd346e"  # Replace with your admin API key
 AUTH_PROVIDER_ID = "DefaultAuthenticationProvider"
-TELEGRAM_BOT_TOKEN = "7824471135:AAECqxTf4sThE-V8o6bviXnbGSjAIraN-l8"  # Replace with your bot token
+TELEGRAM_BOT_TOKEN = "7824471135:AAHFeJiH74pZZSt5UYW7CFWEeYGjhCKQHcQ"  # Replace with your bot token
 
 # === HEADERS ===
 HEADERS = {
