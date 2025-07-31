@@ -408,6 +408,13 @@ nohup sudo python3 /opt/4khdhub_single_episode_links.py &
 sudo wget -O /opt/hdhub4u_Movies.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/hdhub4u_Movies.py
 nohup sudo python3 /opt/hdhub4u_Movies.py &
 
+
+#YM
+sudo wget -O /opt/ymbot.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.py
+nohup sudo python3 /opt/ymbot.py &
+
+
+
 #Send password to telgeram
 
 # Extract password from the log
