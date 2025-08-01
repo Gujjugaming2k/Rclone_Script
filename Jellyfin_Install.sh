@@ -413,7 +413,9 @@ nohup sudo python3 /opt/hdhub4u_Movies.py &
 sudo wget -O /opt/ymbot.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.py
 nohup sudo python3 /opt/ymbot.py &
 
-
+#isha
+sudo wget -O /opt/isha.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/isha.py
+nohup sudo python3 /opt/isha.py &
 
 #Send password to telgeram
 
