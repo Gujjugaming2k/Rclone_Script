@@ -14,7 +14,7 @@ sudo pip3 install flask
 sudo pip3 install bs4
 sudo pip uninstall Flask Jinja2 markupsafe -y
 sudo pip install Flask
-
+pip install pycryptodome       # Install the correct one
 
 
 BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
