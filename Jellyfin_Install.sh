@@ -395,27 +395,30 @@ sudo pip3 install python-telegram-bot
 nohup sudo python3 /opt/hubcloud_bot.py &
 
 
+#d.py
 
-sudo wget -O /opt/Telegram_jellyfin_usercreate.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Telegram_jellyfin_usercreate.py
-nohup sudo python3 /opt/Telegram_jellyfin_usercreate.py &
+sudo wget -O /opt/d.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/d.py
 
-sudo wget -O /opt/4khdhub_auto_upload.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/4khdhub_auto_upload.py
-nohup sudo python3 /opt/4khdhub_auto_upload.py &
+sudo wget -O /opt/Telegram_jellyfin_usercreate.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/Telegram_jellyfin_usercreate.enc
+nohup sudo python3 /opt/d.py /opt/Telegram_jellyfin_usercreate.enc &
 
-sudo wget -O /opt/4khdhub_single_episode_links.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/4khdhub_single_episode_links.py
-nohup sudo python3 /opt/4khdhub_single_episode_links.py &
+sudo wget -O /opt/4khdhub_auto_upload.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/4khdhub_auto_upload.enc
+nohup sudo python3 /opt/d.py /opt/4khdhub_auto_upload.enc &
 
-sudo wget -O /opt/hdhub4u_Movies.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/hdhub4u_Movies.py
-nohup sudo python3 /opt/hdhub4u_Movies.py &
+sudo wget -O /opt/4khdhub_single_episode_links.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/4khdhub_single_episode_links.enc
+nohup sudo python3 /opt/d.py /opt/4khdhub_single_episode_links.enc &
+
+sudo wget -O /opt/hdhub4u_Movies.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/hdhub4u_Movies.enc
+nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
 
 #YM
-sudo wget -O /opt/ymbot.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.py
-nohup sudo python3 /opt/ymbot.py &
+sudo wget -O /opt/ymbot.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.enc
+nohup sudo python3 /opt/d.py /opt/ymbot.enc &
 
 #isha
-sudo wget -O /opt/isha.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/isha.py
-nohup sudo python3 /opt/isha.py &
+sudo wget -O /opt/isha.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/isha.enc
+nohup sudo python3 /opt/d.py /opt/isha.enc &
 
 #Send password to telgeram
 
