@@ -635,7 +635,7 @@ if (playBtnsWrapper) {
 
     async function embyCopyUrl() {
         const mediaInfo = await getEmbyMediaInfo();
-        const streamUrl = decodeURIComponent(mediaSource.Path);
+        const streamUrl = encodeURI(mediaInfo.streamUrl);
         if (await writeClipboard(streamUrl)) {
             console.log(`copyUrl = ${streamUrl}`);
             this.innerText = 'Copied';
