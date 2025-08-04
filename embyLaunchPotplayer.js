@@ -314,16 +314,16 @@
             let fileName = mediaSource.IsInfiniteStream ? `master.m3u8` : decodeURIComponent(mediaSource.Path.replace(fileNameReg, ""));
             if (isEmby) {
                 if (mediaSource.IsInfiniteStream) {
-                    streamUrl += useRealFileName && mediaSource.Name ? `${mediaSource.Name}.m3u8` : fileName;
+                    streamUrl += mediaSource.Name ? `${mediaSource.Name}.m3u8` : fileName;
                 } else {
                     // origin link: /emby/videos/401929/stream.xxx?xxx
                     // modify link: /emby/videos/401929/stream/xxx.xxx?xxx
                     // this is not important, hit "/emby/videos/401929/" path level still worked
-                    streamUrl += useRealFileName ? `stream/${fileName}` : `stream.${mediaSource.Container}`;
+                    streamUrl +=  ? `stream/${fileName}` : `stream.${mediaSource.Container}`;
                 }
             } else {
                 streamUrl += `Download`;
-                streamUrl += useRealFileName ? `/${fileName}` : "";
+                
             }
             streamUrl += `?api_key=${accessToken}&Static=true&MediaSourceId=${mediaSourceId}&DeviceId=${ApiClient._deviceId}`;
         }
