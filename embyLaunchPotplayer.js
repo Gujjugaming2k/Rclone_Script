@@ -31,7 +31,7 @@
     };
     // 启用后将修改直接串流链接为真实文件名,方便第三方播放器友好显示和匹配,
     // 默认不启用,强依赖 nginx-emby2Alist location two rewrite,如发现原始链接播放失败,请关闭此选项
-    const useRealFileName = true;
+    const useRealFileName = false;
     // 以下为内部使用变量,请勿更改
     let isEmby = "";
     const mark = "embyLaunchPotplayer";
