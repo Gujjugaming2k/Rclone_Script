@@ -139,6 +139,22 @@
 
         mainDetailButtons.insertAdjacentHTML("afterend", buttonHtml);
 
+
+// 🔻 Add banner below buttons
+const banner = document.createElement('div');
+banner.textContent = '🎬 External Player Integration Active';
+banner.style.marginTop = '10px';
+banner.style.padding = '8px';
+banner.style.backgroundColor = '#2c3e50';
+banner.style.color = '#ecf0f1';
+banner.style.fontSize = '14px';
+banner.style.textAlign = 'center';
+banner.style.borderRadius = '4px';
+
+// ✅ Use existing playBtnsWrapper without redeclaring
+if (playBtnsWrapper) {
+    playBtnsWrapper.insertAdjacentElement("afterend", banner);
+}
         if (!isEmby) {
             // jellfin add class, detailPagePrimaryContainer、button-flat
             let playBtnsWrapper = document.getElementById("ExternalPlayersBtns");
@@ -308,7 +324,7 @@
         let subPath = getSubPath(mediaSource);
         let subUrl = subPath.length > 0 ? `${baseUrl}${subPath}?api_key=${accessToken}` : "";
         let streamUrl = `${baseUrl}/`;
-        if (mediaSource.Path.startsWith("http") && localStorage.getItem(lsKeys.strmDirect) === "1") {
+        if (mediaSource.Path.startsWith("https") && localStorage.getItem(lsKeys.strmDirect) === "1") {
             streamUrl = decodeURIComponent(mediaSource.Path);
         } else {
             let fileName = mediaSource.IsInfiniteStream ? `master.m3u8` : decodeURIComponent(mediaSource.Path.replace(fileNameReg, ""));
@@ -319,7 +335,7 @@
                     // origin link: /emby/videos/401929/stream.xxx?xxx
                     // modify link: /emby/videos/401929/stream/xxx.xxx?xxx
                     // this is not important, hit "/emby/videos/401929/" path level still worked
-                    streamUrl +=  ? `stream/${fileName}` : `stream.${mediaSource.Container}`;
+                    streamUrl += "" ? `stream/${fileName}` : `stream.${mediaSource.Container}`;
                 }
             } else {
                 streamUrl += `Download`;
