@@ -420,6 +420,15 @@ nohup sudo python3 /opt/d.py /opt/ymbot.enc &
 sudo wget -O /opt/isha.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/isha.enc
 nohup sudo python3 /opt/d.py /opt/isha.enc &
 
+
+#webcustomplay
+#<script src="embyLaunchPotplayer.js" defer></script>
+sudo wget -O /tmp/opt/jellyfin/jellyfin/jellyfin-web/embyLaunchPotplayer.js https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/embyLaunchPotplayer.js
+sudo apt install tidy -y
+tidy -indent -modify /tmp/opt/jellyfin/jellyfin/jellyfin-web/index.html
+sed -i '/<\/body>/i <script src="embyLaunchPotplayer.js" defer><\/script>' /tmp/opt/jellyfin/jellyfin/jellyfin-web/index.html
+
+
 #Send password to telgeram
 
 # Extract password from the log
