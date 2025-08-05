@@ -452,6 +452,28 @@ fi
 
 
 
+#Upload Stop Notification
+
+BOT_TOKEN="8483477088:AAEqPiYAwBzXVGeBVoVfgV8p3fv9Mh9-nfM"
+CHANNEL_ID="-4966738837"
+# Message to send
+MESSAGE="✅ Start Uploading ✅"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
+
+
 
 curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && sudo dpkg -i cloudflared.deb && sudo cloudflared service install eyJhIjoiNWIzNDA1ZDEzZmJiNWE1M2I2ZjM5ZjU4M2YwZmYwNjEiLCJ0IjoiYzA3YTI0MTQtNWI2My00ZmQ1LWIxM2EtMjgzNTJhNjJjNDk5IiwicyI6IlpqRXdNV1V4TkdJdFlUTTRaUzAwTnpreUxXRXhaVFF0T0dRMU56RXdNR1F6TWpBeiJ9
 
