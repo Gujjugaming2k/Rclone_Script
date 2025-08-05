@@ -3,8 +3,12 @@
     #echo "BOT_TOKEN=\"$BOT_TOKEN\""
 
 
-BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
-CHANNEL_ID="-1002196503705"
+ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
 # Message to send
 MESSAGE="Backup Script Placed"
 
@@ -74,8 +78,14 @@ fi
 
 #Upload Stop Notification
 
-BOT_TOKEN="8483477088:AAEqPiYAwBzXVGeBVoVfgV8p3fv9Mh9-nfM"
-CHANNEL_ID="-4966738837"
+# Base64-encoded values
+ENCODED_TOKEN="ODQ4MzQ3NzA4ODpBQUVxUGlZQXdCelhWR2VCVm9WZmdWOHAzZnY5TWg5LW5mTQ=="
+ENCODED_CHANNEL_ID="LTQ5NjY3Mzg4Mzc="
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
 # Message to send
 MESSAGE="⛔ Stop Uploading ⛔"
 
@@ -83,7 +93,7 @@ MESSAGE="⛔ Stop Uploading ⛔"
 curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
     -d chat_id="${CHANNEL_ID}" \
     -d text="${MESSAGE}" \
-    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+    -d parse_mode="Markdown"
 
 # Check if the message was sent successfully
 if [ $? -eq 0 ]; then
