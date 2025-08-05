@@ -72,6 +72,26 @@ else
 fi
 
 
+#Upload Stop Notification
+
+BOT_TOKEN="8483477088:AAEqPiYAwBzXVGeBVoVfgV8p3fv9Mh9-nfM"
+CHANNEL_ID="-4966738837"
+# Message to send
+MESSAGE="⛔ Stop Uploading ⛔"
+
+# Send the message using curl
+curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+    -d chat_id="${CHANNEL_ID}" \
+    -d text="${MESSAGE}" \
+    -d parse_mode="Markdown"  # or "HTML" for HTML formatting
+
+# Check if the message was sent successfully
+if [ $? -eq 0 ]; then
+    echo "Message sent successfully!"
+else
+    echo "Failed to send message."
+fi
+
 sudo rm -rf /tmp/jellyfin_backup.zip
 
 sudo su - root
