@@ -460,8 +460,11 @@ fi
 
 #Upload Stop Notification
 
-BOT_TOKEN="8483477088:AAEqPiYAwBzXVGeBVoVfgV8p3fv9Mh9-nfM"
-CHANNEL_ID="-4966738837"
+ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 # Message to send
 MESSAGE="✅ Start Uploading ✅"
 
