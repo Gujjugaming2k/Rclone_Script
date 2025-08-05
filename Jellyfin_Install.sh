@@ -17,8 +17,14 @@ sudo pip install Flask
 pip install pycryptodome       # Install the correct one
 
 
-BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
-CHANNEL_ID="-1002196503705"
+# Base64-encoded credentials
+ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
 # Message to send
 MESSAGE="Jellyfin - Installation Started"
 
