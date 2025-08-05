@@ -123,7 +123,11 @@ sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /tmp/opt/jellyfin/STRM/
 sudo zip -r /tmp/jellyfin_backup.zip /tmp/opt/jellyfin/*
 
-
+ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
 
 # Message to send
 MESSAGE="Backup Completed."
