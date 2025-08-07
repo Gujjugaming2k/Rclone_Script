@@ -402,6 +402,7 @@ nohup sudo python3 /opt/hubcloud_bot.py &
 
 
 #d.py
+pip install python-telegram-bot==20.3
 
 sudo wget -O /opt/d.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/d.py
 
