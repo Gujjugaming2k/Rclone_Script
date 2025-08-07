@@ -417,6 +417,13 @@ nohup sudo python3 /opt/d.py /opt/4khdhub_single_episode_links.enc &
 sudo wget -O /opt/hdhub4u_Movies.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/hdhub4u_Movies.enc
 nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
+
+#Proxy M3U8-Proxy.git
+sudo git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
+sudo npm i
+sudo npm audit fix --force
+nohup sudo npm start > output.log 2>&1 &
+
 #VFlixPrime_TMDB_ID and cinemaos_flask
 
 pip install urllib3==1.26.16
