@@ -435,7 +435,7 @@ sudo wget -O /opt/vidfast.py https://raw.githubusercontent.com/Gujjugaming2k/sit
 nohup sudo python3 /opt/vidfast.py &
 
 sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/VFlixPrime_TMDB_ID.py
-nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
+#nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
 
 
 
