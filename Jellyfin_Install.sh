@@ -420,6 +420,7 @@ nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
 #Proxy M3U8-Proxy.git
 sudo git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
+cd M3U8-Proxy
 sudo npm i
 sudo npm audit fix --force
 nohup sudo npm start > output.log 2>&1 &
@@ -435,7 +436,7 @@ sudo wget -O /opt/vidfast.py https://raw.githubusercontent.com/Gujjugaming2k/sit
 nohup sudo python3 /opt/vidfast.py &
 
 sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/VFlixPrime_TMDB_ID.py
-#nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
+nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
 
 
 
