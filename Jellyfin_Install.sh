@@ -417,6 +417,20 @@ nohup sudo python3 /opt/d.py /opt/4khdhub_single_episode_links.enc &
 sudo wget -O /opt/hdhub4u_Movies.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/hdhub4u_Movies.enc
 nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
+#VFlixPrime_TMDB_ID and cinemaos_flask
+
+pip install urllib3==1.26.16
+pip install python-telegram-bot==13.15
+pip install pycryptodome
+pip install flask
+pip install requests
+sudo wget -O /opt/cinemaos_flask.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/cinemaos_flask.py
+nohup sudo python3 /opt/cinemaos_flask.py &
+
+sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/VFlixPrime_TMDB_ID.py
+nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
+
+
 
 #YM
 sudo wget -O /opt/ymbot.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.enc
