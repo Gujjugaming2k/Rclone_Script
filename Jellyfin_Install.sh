@@ -424,8 +424,8 @@ pip install python-telegram-bot==13.15
 pip install pycryptodome
 pip install flask
 pip install requests
-sudo wget -O /opt/cinemaos_flask.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/cinemaos_flask.py
-nohup sudo python3 /opt/cinemaos_flask.py &
+sudo wget -O /opt/vidfast.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/vidfast.py
+nohup sudo python3 /opt/vidfast.py &
 
 sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/VFlixPrime_TMDB_ID.py
 nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
