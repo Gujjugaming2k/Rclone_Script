@@ -418,6 +418,16 @@ sudo wget -O /opt/hdhub4u_Movies.enc https://raw.githubusercontent.com/Gujjugami
 nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
 
+
+#YM
+sudo wget -O /opt/ymbot.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.enc
+nohup sudo python3 /opt/d.py /opt/ymbot.enc &
+
+#isha
+sudo wget -O /opt/isha.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/isha.enc
+nohup sudo python3 /opt/d.py /opt/isha.enc &
+
+
 #Proxy M3U8-Proxy.git
 sudo git clone https://github.com/Gujjugaming2k/M3U8-Proxy.git
 cd M3U8-Proxy
@@ -439,14 +449,6 @@ sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjug
 nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
 
 
-
-#YM
-sudo wget -O /opt/ymbot.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/ymbot.enc
-nohup sudo python3 /opt/d.py /opt/ymbot.enc &
-
-#isha
-sudo wget -O /opt/isha.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/isha.enc
-nohup sudo python3 /opt/d.py /opt/isha.enc &
 
 
 #webcustomplay
