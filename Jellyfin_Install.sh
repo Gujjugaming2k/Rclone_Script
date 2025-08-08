@@ -325,12 +325,12 @@ sudo apt install jellyfin -y
 
 
 
-#sudo apt-get update -y && sudo apt-get install curl apt-transport-https gnupg -y
-#curl https://apt.hrfee.dev/hrfee.pubkey.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.hrfee.dev.gpg
-#echo "deb https://apt.hrfee.dev trusty main" | sudo tee /etc/apt/sources.list.d/hrfee.list
-#sudo apt-get update -y
-#sudo apt-get install jfa-go -y
-
+sudo apt-get update -y && sudo apt-get install curl apt-transport-https gnupg -y
+curl https://apt.hrfee.dev/hrfee.pubkey.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.hrfee.dev.gpg
+echo "deb https://apt.hrfee.dev trusty main" | sudo tee /etc/apt/sources.list.d/hrfee.list
+sudo apt-get update -y
+sudo apt-get install jfa-go -y
+jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jellyfin/STRM/jfago/data -debug -host 0.0.0.0 -port 8056
 
 
 
