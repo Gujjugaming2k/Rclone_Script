@@ -331,6 +331,7 @@ echo "deb https://apt.hrfee.dev trusty main" | sudo tee /etc/apt/sources.list.d/
 sudo apt-get update -y
 sudo apt-get install jfa-go -y
 jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jellyfin/STRM/jfago/data -debug -host 0.0.0.0 -port 8056
+jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jellyfin/STRM/jfago/data -debug -host 0.0.0.0 -port 8056
 
 
 
