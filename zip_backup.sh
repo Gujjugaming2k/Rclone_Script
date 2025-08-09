@@ -122,6 +122,9 @@ sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
 sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /tmp/opt/jellyfin/STRM/
 sudo zip -r /tmp/jellyfin_backup.zip /tmp/opt/jellyfin/*
+DATE=$(date +%Y%m%d_%H%M%S)
+sudo zip -j /opt/Rclone_Drive/w1928440/Jellyfin_BKP/DB_Backup/Jellyfin_DB_Backup_$DATE.zip /tmp/opt/jellyfin/data/data/library.db /tmp/opt/jellyfin/data/data/jellyfin.db
+
 
 ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
 ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
