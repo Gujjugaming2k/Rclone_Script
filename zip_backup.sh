@@ -109,6 +109,9 @@ id
 id
 id
 id
+
+sudo rm -rf /tmp/opt/jellyfin/cache/
+
 echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
 echo "Zipping the directory SOURCE_DIR to BACKUP_FILE..."
