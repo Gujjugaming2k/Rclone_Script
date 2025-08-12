@@ -130,7 +130,7 @@ backup_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/jellyfin_backup.zip"
 backup_STRM_file="/opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip"
 destination="/tmp/jellyfin_backup.zip"
 destination_STRM="/tmp/STRM.zip"
-min_size=$((8000 * 1024 * 1024))  # 8 GB in bytes
+min_size=$((1000 * 1024 * 1024))  # 8 GB in bytes
 
 # Function to download the file from URL
 download_file() {
