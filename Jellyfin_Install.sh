@@ -407,7 +407,7 @@ nohup sudo python3 /opt/hubcloud_bot.py &
 
 #d.py
 pip install python-telegram-bot==20.3
-
+rm -rf /tmp/opt/jellyfin/STRM/m3u8/GDriveSharer/HubCloudProxy/processed.json
 sudo wget -O /opt/d.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/d.py
 
 sudo wget -O /opt/Telegram_jellyfin_usercreate.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/Telegram_jellyfin_usercreate.enc
