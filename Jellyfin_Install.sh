@@ -334,9 +334,10 @@ jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jell
 jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jellyfin/STRM/jfago/data -debug -host 0.0.0.0 -port 8056
 
 cd /tmp/opt/jellyfin/STRM/MUM/
-git clone https://github.com/MrRobotjs/MUM.git
-mkdir ./multimediausermanager
-docker-compose up -d
+sudo git clone https://github.com/MrRobotjs/MUM.git
+cd MUM
+sudo mkdir ./multimediausermanager
+sudo docker-compose up -d
 
 # Replace with your bot token
 
