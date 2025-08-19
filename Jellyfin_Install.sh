@@ -334,6 +334,9 @@ jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jell
 jfa-go start -config /tmp/opt/jellyfin/STRM/jfago/config.ini -data /tmp/opt/jellyfin/STRM/jfago/data -debug -host 0.0.0.0 -port 8056
 
 
+
+wget https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/docker-compose.yml
+docker compose up -d
 # Replace with your bot token
 
 
