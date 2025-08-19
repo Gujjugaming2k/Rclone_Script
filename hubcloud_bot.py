@@ -6,19 +6,24 @@ from bs4 import BeautifulSoup
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import re
-
+import base64
 SAVE_FOLDER = "/tmp/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
 
 # 🔥 Replace with your bot token
 
 
 # Base64-encoded credentials
-ENCODED_TOKEN="NzUzMTYzNzg0NTpBQUYzR3hIbjFXYXBtX3gzeEsxYzlFOHBxbkFtZ3RCbGpBYw=="
-ENCODED_CHANNEL_ID="LTEwMDI4NzM0NTQ4MTk="
+ENCODED_TOKEN = "NzUzMTYzNzg0NTpBQUYzR3hIbjFXYXBtX3gzeEsxYzlFOHBxbkFtZ3RCbGpBYw=="
+ENCODED_CHANNEL_ID = "LTEwMDI4NzM0NTQ4MTk="
+
+def decode_base64(encoded_str: str) -> str:
+    """Decode a Base64-encoded string to UTF-8."""
+    return base64.b64decode(encoded_str).decode('utf-8')
 
 # Decode at runtime
-TELEGRAM_BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
-TELEGRAM_GROUP_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+TELEGRAM_BOT_TOKEN = decode_base64(ENCODED_TOKEN)
+TELEGRAM_GROUP_ID = decode_base64(ENCODED_CHANNEL_ID)
+
 
 
 # 🔥 Current domains
@@ -297,4 +302,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
