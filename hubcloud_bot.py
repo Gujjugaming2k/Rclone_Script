@@ -10,11 +10,17 @@ import re
 SAVE_FOLDER = "/tmp/opt/jellyfin/STRM_Hub_Bot"  # Folder path to save .strm files
 
 # 🔥 Replace with your bot token
-TELEGRAM_BOT_TOKEN = "7531637845:AAEHIucLbu41bf08ckwGAr-fjF-BPBYNB_Q"
 
-# 🔥 Telegram group ID for logs
-#TELEGRAM_GROUP_ID = "-1002661622618"  # Replace with your group ID
-TELEGRAM_GROUP_ID = "-1002873454819"
+
+# Base64-encoded credentials
+ENCODED_TOKEN="NzUzMTYzNzg0NTpBQUYzR3hIbjFXYXBtX3gzeEsxYzlFOHBxbkFtZ3RCbGpBYw=="
+ENCODED_CHANNEL_ID="LTEwMDI4NzM0NTQ4MTk="
+
+# Decode at runtime
+TELEGRAM_BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+TELEGRAM_GROUP_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
+
 # 🔥 Current domains
 HUBCLOUD_DOMAIN = "https://hubcloud.bz"
 GDFLIX_DOMAIN = "https://new6.gdflix.dad"
@@ -291,3 +297,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
