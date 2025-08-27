@@ -452,6 +452,9 @@ nohup sudo python3 /opt/vidfast.py &
 sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/VFlixPrime_TMDB_ID.py
 nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
 
+#XDMovies_Auto
+sudo wget -O /opt/XDMovies_Auto.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/XDMovies_Auto.py
+nohup sudo python3 /opt/XDMovies_Auto.py &
 
 
 
