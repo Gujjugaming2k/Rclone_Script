@@ -155,7 +155,7 @@ fi
 
 sleep 5
 
-url="https://startcodespace.vflixprime.workers.dev/"
+url="https://startcodespace.vflixprime.workers.dev/?action=start"
 
 while true; do
   # Get the output and response code using curl
