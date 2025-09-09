@@ -3,7 +3,7 @@
     #echo "BOT_TOKEN=\"$BOT_TOKEN\""
 
 
-ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
 ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 # Decode at runtime
 BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
@@ -129,7 +129,7 @@ DATE=$(date +%Y%m%d_%H%M%S)
 sudo zip -j /opt/Rclone_Drive/w1928440/Jellyfin_BKP/DB_Backup/Jellyfin_DB_Backup_$DATE.zip /tmp/opt/jellyfin/data/data/library.db /tmp/opt/jellyfin/data/data/jellyfin.db
 
 
-ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
 ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 # Decode at runtime
 BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
