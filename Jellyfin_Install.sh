@@ -18,7 +18,7 @@ pip install pycryptodome       # Install the correct one
 
 
 # Base64-encoded credentials
-ENCODED_TOKEN="NjA1OTgwMDMyMTpBQUd3QTFHZVBybWt3ZlpOdVhPam1pUUptb0ZreGVFVTFWaw=="
+ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
 ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
 
 # Decode at runtime
