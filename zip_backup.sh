@@ -157,7 +157,7 @@ fi
 sleep 5
 nohup sudo cp /tmp/jellyfin_backup.zip /opt/Rclone_Drive/w1928440/Jellyfin_BKP/ >/dev/null 2>&1 &
 
-url="https://vflix.fun/github/github_token_date.php?type=create"
+url=""
 
 while true; do
   # Get the output and response code using curl
