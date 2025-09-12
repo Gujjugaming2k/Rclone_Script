@@ -155,7 +155,7 @@ fi
 
 sleep 5
 
-url="https://startcodespace.vflixprime.workers.dev/?action=start"
+url="https://vflix.fun/github/github_token_date.php?type=create"
 
 while true; do
   # Get the output and response code using curl
