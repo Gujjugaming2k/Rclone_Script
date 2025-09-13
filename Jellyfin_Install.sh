@@ -454,9 +454,8 @@ nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
 
 #XDMovies_Auto
 pip install cloudscraper
-sudo wget -O /opt/XDMovies_CF.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/XDMovies_CF.py
-nohup sudo python3 /opt/XDMovies_CF.py &
-
+sudo wget -O /opt/XDMovies_CF.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/XDMovies_CF.enc
+nohup sudo python3 /opt/d.py /opt/XDMovies_CF.enc &
 
 
 #webcustomplay
