@@ -423,6 +423,7 @@ sudo pip3 install aiohttp
 sudo pip3 install aiofiles
 sudo pip3 install python-telegram-bot
 sudo pip3 install pycryptodome
+sudo pip3 install beautifulsoup4
 
 nohup sudo python3 /opt/d.py /opt/H2R_Uploader_v2.enc &
 
@@ -457,7 +458,7 @@ sudo wget -O /opt/VFlixPrime_TMDB_ID.py https://raw.githubusercontent.com/Gujjug
 nohup sudo python3 /opt/VFlixPrime_TMDB_ID.py &
 
 #XDMovies_Auto
-pip install cloudscraper
+sudo pip3 install cloudscraper
 sudo wget -O /opt/XDMovies_CF.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/XDMovies_CF.enc
 nohup sudo python3 /opt/d.py /opt/XDMovies_CF.enc &
 
