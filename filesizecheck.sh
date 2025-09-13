@@ -3,8 +3,18 @@ sleep 10
 
 # Configuration
 FILE="/tmp/jellyfin_backup.zip"
-BOT_TOKEN="6059800321:AAGwA1GePrmkwfZNuXOjmiQJmoFkxeEU1Vk"
-CHANNEL_ID="-1002196503705"
+
+
+
+
+# Base64-encoded credentials
+ENCODED_TOKEN="MTExODY0NTYyNDpBQUZzNHBBd3NMRG9vOTVjWDZwUGU5cEQxb0w1QjFoaTlzNA=="
+ENCODED_CHANNEL_ID="LTEwMDIxOTY1MDM3MDU="
+
+# Decode at runtime
+BOT_TOKEN=$(echo "$ENCODED_TOKEN" | base64 --decode)
+CHANNEL_ID=$(echo "$ENCODED_CHANNEL_ID" | base64 --decode)
+
 MSG_ID_FILE="/tmp/telegram_msg_id.txt"
 RETRY_COUNT=0
 MAX_RETRIES=3
