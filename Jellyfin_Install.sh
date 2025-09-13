@@ -396,12 +396,7 @@ EOF'
 
 
 
-sudo wget -O /opt/hubcloud_bot.py https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/hubcloud_bot.py
-sudo pip3 install asyncio
-sudo pip3 install aiohttp
-sudo pip3 install aiofiles
-sudo pip3 install python-telegram-bot
-nohup sudo python3 /opt/hubcloud_bot.py &
+
 
 
 #d.py
@@ -421,6 +416,13 @@ nohup sudo python3 /opt/d.py /opt/4khdhub_single_episode_links.enc &
 sudo wget -O /opt/hdhub4u_Movies.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/hdhub4u_Movies.enc
 nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
+
+sudo wget -O /opt/H2R_Uploader_v2.enc.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/H2R_Uploader_v2.enc
+sudo pip3 install asyncio
+sudo pip3 install aiohttp
+sudo pip3 install aiofiles
+sudo pip3 install python-telegram-bot
+nohup sudo python3 /opt/d.py /opt/H2R_Uploader_v2.enc &
 
 
 #YM
