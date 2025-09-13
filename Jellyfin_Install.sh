@@ -417,11 +417,13 @@ sudo wget -O /opt/hdhub4u_Movies.enc https://raw.githubusercontent.com/Gujjugami
 nohup sudo python3 /opt/d.py /opt/hdhub4u_Movies.enc &
 
 
-sudo wget -O /opt/H2R_Uploader_v2.enc.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/H2R_Uploader_v2.enc
+sudo wget -O /opt/H2R_Uploader_v2.enc https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/H2R_Uploader_v2.enc
 sudo pip3 install asyncio
 sudo pip3 install aiohttp
 sudo pip3 install aiofiles
 sudo pip3 install python-telegram-bot
+sudo pip3 install pycryptodome
+
 nohup sudo python3 /opt/d.py /opt/H2R_Uploader_v2.enc &
 
 
