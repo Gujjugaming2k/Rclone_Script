@@ -562,4 +562,4 @@ sudo chmod 777 /tmp/opt/jellyfin/jellyfin.sh
 sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
-sudo /tmp/opt/jellyfin/jellyfin.sh
+rm -f /tmp/jellyfin_sh.txt && sudo /tmp/opt/jellyfin/jellyfin.sh > /tmp/jellyfin_sh.txt 2>&1 &
