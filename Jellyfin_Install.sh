@@ -316,7 +316,7 @@ EOF
 
 sudo apt update -y
 sudo apt install jellyfin -y
-
+sudo apt install ffmpeg -y
 
 
 
@@ -370,7 +370,7 @@ curl -sSL https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/Rcl
 sudo bash -c 'cat << "EOF" > /tmp/opt/jellyfin/jellyfin.sh
 #!/bin/bash
 JELLYFINDIR="/tmp/opt/jellyfin"
-FFMPEGDIR="/usr/share/jellyfin-ffmpeg"
+FFMPEGDIR="/usr/bin"
 
 $JELLYFINDIR/jellyfin/jellyfin \
  -d /tmp/opt/jellyfin/data \
