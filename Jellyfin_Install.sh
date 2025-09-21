@@ -438,8 +438,8 @@ nohup sudo python3 /opt/d.py /opt/isha.enc &
 
 
 #mxp
-#sudo wget -O /opt/extract_m.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/extract_m.py
-#nohup sudo python3 /opt/extract_m.py &
+sudo wget -O /opt/extract_m.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/extract_m.py
+nohup sudo python3 /opt/extract_m.py &
 
 
 #Proxy M3U8-Proxy.git
