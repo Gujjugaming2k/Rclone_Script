@@ -479,7 +479,7 @@ sed -i '/<\/body>/i <script src="embyLaunchPotplayer.js" defer><\/script>' /tmp/
 #Send password to telgeram
 
 # Extract password from the log
-PASSWORD=$(grep "Randomly generated password for user 'admin'" /tmp/filesystem_php_server.log | awk -F': ' '{print $2}')
+PASSWORD=$(grep "User 'admin' initialized with randomly generated password" /tmp/filesystem_php_server.log | awk -F': ' '{print $2}')
 
 # Construct your message
 MESSAGE="🛠️ *Jellyfin Setup Started*  🔐 *Admin Password:* \`$PASSWORD\`"
