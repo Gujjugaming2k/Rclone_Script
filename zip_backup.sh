@@ -199,7 +199,7 @@ else
     echo "Failed to send message."
 fi
 
-sleep 20m
+sleep 35m
 
 # Message to send
 MESSAGE="Codespace Stoped - $CODESPACE_NAME"
