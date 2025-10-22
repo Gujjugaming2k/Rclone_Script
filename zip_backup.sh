@@ -122,6 +122,19 @@ sudo rm -rf /tmp/jellyfin_backup.zip
 sudo rm -rf /opt/jellyfin/gofile-downloader
 sudo rm -rf /opt/jellyfin/jellyfin_10.9.7-amd64.tar.gz
 
+# Delete jfago old logs
+
+# Directory containing .vlog files
+TARGET_DIR="/tmp/opt/jellyfin/STRM/jfago/data/db"
+
+# Age threshold in days
+AGE_DAYS=3
+
+# Find and delete .vlog files older than AGE_DAYS
+find "$TARGET_DIR" -type f -name "*.vlog" -mtime +$AGE_DAYS -print -exec rm -f {} \;
+
+echo "Old .vlog files older than $AGE_DAYS days have been deleted from $TARGET_DIR."
+
 
 sudo zip -r /opt/Rclone_Drive/w1928440/Jellyfin_BKP/STRM.zip /tmp/opt/jellyfin/STRM/
 
