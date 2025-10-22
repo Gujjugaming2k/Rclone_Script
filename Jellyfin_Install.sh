@@ -357,10 +357,10 @@ else
 fi
 
 
-sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.11.0-amd64.tar.gz
-sudo tar xvzf jellyfin_10.11.0-amd64.tar.gz -C /tmp/opt/jellyfin/
+sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.10.7-amd64.tar.gz
+sudo tar xvzf jellyfin_10.10.7-amd64.tar.gz -C /tmp/opt/jellyfin/
 
-rm -rf jellyfin_10.11.0-amd64.tar.gz
+rm -rf jellyfin_10.10.7-amd64.tar.gz
 
 # Step 3-4: Run Rclone_Config.sh (assuming it should be run 4nd time)
 echo "Running Rclone_Config.sh... 2nd time"
