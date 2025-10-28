@@ -6,6 +6,23 @@ sudo su - root
 id
 id
 id
+
+
+#!/bin/bash
+
+# Target file
+SOURCE_FILE="/etc/apt/sources.list.d/ubuntu.sources"
+
+# Backup first
+sudo cp "$SOURCE_FILE" "${SOURCE_FILE}.bak"
+
+# Replace all URIs lines with the ICM mirror
+sudo sed -i 's|^URIs:.*|URIs: https://ftp.icm.edu.pl/pub/Linux/ubuntu|' "$SOURCE_FILE"
+
+echo "✅ URIs updated to use https://ftp.icm.edu.pl/pub/Linux/ubuntu"
+echo "🗂️ Backup saved as ${SOURCE_FILE}.bak"
+
+
 sudo apt-get update -y && sudo apt-get install cron -y
 sudo rm /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
