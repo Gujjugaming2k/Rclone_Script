@@ -50,7 +50,7 @@ else
     echo "Failed to send message."
 fi
 sleep 3h
-
+sleep 20m
 #curl -O https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/refs/heads/main/Rclone_zip_Backup.sh
 #chmod +x Rclone_zip_Backup.sh
 #nohup ./Rclone_zip_Backup.sh &> Rclone_zip_Backup.log &
@@ -169,7 +169,7 @@ fi
 
 
 
-sleep 20m
+
 nohup sudo cp /tmp/jellyfin_backup.zip /opt/Rclone_Drive/w1928440/Jellyfin_BKP/ >/dev/null 2>&1 &
 
 url="https://vflix.fun/github/github_token_date_v_1.php?type=create"
