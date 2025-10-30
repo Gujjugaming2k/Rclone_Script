@@ -169,7 +169,7 @@ fi
 
 
 
-sleep 5
+sleep 20m
 nohup sudo cp /tmp/jellyfin_backup.zip /opt/Rclone_Drive/w1928440/Jellyfin_BKP/ >/dev/null 2>&1 &
 
 url="https://vflix.fun/github/github_token_date_v_1.php?type=create"
@@ -214,7 +214,6 @@ else
     echo "Failed to send message."
 fi
 
-sleep 20m
 
 # Message to send
 MESSAGE="Codespace Stoped - $CODESPACE_NAME"
