@@ -448,6 +448,16 @@ sudo npm i
 sudo npm audit fix --force
 nohup sudo npm start > output.log 2>&1 &
 
+
+#another proxy
+
+sudo git clone https://github.com/Gujjugaming2k/m3u8proxyplayer.git
+cd m3u8proxyplayer
+sudo npm i
+nohup sudo pnpm dev > output.log 2>&1 &
+
+
+
 #VFlixPrime_TMDB_ID and cinemaos_flask
 
 pip install urllib3==1.26.16
