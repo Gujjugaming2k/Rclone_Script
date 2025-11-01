@@ -456,7 +456,11 @@ cd m3u8proxyplayer
 sudo npm i
 nohup sudo pnpm dev > /tmp/opt/jellyfin/m3u8proxyplayer.log 2>&1 &
 
-
+# fetch script
+sudo git clone https://github.com/Gujjugaming2k/IOSMIRROR_Fetch.git
+cd IOSMIRROR_Fetch
+sudo npm i
+nohup sudo pnpm dev > /tmp/opt/jellyfin/IOSMIRROR_Fetch.log 2>&1 &
 
 #VFlixPrime_TMDB_ID and cinemaos_flask
 
