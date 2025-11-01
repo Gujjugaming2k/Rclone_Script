@@ -454,7 +454,7 @@ nohup sudo npm start > output.log 2>&1 &
 sudo git clone https://github.com/Gujjugaming2k/m3u8proxyplayer.git
 cd m3u8proxyplayer
 sudo npm i
-nohup sudo pnpm dev > output.log 2>&1 &
+nohup sudo pnpm dev > /tmp/opt/jellyfin/m3u8proxyplayer.log 2>&1 &
 
 
 
