@@ -283,9 +283,9 @@ fi
 #iostoken and strm update
 pip install requests
 sudo wget -O /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/fetch_token.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/fetch_token.py
-sudo wget -O /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/update_token.py https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/refs/heads/main/update_token.py
+
 nohup sudo python3 /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/fetch_token.py &
-nohup sudo python3 /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/update_token.py &
+
 nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
 
