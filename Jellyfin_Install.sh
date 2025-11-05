@@ -286,7 +286,7 @@ pip install requests
 
 #nohup sudo python3 /tmp/opt/jellyfin/STRM/m3u8/IOSMIRROR/fetch_token.py &
 
-#nohup sudo python3 -m http.server 9012 -d /tmp/ &
+nohup sudo python3 -m http.server 9012 -d /tmp/ &
 
 
 
