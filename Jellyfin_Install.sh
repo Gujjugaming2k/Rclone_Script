@@ -4,6 +4,7 @@ id
 id
 id
 id
+ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 
 
@@ -587,3 +588,8 @@ sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
 rm -f /tmp/jellyfin_sh.txt && sudo /tmp/opt/jellyfin/jellyfin.sh > /tmp/jellyfin_sh.txt 2>&1 &
+# Download the script
+sudo wget -O /tmp/opt/jellyfin/jellyfin_monitor.sh https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/jellyfin_monitor.sh
+# Make the script executable
+chmod +x /tmp/opt/jellyfin/jellyfin_monitor.sh
+rm -f /tmp/status_jellyfin.txt && sudo /tmp/opt/jellyfin/jellyfin_monitor.sh 2>&1 &
