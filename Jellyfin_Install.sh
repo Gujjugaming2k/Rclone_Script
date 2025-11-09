@@ -588,6 +588,8 @@ sudo /etc/init.d/cloudflared start
 sudo /etc/init.d/cloudflared start
 
 rm -f /tmp/jellyfin_sh.txt && sudo /tmp/opt/jellyfin/jellyfin.sh > /tmp/jellyfin_sh.txt 2>&1 &
+
+sleep 15
 # Download the script
 sudo wget -O /tmp/opt/jellyfin/jellyfin_monitor.sh https://raw.githubusercontent.com/Gujjugaming2k/Rclone_Script/main/jellyfin_monitor.sh
 # Make the script executable
