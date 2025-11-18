@@ -357,8 +357,8 @@ else
 fi
 
 #latest
-sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.11.2-amd64.tar.gz
-sudo tar xvzf jellyfin_10.11.2-amd64.tar.gz -C /tmp/opt/jellyfin/
+sudo wget https://repo.jellyfin.org/files/server/linux/latest-stable/amd64/jellyfin_10.11.3-amd64.tar.gz
+sudo tar xvzf jellyfin_10.11.3-amd64.tar.gz -C /tmp/opt/jellyfin/
 
 #old
 #sudo wget https://repo.jellyfin.org/files/server/linux/stable/v10.10.7/amd64/jellyfin_10.10.7-amd64.tar.gz
