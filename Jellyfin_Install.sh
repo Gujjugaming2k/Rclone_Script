@@ -543,29 +543,14 @@ else
 fi
 
 
-ZIP_URL="https://github.com/Gujjugaming2k/site_scrap_mv/raw/main/Stremio.zip"
-TARGET_DIR="/tmp/Stremio"
-ZIP_FILE="/tmp/Stremio.zip"
 
-echo "[+] Creating target directory if not exists..."
-mkdir -p "$TARGET_DIR"
 
-echo "[+] Downloading Stremio.zip..."
-curl -L "$ZIP_URL" -o "$ZIP_FILE"
+mkdir -p /tmp/stremio_scripts
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_to_github.py -o /tmp/stremio_scripts/backup_to_github.py
+curl -sS https://raw.githubusercontent.com/Gujjugaming2k/site_scrap_mv/main/BKP_Stremio/backup_runner.py -o /tmp/stremio_scripts/backup_runner.py
+nohup python3 /tmp/stremio_scripts/backup_runner.py > /tmp/backup_runner.log 2>&1 &
+nohup node /tmp/Stremio/server.js > server.log 2>&1 &
 
-echo "[+] Extracting ZIP..."
-unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
-
-cd "$TARGET_DIR"
-
-echo "[+] Installing dependencies..."
-npm install --silent || yarn install --silent
-
-echo "[+] Starting server.js in background..."
-nohup node server.js > server.log 2>&1 &
-
-echo "[+] Done. Server running in background."
-echo "[+] Logs: $TARGET_DIR/server.log"
 
 
 
